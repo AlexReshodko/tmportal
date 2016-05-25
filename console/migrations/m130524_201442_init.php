@@ -1,6 +1,7 @@
 <?php
 
 use yii\db\Migration;
+use common\models\User;
 
 class m130524_201442_init extends Migration
 {
@@ -20,6 +21,7 @@ class m130524_201442_init extends Migration
             'password_reset_token' => $this->string()->unique(),
             'email' => $this->string()->notNull()->unique(),
 
+            'role' => $this->integer()->notNull()->defaultValue(User::ROLE_USER),
             'status' => $this->smallInteger()->notNull()->defaultValue(10),
             'created_at' => $this->integer()->notNull(),
             'updated_at' => $this->integer()->notNull(),

@@ -20,9 +20,6 @@ return [
         'request'=>[
             'baseUrl'=>'/backend',
         ],
-        'urlManager'=>[
-            'scriptUrl'=>'/backend/index.php',
-        ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
             'targets' => [

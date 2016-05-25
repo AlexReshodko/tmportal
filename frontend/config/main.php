@@ -19,9 +19,6 @@ return [
         'request'=>[
             'baseUrl'=>'',
         ],
-        'urlManager'=>[
-            'scriptUrl'=>'/index.php',
-        ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
             'targets' => [

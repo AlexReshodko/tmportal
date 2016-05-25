@@ -1,11 +1,13 @@
 <?php
 namespace backend\controllers;
 
-use Yii;
-use yii\web\Controller;
-use yii\filters\VerbFilter;
-use yii\filters\AccessControl;
 use common\models\LoginForm;
+use frontend\models\SignupForm;
+use Yii;
+use yii\filters\AccessControl;
+use yii\filters\VerbFilter;
+use yii\helpers\Json;
+use yii\web\Controller;
 
 /**
  * Site controller
@@ -22,7 +24,7 @@ class SiteController extends Controller
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['login', 'error'],
+                        'actions' => ['login', 'error', 'add-users'],
                         'allow' => true,
                     ],
                     [
@@ -80,5 +82,31 @@ class SiteController extends Controller
         Yii::$app->user->logout();
 
         return $this->goHome();
+    }
+        
+    public function actionAddUsers(){
+        $filename = Yii::getAlias('@common').'/data/users.json';
+        $addedUsers = [];
+        if(file_exists($filename)){
+            $json = file_get_contents($filename);
+            $users = Json::decode($json);
+            foreach ($users as $key => $user) {
+                $model = new SignupForm();
+                $model->username = $user['username'];
+                $model->password = $user['password'];
+                $model->email = $user['email'];
+                $model->role = $user['role'];
+                if ($user = $model->signup()) {
+                    array_push($addedUsers, $user['username']);
+                }else{
+                    print_r($model->errors);
+                }
+            }
+            echo '<pre>';
+            print_r($addedUsers);
+            echo '</pre>';
+        }  else {
+            throw new Exception("File doesn't exists: " . $filename);
+        }
     }
 }

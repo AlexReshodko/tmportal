@@ -38,6 +38,18 @@ $bundle = AppAsset::register($this);
                     TestMatick Portal
                 </a>
             </div>
+            
+            
+            <div class="sidebar-user">
+                <div class="card card-user card-sidebar">
+                    <div class="content">
+                        <div class="author">
+                          <?= Html::img($bundle->baseUrl.'/images/faces/face-3.jpg',['class'=>'avatar border-white'])?>
+                          <h4 class="title">Hello, <?=Yii::$app->user->identity->username?></h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             <?php
             echo Menu::widget([
@@ -70,12 +82,6 @@ $bundle = AppAsset::register($this);
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <i class="ti-panel"></i>
-								<p>Stats</p>
-                            </a>
-                        </li>
                         <li class="dropdown">
                               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                     <i class="ti-bell"></i>
@@ -90,12 +96,6 @@ $bundle = AppAsset::register($this);
                                 <li><a href="#">Notification 4</a></li>
                                 <li><a href="#">Another notification</a></li>
                               </ul>
-                        </li>
-						<li>
-                            <a href="#">
-								<i class="ti-settings"></i>
-								<p>Settings</p>
-                            </a>
                         </li>
                         <?php if(Yii::$app->user->identity->username == 'admin'): ?>
                         <li>

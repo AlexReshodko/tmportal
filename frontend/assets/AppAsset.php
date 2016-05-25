@@ -19,6 +19,7 @@ class AppAsset extends AssetBundle {
         'http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css',
         'https://fonts.googleapis.com/css?family=Muli:400,300',
         'css/themify-icons.css',
+        'css/main.css',
     ];
     public $js = [
         // Core

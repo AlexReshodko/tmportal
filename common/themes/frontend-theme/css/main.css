@@ -1,0 +1,16 @@
+/* 
+    Created on : 25.05.2016, 14:04:27
+    Author     : AlexR
+*/
+.sidebar .sidebar-user{
+    margin: 10px 20px;
+}
+.sidebar-user .card-user{
+    margin-bottom: 0;
+}
+.sidebar-user .author{
+    margin-top: 0;
+}
+.sidebar-user .content{
+    min-height: auto;
+}

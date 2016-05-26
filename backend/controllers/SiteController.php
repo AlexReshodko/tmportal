@@ -2,6 +2,8 @@
 namespace backend\controllers;
 
 use common\models\LoginForm;
+use common\models\UserData;
+use common\models\Office;
 use frontend\models\SignupForm;
 use Yii;
 use yii\filters\AccessControl;
@@ -96,7 +98,19 @@ class SiteController extends Controller
                 $model->password = $user['password'];
                 $model->email = $user['email'];
                 $model->role = $user['role'];
-                if ($user = $model->signup()) {
+                if ($savedUser = $model->signup()) {
+                    if(isset($user['data'])){
+                        $data = $user['data'];
+                        $userDataModel = new UserData();
+                        $userDataModel->user_id = $savedUser->id;
+                        $userDataModel->office_id = Office::find()->where(['code'=>$data['office']])->one()->id;
+                        $userDataModel->first_name = $data['first_name'];
+                        $userDataModel->last_name = $data['last_name'];
+                        $userDataModel->work_start_date = $data['work_start_date'];
+                        if(!$userDataModel->save()){
+                            throw new Exception($userDataModel->getErrors());
+                        }
+                    }
                     array_push($addedUsers, $user['username']);
                 }else{
                     print_r($model->errors);

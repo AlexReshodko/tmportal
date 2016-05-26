@@ -44,8 +44,8 @@ $bundle = AppAsset::register($this);
                 <div class="card card-user card-sidebar">
                     <div class="content">
                         <div class="author">
-                          <?= Html::img($bundle->baseUrl.'/images/faces/face-3.jpg',['class'=>'avatar border-white'])?>
-                          <h4 class="title">Hello, <?=Yii::$app->user->identity->username?></h4>
+                            <?= Html::img($bundle->baseUrl.'/images/faces/face-3.jpg',['class'=>'avatar border-white'])?>
+                            <?=  common\widgets\GreetingsWidget::widget()?>
                         </div>
                     </div>
                 </div>

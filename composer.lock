@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "914f9194a4d021de88b285b03e683984",
-    "content-hash": "e1929a97e872bdbaacc8530468eccb67",
+    "hash": "050e59bffd312967bfbb84076ab18f8f",
+    "content-hash": "23c2fa83317eb1c4d85c75ef5832fcda",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -58,16 +58,16 @@
         },
         {
             "name": "bower-asset/jquery",
-            "version": "2.2.3",
+            "version": "2.2.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/jquery/jquery-dist.git",
-                "reference": "af22a351b2ea5801ffb1695abb3bb34d5bed9198"
+                "reference": "c0185ab7c75aab88762c5aae780b9d83b80eda72"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jquery/jquery-dist/zipball/af22a351b2ea5801ffb1695abb3bb34d5bed9198",
-                "reference": "af22a351b2ea5801ffb1695abb3bb34d5bed9198",
+                "url": "https://api.github.com/repos/jquery/jquery-dist/zipball/c0185ab7c75aab88762c5aae780b9d83b80eda72",
+                "reference": "c0185ab7c75aab88762c5aae780b9d83b80eda72",
                 "shasum": ""
             },
             "type": "bower-asset-library",
@@ -162,6 +162,45 @@
             }
         },
         {
+            "name": "bower-asset/semantic",
+            "version": "2.1.8",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Semantic-Org/Semantic-UI.git",
+                "reference": "04a3c48a0dd3bd9b440b59036004409239a6db16"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Semantic-Org/Semantic-UI/zipball/04a3c48a0dd3bd9b440b59036004409239a6db16",
+                "reference": "04a3c48a0dd3bd9b440b59036004409239a6db16",
+                "shasum": ""
+            },
+            "require": {
+                "bower-asset/jquery": ">=1.8"
+            },
+            "type": "bower-asset-library",
+            "extra": {
+                "bower-asset-main": [
+                    "src/semantic.less",
+                    "dist/semantic.js"
+                ],
+                "bower-asset-ignore": [
+                    "src/site",
+                    "test"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "description": "Semantic empowers designers and developers by creating a shared vocabulary for UI.",
+            "keywords": [
+                "css3",
+                "framework",
+                "semantic",
+                "ui"
+            ]
+        },
+        {
             "name": "bower-asset/yii2-pjax",
             "version": "v2.0.6",
             "source": {
@@ -254,6 +293,47 @@
                 "markdown-extra"
             ],
             "time": "2015-03-06 05:28:07"
+        },
+        {
+            "name": "codemix/yii2-localeurls",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/codemix/yii2-localeurls.git",
+                "reference": "d1089ca4d98e180aaa4755a8d714e89cf42bc42a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/codemix/yii2-localeurls/zipball/d1089ca4d98e180aaa4755a8d714e89cf42bc42a",
+                "reference": "d1089ca4d98e180aaa4755a8d714e89cf42bc42a",
+                "shasum": ""
+            },
+            "require": {
+                "yiisoft/yii2": "*"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "codemix\\localeurls\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Michael Härtl",
+                    "email": "haertl.mike@gmail.com"
+                }
+            ],
+            "description": "Automatic locale/language management for URLs.",
+            "keywords": [
+                "i18n",
+                "locale",
+                "yii2"
+            ],
+            "time": "2016-04-05 07:35:49"
         },
         {
             "name": "ezyang/htmlpurifier",
@@ -592,6 +672,101 @@
                 "yii2"
             ],
             "time": "2016-03-17 03:58:49"
+        },
+        {
+            "name": "zelenin/yii2-i18n-module",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zelenin/yii2-i18n-module.git",
+                "reference": "4b0eb4c711778c6ae282d89a4d33a786184ef8a0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/zelenin/yii2-i18n-module/zipball/4b0eb4c711778c6ae282d89a4d33a786184ef8a0",
+                "reference": "4b0eb4c711778c6ae282d89a4d33a786184ef8a0",
+                "shasum": ""
+            },
+            "require": {
+                "yiisoft/yii2": "~2",
+                "zelenin/yii2-semantic-ui": "*"
+            },
+            "type": "yii2-extension",
+            "extra": {
+                "bootstrap": "Zelenin\\yii\\modules\\I18n\\Bootstrap"
+            },
+            "autoload": {
+                "psr-4": {
+                    "Zelenin\\yii\\modules\\I18n\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Aleksandr Zelenin",
+                    "email": "aleksandr@zelenin.me",
+                    "homepage": "http://zelenin.me",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Yii2 i18n (internalization) module makes the translation of your application so simple",
+            "homepage": "https://github.com/zelenin/yii2-i18n-module",
+            "keywords": [
+                "i18n",
+                "translation",
+                "translations",
+                "yii2"
+            ],
+            "time": "2015-03-07 00:00:00"
+        },
+        {
+            "name": "zelenin/yii2-semantic-ui",
+            "version": "2.0.9",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zelenin/yii2-semantic-ui.git",
+                "reference": "509bc7f0abc6b08b2088f2510e08639363a2fd1b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/zelenin/yii2-semantic-ui/zipball/509bc7f0abc6b08b2088f2510e08639363a2fd1b",
+                "reference": "509bc7f0abc6b08b2088f2510e08639363a2fd1b",
+                "shasum": ""
+            },
+            "require": {
+                "bower-asset/semantic": "~2",
+                "yiisoft/yii2": "~2"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "Zelenin\\yii\\SemanticUI\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Aleksandr Zelenin",
+                    "email": "aleksandr@zelenin.me",
+                    "homepage": "http://zelenin.me",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Semantic UI extension for Yii2",
+            "homepage": "https://github.com/zelenin/yii2-semantic-ui",
+            "keywords": [
+                "semantic",
+                "semantic ui",
+                "widgets",
+                "yii2"
+            ],
+            "time": "2016-04-11 14:51:55"
         }
     ],
     "packages-dev": [
@@ -903,7 +1078,10 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "zelenin/yii2-i18n-module": 20,
+        "codemix/yii2-localeurls": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

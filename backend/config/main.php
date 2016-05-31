@@ -41,5 +41,8 @@ return [
         ],
         */
     ],
+    'modules' => [
+        'i18n' => Zelenin\yii\modules\I18n\Module::className()
+    ],
     'params' => $params,
 ];

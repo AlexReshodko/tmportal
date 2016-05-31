@@ -3,7 +3,7 @@
 use yii\helpers\Url;
 use backend\assets\AppAsset;
 
-$this->title = 'My Yii Application';
+$this->title = 'Dashboard';
 $bundle = AppAsset::register($this);
 ?>
 <!-- Dashboard content -->

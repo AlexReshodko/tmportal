@@ -1,7 +1,7 @@
 <?php
 /* @var $this yii\web\View */
 
-$this->title = 'My Yii Application';
+$this->title = 'Dashboard';
 ?>
 <div class="container-fluid">
     <div class="row">
@@ -9,22 +9,26 @@ $this->title = 'My Yii Application';
             <div class="card">
                 <div class="content">
                     <div class="row">
-                        <div class="col-xs-5">
-                            <div class="icon-big icon-warning text-center">
-                                <i class="ti-server"></i>
+                        <div class="col-xs-2">
+                            <div class="icon-medium icon-warning text-center">
+                                <i class="ti-gift"></i>
                             </div>
                         </div>
-                        <div class="col-xs-7">
-                            <div class="numbers">
-                                <p>Capacity</p>
-                                105GB
+<!--                        <div class="icon-medium icon-warning text-center">
+                            <i class="ti-gift"></i>
+                        </div>-->
+                        <div class="col-xs-10">
+                            <div class="text-center" style="font-size: 1.5em;">
+                                <?php foreach ($birthdays as $birthday): ?>
+                                    <?=$birthday['name']?>: <?=$birthday['birthday']?>
+                                <?php endforeach;?>
                             </div>
                         </div>
                     </div>
                     <div class="footer">
                         <hr />
                         <div class="stats">
-                            <i class="ti-reload"></i> Updated now
+                            <i class="ti-calendar"></i> Upcoming birthdays
                         </div>
                     </div>
                 </div>

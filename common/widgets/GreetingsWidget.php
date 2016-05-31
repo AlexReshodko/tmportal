@@ -17,7 +17,7 @@ class GreetingsWidget extends \yii\bootstrap\Widget{
     {
         $userID = Yii::$app->user->id;
         $user = User::find()->joinWith('userData')->where(['user.id' => $userID])->one();
-        if($user && $user->userData){
+        if($user && $user->userData && $user->userData->first_name){
             $name = $user->userData->first_name;
         }else{
             $name = $user->username;

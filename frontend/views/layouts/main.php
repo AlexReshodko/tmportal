@@ -56,8 +56,9 @@ $bundle = AppAsset::register($this);
                 'items' => [
                     // Important: you need to specify url as 'controller/action',
                     // not just as 'controller' even if default action is used.
-                    ['label' => 'Home', 'url' => ['site/index'], 'template' => '<a href="{url}"><i class="ti-panel"></i><p>{label}</p></a>'],
+                    ['label' => Yii::t('app', 'Home'), 'url' => ['site/index'], 'template' => '<a href="{url}"><i class="ti-panel"></i><p>{label}</p></a>'],
                     ['label' => 'User profile', 'url' => ['user/index'], 'template' => '<a href="{url}"><i class="ti-user"></i><p>{label}</p></a>'],
+                    ['label' => 'Office map', 'url' => ['site/map'], 'template' => '<a href="{url}"><i class="ti-map-alt"></i><p>{label}</p></a>'],
                 ],
                 'options' => [
                     'class' => 'nav',
@@ -78,7 +79,7 @@ $bundle = AppAsset::register($this);
                         <span class="icon-bar bar2"></span>
                         <span class="icon-bar bar3"></span>
                     </button>
-                    <a class="navbar-brand" href="#">Dashboard</a>
+                    <a class="navbar-brand" href="#"><?=$this->title;?></a>
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
@@ -90,7 +91,9 @@ $bundle = AppAsset::register($this);
 									<b class="caret"></b>
                               </a>
                               <ul class="dropdown-menu">
-                                <li><a href="#">Notification 1</a></li>
+                                <li><?=Html::a('English', ['', 'language'=>'en'])?></li>
+                                <li><?=Html::a('Русский', ['', 'language'=>'ru-RU'])?></li>
+                                <li><?=Html::a('Українська', ['', 'language'=>'uk'])?></li>
                                 <li><a href="#">Notification 2</a></li>
                                 <li><a href="#">Notification 3</a></li>
                                 <li><a href="#">Notification 4</a></li>

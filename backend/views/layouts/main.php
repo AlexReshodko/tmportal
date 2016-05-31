@@ -301,11 +301,12 @@ $bundle = AppAsset::register($this);
 								<!-- Main -->
 								<li class="navigation-header"><span>Main</span> <i class="icon-menu" title="Main pages"></i></li>
                                 <li><a href="<?=Yii::$app->urlManagerFrontend->createUrl('/');?>"><i class="icon-home4"></i> <span>Go to Frontend</span></a></li>
-								<li class="active"><a href="index.html"><i class="icon-home4"></i> <span>Dashboard</span></a></li>
+                                <li><a href="<?=Url::toRoute('/translations')?>"><i class="icon-sphere"></i> <span>Translations</span></a></li>
+								<li class="active"><a href="<?=Url::toRoute('/')?>"><i class="icon-home4"></i> <span><?=Yii::t('app', 'Home')?></span></a></li>
 								<li>
 									<a href="#"><i class="icon-stack2"></i> <span>Page layouts</span></a>
 									<ul>
-										<li><a href="layout_navbar_fixed.html">Fixed navbar</a></li>
+										<li><a href="<?=Url::toRoute('/site/test')?>">Fixed navbar</a></li>
 										<li><a href="layout_navbar_sidebar_fixed.html">Fixed navbar &amp; sidebar</a></li>
 										<li><a href="layout_sidebar_fixed_native.html">Fixed sidebar native scroll</a></li>
 										<li><a href="layout_navbar_hideable.html">Hideable navbar</a></li>

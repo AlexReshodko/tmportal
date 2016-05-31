@@ -12,6 +12,8 @@ use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
+use DateTime;
+use common\models\UserData;
 
 /**
  * Site controller
@@ -72,7 +74,25 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $upcomingBd = [];
+        $birthdays = UserData::findBySql('SELECT
+            first_name,
+            birthday,
+            birthday + INTERVAL(YEAR(CURRENT_TIMESTAMP) - YEAR(birthday)) + 0 YEAR AS currbirthday,
+            birthday + INTERVAL(YEAR(CURRENT_TIMESTAMP) - YEAR(birthday)) + 1 YEAR AS nextbirthday
+        FROM user_data
+        WHERE birthday IS NOT NULL
+        HAVING currbirthday >= CURRENT_TIMESTAMP
+        ORDER BY CASE
+            WHEN currbirthday >= CURRENT_TIMESTAMP THEN currbirthday
+            ELSE nextbirthday
+        END
+        LIMIT 3')->all();
+        foreach ($birthdays as $birthday) {
+            $date = new DateTime($birthday->birthday);
+            array_push($upcomingBd, ['name' => $birthday->first_name, 'birthday' => $date->format('j F')]);
+        }
+        return $this->render('index', ['birthdays' => $upcomingBd]);
     }
 
     /**

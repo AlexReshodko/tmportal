@@ -1826,6 +1826,10 @@ textarea.form-control {
 .card .alert.alert-with-icon {
   padding-left: 65px;
 }
+.card .icon-medium {
+  font-size: 2em;
+  min-height: 64px;
+}
 .card .icon-big {
   font-size: 3em;
   min-height: 64px;

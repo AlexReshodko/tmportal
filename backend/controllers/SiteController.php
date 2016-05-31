@@ -107,6 +107,7 @@ class SiteController extends Controller
                         $userDataModel->first_name = $data['first_name'];
                         $userDataModel->last_name = $data['last_name'];
                         $userDataModel->work_start_date = $data['work_start_date'];
+                        $userDataModel->birthday = $data['birthday'];
                         if(!$userDataModel->save()){
                             throw new Exception($userDataModel->getErrors());
                         }

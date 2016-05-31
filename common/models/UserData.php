@@ -13,7 +13,10 @@ use Yii;
  * @property string $first_name
  * @property string $last_name
  * @property string $position
+ * @property string $phone
+ * @property string $skype
  * @property string $work_start_date
+ * @property string $birthday
  * @property string $comment
  * @property string $photo
  *
@@ -36,11 +39,11 @@ class UserData extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['user_id', 'office_id', 'work_start_date'], 'required'],
+            [['user_id', 'office_id'], 'required'],
             [['user_id', 'office_id'], 'integer'],
-            [['work_start_date'], 'safe'],
+            [['work_start_date', 'birthday'], 'safe'],
             [['comment'], 'string'],
-            [['first_name', 'last_name', 'position', 'photo'], 'string', 'max' => 255],
+            [['first_name', 'last_name', 'position', 'phone', 'skype', 'photo'], 'string', 'max' => 255],
             [['office_id'], 'exist', 'skipOnError' => true, 'targetClass' => Office::className(), 'targetAttribute' => ['office_id' => 'id']],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_id' => 'id']],
         ];
@@ -58,7 +61,10 @@ class UserData extends \yii\db\ActiveRecord
             'first_name' => 'First Name',
             'last_name' => 'Last Name',
             'position' => 'Position',
+            'phone' => 'Phone',
+            'skype' => 'Skype',
             'work_start_date' => 'Work Start Date',
+            'birthday' => 'Birthday',
             'comment' => 'Comment',
             'photo' => 'Photo',
         ];

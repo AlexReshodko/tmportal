@@ -34,7 +34,7 @@ class m130524_201442_init extends Migration
         $this->createTable('{{%user_data}}', [
             'id' => $this->primaryKey(),
             'user_id' => $this->integer()->notNull(),
-            'office_id' => $this->integer()->notNull(),
+            'office_id' => $this->integer(),
             'first_name' => $this->string(),
             'last_name' => $this->string(),
             'position' => $this->string(),
@@ -59,7 +59,7 @@ class m130524_201442_init extends Migration
         $this->addForeignKey('fk-user_data-user_id', '{{%user_data}}', '[[user_id]]', '{{%user}}', '[[id]]', 'CASCADE');
         
         $this->createIndex('idx-user_data_office_id', '{{%user_data}}', '[[office_id]]');
-        $this->addForeignKey('fk-user_data-office_id', '{{%user_data}}', '[[office_id]]', '{{%office}}', '[[id]]', 'CASCADE');
+        $this->addForeignKey('fk-user_data-office_id', '{{%user_data}}', '[[office_id]]', '{{%office}}', '[[id]]', 'SET NULL');
         
         $this->insert('{{%office}}', ['name'=>'Черкассы','code'=>'CK']);
         $this->insert('{{%office}}', ['name'=>'Кривой Рог','code'=>'KR']);

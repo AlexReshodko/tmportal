@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "050e59bffd312967bfbb84076ab18f8f",
-    "content-hash": "23c2fa83317eb1c4d85c75ef5832fcda",
+    "hash": "ff672c357f027c3514be4e94b3136ba7",
+    "content-hash": "df1d029a515ea35df05a1d0a6b8be7a0",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -674,6 +674,49 @@
             "time": "2016-03-17 03:58:49"
         },
         {
+            "name": "yurkinx/yii2-image",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/yurkinx/yii2-image.git",
+                "reference": "0d6d261bf9c2dc35e9ad8c5cc56793580b74eefd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/yurkinx/yii2-image/zipball/0d6d261bf9c2dc35e9ad8c5cc56793580b74eefd",
+                "reference": "0d6d261bf9c2dc35e9ad8c5cc56793580b74eefd",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0",
+                "yiisoft/yii2": "*"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-0": {
+                    "yii\\image\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Yuri Kileev",
+                    "email": "kileev@gmail.com"
+                }
+            ],
+            "description": "Yii2 extension for image manipulating using Kohana Image Library.",
+            "homepage": "https://github.com/yurkinx/yii2-image",
+            "keywords": [
+                "extension",
+                "image",
+                "yii2"
+            ],
+            "time": "2015-06-24 13:41:22"
+        },
+        {
             "name": "zelenin/yii2-i18n-module",
             "version": "dev-master",
             "source": {
@@ -1080,7 +1123,8 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "zelenin/yii2-i18n-module": 20,
-        "codemix/yii2-localeurls": 20
+        "codemix/yii2-localeurls": 20,
+        "yurkinx/yii2-image": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

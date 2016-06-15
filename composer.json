@@ -19,7 +19,8 @@
         "yiisoft/yii2-bootstrap": "*",
         "yiisoft/yii2-swiftmailer": "*",
         "zelenin/yii2-i18n-module": "dev-master",
-        "codemix/yii2-localeurls": "dev-master"
+        "codemix/yii2-localeurls": "dev-master",
+        "yurkinx/yii2-image": "dev-master"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",

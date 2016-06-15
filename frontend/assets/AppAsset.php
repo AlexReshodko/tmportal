@@ -25,13 +25,14 @@ class AppAsset extends AssetBundle {
         // Core
         'js/bootstrap.min.js',
         // Checkbox, Radio & Switch Plugins
-        'js/bootstrap-checkbox-radio.js',
+//        'js/bootstrap-checkbox-radio.js',
         // Charts Plugin
         'js/chartist.min.js',
         // Notifications Plugin
         'js/bootstrap-notify.js',
         // Paper Dashboard Core javascript and methods for Demo purpose
-//        'js/paper-dashboard.js',
+        'js/main.js',
+        'js/snap.svg-min.js',
         
 //        'js/demo.js'
     ];

@@ -8,6 +8,7 @@ use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use common\models\LoginForm;
+use common\models\User;
 use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
@@ -97,6 +98,13 @@ class SiteController extends Controller
             array_push($upcomingBd, ['name' => $birthday->first_name, 'birthday' => $date->format('j F')]);
         }
         return $this->render('index', ['birthdays' => $upcomingBd]);
+    }
+    
+    public function actionOfficeMap(){
+        $users = (new User)->getUsers();
+        return $this->render('officeMap',[
+            'users'=>$users
+        ]);
     }
 
     /**

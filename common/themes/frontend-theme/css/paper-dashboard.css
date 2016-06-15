@@ -1878,6 +1878,8 @@ textarea.form-control {
   border-radius: 50%;
   position: relative;
   margin-bottom: 15px;
+  background-size: cover;
+  display: inline-block;
 }
 .card-user .avatar.border-white {
   border: 5px solid #FFFFFF;

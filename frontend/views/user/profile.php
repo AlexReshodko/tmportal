@@ -2,6 +2,7 @@
 
 use frontend\assets\AppAsset;
 use yii\helpers\Html;
+use yii\widgets\ActiveForm;
 
 /* @var $this View */
 
@@ -20,9 +21,9 @@ $bundle = AppAsset::register($this);
                     </div>
                     <div class="content">
                         <div class="author">
-                            <img class="avatar border-white" src="<?=$bundle->baseUrl?>/images/faces/face-2.jpg" alt="..."/>
-                            <h4 class="title">Chet Faker<br />
-                                <a href="#"><small>@chetfaker</small></a>
+                            <div class="avatar border-white" style="background-image:url(<?=$userData->photo?>)"></div>
+                            <h4 class="title"><?=$userData->first_name?> <?=$userData->last_name?><br />
+                                <!--<a href="#"><small>@chetfaker</small></a>-->
                             </h4>
                         </div>
                         <p class="description text-center">
@@ -116,89 +117,32 @@ $bundle = AppAsset::register($this);
                         <h4 class="title">Edit Profile</h4>
                     </div>
                     <div class="content">
-                        <form>
-                            <div class="row">
-                                <div class="col-md-5">
-                                    <div class="form-group">
-                                        <label>Email</label>
-                                        <input type="text" class="form-control border-input" disabled placeholder="Company" value="<?=$user->email?>">
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <label>Username</label>
-                                        <input type="text" class="form-control border-input" placeholder="Username" value="<?=$user->username?>">
-                                    </div>
-                                </div>
-<!--                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">Email address</label>
-                                        <input type="email" class="form-control border-input" placeholder="Email">
-                                    </div>
-                                </div>-->
-                            </div>
+                        <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
+                        <div class="col-md-6">
+                            <?= $form->field($userData, 'first_name')->textInput(['maxlength' => true, 'class'=>'form-control border-input']) ?>
+                        </div>
+                        <div class="col-md-6">
+                            <?= $form->field($userData, 'last_name')->textInput(['maxlength' => true, 'class'=>'form-control border-input']) ?>
+                        </div>
+                        <div class="col-md-6">
+                            <?= $form->field($userData, 'phone')->textInput(['maxlength' => true, 'class'=>'form-control border-input']) ?>
+                        </div>
+                        <div class="col-md-6">
+                            <?= $form->field($userData, 'skype')->textInput(['maxlength' => true, 'class'=>'form-control border-input']) ?>
+                        </div>
+                            
+                            <?= $form->field($userData, 'comment')->textarea(['rows' => 6, 'class'=>'form-control border-input']) ?>
+                        
+                        <?= Html::error($photoModel, 'imageFile', ['class' => 'help-block'])?>
+                        <label class="btn btn-default btn-file">
+                            Browse <input type="file" id="userdata-photo" name="UserData[photo]" style="display: none;">
+                        </label>
 
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>First Name</label>
-                                        <input type="text" class="form-control border-input" placeholder="Company" value="<?=$user->userData->first_name?>">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Last Name</label>
-                                        <input type="text" class="form-control border-input" placeholder="Last Name" value="<?=$user->userData->last_name?>">
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="form-group">
+                            <?= Html::submitButton($user->isNewRecord ? 'Create' : 'Update', ['class' => $user->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+                        </div>
 
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label>Address</label>
-                                        <input type="text" class="form-control border-input" placeholder="Home Address" value="Melbourne, Australia">
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label>City</label>
-                                        <input type="text" class="form-control border-input" placeholder="City" value="Melbourne">
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label>Country</label>
-                                        <input type="text" class="form-control border-input" placeholder="Country" value="Australia">
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label>Postal Code</label>
-                                        <input type="number" class="form-control border-input" placeholder="ZIP Code">
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label>About Me</label>
-                                        <textarea rows="5" class="form-control border-input" placeholder="Here can be your description" value="Mike">Oh so, your weak rhyme
-You doubt I'll bother, reading into it
-I'll probably won't, left to my own devices
-But that's the difference in our opinions.</textarea>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="text-center">
-                                <button type="submit" class="btn btn-info btn-fill btn-wd">Update Profile</button>
-                            </div>
-                            <div class="clearfix"></div>
-                        </form>
+                        <?php ActiveForm::end(); ?>
                     </div>
                 </div>
             </div>

@@ -44,6 +44,7 @@ class m130524_201442_init extends Migration
             'birthday' => $this->date(),
             'comment' => $this->text(),
             'photo' => $this->string(),
+            'map_place' => $this->integer()
         ]);
         
         $this->createTable('{{%office}}', [
@@ -76,18 +77,20 @@ class m130524_201442_init extends Migration
                 $model->email = $user['email'];
                 $model->role = $user['role'];
                 if ($savedUser = $model->signup()) {
+                    $userDataModel = new UserData();
+                    $userDataModel->user_id = $savedUser->id;
                     if(isset($user['data'])){
                         $data = $user['data'];
-                        $userDataModel = new UserData();
-                        $userDataModel->user_id = $savedUser->id;
                         $userDataModel->office_id = Office::find()->where(['code'=>$data['office']])->one()->id;
                         $userDataModel->first_name = $data['first_name'];
                         $userDataModel->last_name = $data['last_name'];
                         $userDataModel->work_start_date = $data['work_start_date'];
                         $userDataModel->birthday = $data['birthday'];
-                        if(!$userDataModel->save()){
-                            throw new Exception($userDataModel->getErrors());
-                        }
+                    }else{
+                        $userDataModel->office_id = Office::find()->where(['code'=>'CK'])->one()->id;
+                    }
+                    if(!$userDataModel->save()){
+                        throw new Exception($userDataModel->getErrors());
                     }
                     echo "User '".$user['username']."' added successfully \r\n";
                     array_push($addedUsers, $user['username']);

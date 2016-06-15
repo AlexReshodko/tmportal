@@ -198,4 +198,8 @@ class User extends ActiveRecord implements IdentityInterface
     {
         return $this->hasOne(UserData::className(), ['user_id' => 'id']);
     }
+    
+    public function getUsers(){
+        return $this->find()->joinWith('userData')->where(['role'=>self::ROLE_USER])->all();
+    }
 }

@@ -24,6 +24,7 @@ class GreetingsWidget extends \yii\bootstrap\Widget{
         }
         return $this->render('greet', [
             'name' => $name,
+            'photo' => $user->userData->photo,
         ]);
     }
 }

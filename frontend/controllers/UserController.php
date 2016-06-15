@@ -2,19 +2,25 @@
 
 namespace frontend\controllers;
 
+use Yii;
+use yii\base\Model;
+use yii\filters\VerbFilter;
+use yii\web\Controller;
+use yii\web\UploadedFile;
+use yii\web\NotFoundHttpException;
+
 use common\models\Office;
 use common\models\User;
 use common\models\UserData;
-use Yii;
-use yii\filters\VerbFilter;
-use yii\web\Controller;
-use yii\web\NotFoundHttpException;
+use common\models\UploadPhotoForm;
 
 /**
  * UserController implements the CRUD actions for UserData model.
  */
 class UserController extends Controller
 {
+    
+    public $defaultAction = 'profile';
     /**
      * @inheritdoc
      */
@@ -34,8 +40,12 @@ class UserController extends Controller
      * Lists all UserData models.
      * @return mixed
      */
-    public function actionIndex()
+    public function actionProfile()
     {
+        /*if(Yii::$app->request->post()){
+            print_r(Yii::$app->request->post());exit;
+        }*/
+        $model = new UploadPhotoForm();
         $user = User::find()->joinWith('userData')->where(['{{user}}.id'=>\Yii::$app->user->id])->one();
         if(!$user->userData){
             $userDataModel = new UserData();
@@ -47,8 +57,26 @@ class UserController extends Controller
             }
             $user = User::find()->joinWith('userData')->where(['{{user}}.id'=>\Yii::$app->user->id])->one();
         }
-        return $this->render('index', [
+        if($user->userData->load(Yii::$app->request->post())){
+            if($user->userData->validate()){
+                $user->userData->save();
+            }
+
+            if ($model->imageFile = UploadedFile::getInstance($user->userData, 'photo')) {
+                $model->userID = $user->id;
+                if ($model->upload()) {
+                    $user->userData->photo = '/'.$model->savedFilePath;
+                    $user->userData->save();
+                    // file is uploaded successfully
+                }/* else {
+                    print_r($model->getErrors());exit;
+                }*/
+            }
+        }
+        return $this->render('profile', [
             'user' => $user,
+            'userData' => $user->userData,
+            'photoModel' => $model
         ]);
     }
 

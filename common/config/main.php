@@ -37,6 +37,10 @@ return [
             'itemFile' => '@console/rbac/items.php',
             'assignmentFile' => '@console/rbac/assignments.php',
         ],
+        'image' => [
+            'class' => 'yii\image\ImageDriver',
+            'driver' => 'GD',  //GD or Imagick
+        ],
     ],
     'bootstrap' => ['gii'],
     'modules' => [

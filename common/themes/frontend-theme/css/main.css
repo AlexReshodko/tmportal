@@ -14,3 +14,11 @@
 .sidebar-user .content{
     min-height: auto;
 }
+
+/* Office map styles */
+ellipse.selected{
+    fill: red;
+}
+#svg{
+    overflow: visible;
+}

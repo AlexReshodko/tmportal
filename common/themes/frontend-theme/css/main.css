@@ -16,8 +16,28 @@
 }
 
 /* Office map styles */
-ellipse.selected{
-    fill: red;
+#office-map-workers .user{
+    border-bottom: 1px solid;
+    padding: 5px 0;
+}
+#office-map-workers .name{
+    line-height: 50px;
+}
+#office-map-workers li{
+    border-radius: 5px;
+    padding: 10px;
+}
+#office-map-workers li:hover{
+    background: #f2f2f2;
+    cursor: pointer;
+}
+#office-map-workers li.selected{
+    background: #ccffb3;
+}
+#office-map-workers label{
+    padding: 0;
+    margin: 0;
+    display: block;
 }
 #svg{
     overflow: visible;

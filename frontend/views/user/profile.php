@@ -3,6 +3,7 @@
 use frontend\assets\AppAsset;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use common\helpers\AvatarHelper;
 
 /* @var $this View */
 
@@ -21,7 +22,7 @@ $bundle = AppAsset::register($this);
                     </div>
                     <div class="content">
                         <div class="author">
-                            <div class="avatar border-white" style="background-image:url(<?=$userData->photo?>)"></div>
+                            <div class="avatar border-white" style="background-image:url(<?=AvatarHelper::getAvatarUrl($userData->photo)?>)"></div>
                             <h4 class="title"><?=$userData->first_name?> <?=$userData->last_name?><br />
                                 <!--<a href="#"><small>@chetfaker</small></a>-->
                             </h4>

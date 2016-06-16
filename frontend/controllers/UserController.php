@@ -45,7 +45,7 @@ class UserController extends Controller
         /*if(Yii::$app->request->post()){
             print_r(Yii::$app->request->post());exit;
         }*/
-        $model = new UploadPhotoForm();
+//        $model = new UploadPhotoForm();
         $user = User::find()->joinWith('userData')->where(['{{user}}.id'=>\Yii::$app->user->id])->one();
         if(!$user->userData){
             $userDataModel = new UserData();
@@ -62,22 +62,39 @@ class UserController extends Controller
                 $user->userData->save();
             }
 
-            if ($model->imageFile = UploadedFile::getInstance($user->userData, 'photo')) {
+            /*if ($model->imageFile = UploadedFile::getInstance($user->userData, 'photo')) {
                 $model->userID = $user->id;
                 if ($model->upload()) {
                     $user->userData->photo = '/'.$model->savedFilePath;
                     $user->userData->save();
                     // file is uploaded successfully
-                }/* else {
-                    print_r($model->getErrors());exit;
-                }*/
-            }
+                }
+            }*/
         }
         return $this->render('profile', [
             'user' => $user,
             'userData' => $user->userData,
-            'photoModel' => $model
+//            'photoModel' => $model
         ]);
+    }
+    
+    public function actionUploadPhoto() {
+        if(\Yii::$app->request->isAjax){
+            $model = new UploadPhotoForm();
+            $user = User::find()->joinWith('userData')->where(['{{user}}.id'=>\Yii::$app->user->id])->one();
+            \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+            if ($model->imageFile = $_FILES['photo']) {
+                $model->userID = $user->id;
+                if ($model->upload()) {
+                    $user->userData->photo = '/'.$model->savedFilePath;
+                    $user->userData->save();
+                    // file is uploaded successfully
+                    return true;
+                }else{
+                    return false;
+                }
+            }
+        }
     }
 
     /**

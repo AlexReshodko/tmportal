@@ -1795,9 +1795,9 @@ textarea.form-control {
   font-weight: 600;
   text-transform: uppercase;
 }
-.card .author i {
+/*.card .author i {
   font-size: 14px;
-}
+}*/
 .card.card-separator:after {
   height: 100%;
   right: -15px;
@@ -1875,6 +1875,7 @@ textarea.form-control {
 .card-user .avatar {
   width: 100px;
   height: 100px;
+  line-height: 100px;
   border-radius: 50%;
   position: relative;
   margin-bottom: 15px;

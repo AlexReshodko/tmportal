@@ -15,6 +15,15 @@
     min-height: auto;
 }
 
+/* Profile */
+.card-user .upload-icon{
+    visibility: hidden;
+    cursor: pointer;
+}
+.card-user .avatar:hover .upload-icon{
+    visibility: visible;
+}
+
 /* Office map styles */
 #office-map-workers .user{
     border-bottom: 1px solid;

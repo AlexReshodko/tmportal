@@ -66,29 +66,6 @@ use common\helpers\AvatarHelper;
     </div>
 </div>
 <script>
-jQuery.fn.myAddClass = function (classTitle) {
-  return this.each(function() {
-    var oldClass = jQuery(this).attr("class");
-    oldClass = oldClass ? oldClass : '';
-    jQuery(this).attr("class", (oldClass+" "+classTitle).trim());
-  });
-}
-jQuery.fn.myRemoveClass = function (classTitle) {
-  return this.each(function() {
-      var oldClass = jQuery(this).attr("class");
-      var startpos = oldClass.indexOf(classTitle);
-      var endpos = startpos + classTitle.length;
-      var newClass = oldClass.substring(0, startpos).trim() + " " + oldClass.substring(endpos).trim();
-      if (!newClass.trim())
-        jQuery(this).removeAttr("class");
-      else
-        jQuery(this).attr("class", newClass.trim());
-  });
-}
-var svgobject = document.getElementById('officemap');
-//var s = Snap(svgobject.contentDocument);
-var s = Snap("#svg");
-var url = '/data/office_scheme_clear_op.svg';
 // Office map object
 OMap = {
     tooltips: {},
@@ -108,7 +85,6 @@ OMap = {
         });
     },
     showTooltip: function(e){
-        console.log('in');
         if(!OMap.tooltips[this.attr('id')]){
             var bb = this.getBBox(),
                 tooltip = null,
@@ -131,7 +107,6 @@ OMap = {
         }
     },
     hideTooltip: function(e){
-        console.log('out');
         var tooltip = OMap.tooltips[this.attr('id')];
         if(!tooltip) return;
         var placeID = Utils.getID(this.attr('id'));

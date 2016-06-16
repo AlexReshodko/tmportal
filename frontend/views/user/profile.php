@@ -12,18 +12,20 @@ $this->params['breadcrumbs'][] = $this->title;
 $bundle = AppAsset::register($this);
 ?>
 <div class="user-data-index">
-
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-4 col-md-5">
                 <div class="card card-user">
                     <div class="image">
-                        <img src="<?=$bundle->baseUrl?>/images/background.jpg" alt="..."/>
+                        <img src="<?= $bundle->baseUrl ?>/images/background.jpg" alt="..."/>
                     </div>
                     <div class="content">
                         <div class="author">
-                            <div class="avatar border-white" style="background-image:url(<?=AvatarHelper::getAvatarUrl($userData->photo)?>)"></div>
-                            <h4 class="title"><?=$userData->first_name?> <?=$userData->last_name?><br />
+                            <div class="avatar border-white" style="background-image:url(<?= AvatarHelper::getAvatarUrl($userData->photo) ?>)">
+                                <div class="icon-big icon-info text-center upload-icon"><i class="ti-upload"></i></div>
+                                <input type="file" id="photo" name="photo" accept=".jpg,.jpeg" style="display: none;">
+                            </div>
+                            <h4 class="title"><?= $userData->first_name ?> <?= $userData->last_name ?><br />
                                 <!--<a href="#"><small>@chetfaker</small></a>-->
                             </h4>
                         </div>
@@ -58,7 +60,7 @@ $bundle = AppAsset::register($this);
                                 <div class="row">
                                     <div class="col-xs-3">
                                         <div class="avatar">
-                                            <img src="<?=$bundle->baseUrl?>/images/faces/face-0.jpg" alt="Circle Image" class="img-circle img-no-padding img-responsive">
+                                            <img src="<?= $bundle->baseUrl ?>/images/faces/face-0.jpg" alt="Circle Image" class="img-circle img-no-padding img-responsive">
                                         </div>
                                     </div>
                                     <div class="col-xs-6">
@@ -76,7 +78,7 @@ $bundle = AppAsset::register($this);
                                 <div class="row">
                                     <div class="col-xs-3">
                                         <div class="avatar">
-                                            <img src="<?=$bundle->baseUrl?>/images/faces/face-1.jpg" alt="Circle Image" class="img-circle img-no-padding img-responsive">
+                                            <img src="<?= $bundle->baseUrl ?>/images/faces/face-1.jpg" alt="Circle Image" class="img-circle img-no-padding img-responsive">
                                         </div>
                                     </div>
                                     <div class="col-xs-6">
@@ -94,7 +96,7 @@ $bundle = AppAsset::register($this);
                                 <div class="row">
                                     <div class="col-xs-3">
                                         <div class="avatar">
-                                            <img src="<?=$bundle->baseUrl?>/images/faces/face-3.jpg" alt="Circle Image" class="img-circle img-no-padding img-responsive">
+                                            <img src="<?= $bundle->baseUrl ?>/images/faces/face-3.jpg" alt="Circle Image" class="img-circle img-no-padding img-responsive">
                                         </div>
                                     </div>
                                     <div class="col-xs-6">
@@ -120,26 +122,21 @@ $bundle = AppAsset::register($this);
                     <div class="content">
                         <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
                         <div class="col-md-6">
-                            <?= $form->field($userData, 'first_name')->textInput(['maxlength' => true, 'class'=>'form-control border-input']) ?>
+                            <?= $form->field($userData, 'first_name')->textInput(['maxlength' => true, 'class' => 'form-control border-input']) ?>
                         </div>
                         <div class="col-md-6">
-                            <?= $form->field($userData, 'last_name')->textInput(['maxlength' => true, 'class'=>'form-control border-input']) ?>
+                            <?= $form->field($userData, 'last_name')->textInput(['maxlength' => true, 'class' => 'form-control border-input']) ?>
                         </div>
                         <div class="col-md-6">
-                            <?= $form->field($userData, 'phone')->textInput(['maxlength' => true, 'class'=>'form-control border-input']) ?>
+                            <?= $form->field($userData, 'phone')->textInput(['maxlength' => true, 'class' => 'form-control border-input']) ?>
                         </div>
                         <div class="col-md-6">
-                            <?= $form->field($userData, 'skype')->textInput(['maxlength' => true, 'class'=>'form-control border-input']) ?>
+                            <?= $form->field($userData, 'skype')->textInput(['maxlength' => true, 'class' => 'form-control border-input']) ?>
                         </div>
-                            
-                            <?= $form->field($userData, 'comment')->textarea(['rows' => 6, 'class'=>'form-control border-input']) ?>
-                        
-                        <?= Html::error($photoModel, 'imageFile', ['class' => 'help-block'])?>
-                        <label class="btn btn-default btn-file">
-                            Browse <input type="file" id="userdata-photo" name="UserData[photo]" style="display: none;">
-                        </label>
 
-                        <div class="form-group">
+                        <?= $form->field($userData, 'comment')->textarea(['rows' => 6, 'class' => 'form-control border-input']) ?>
+
+                        <div class="form-group text-center">
                             <?= Html::submitButton($user->isNewRecord ? 'Create' : 'Update', ['class' => $user->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
                         </div>
 
@@ -147,8 +144,40 @@ $bundle = AppAsset::register($this);
                     </div>
                 </div>
             </div>
-
-
         </div>
     </div>
 </div>
+<script>
+    $('.upload-icon').on('click', function () {
+        $('#photo').click();
+    })
+    $('#photo').on('change', function () {
+        var data = new FormData();
+        data.append('photo', this.files[0]);
+        console.log(this.files[0]);
+        /*$.each(this[0].files, function(i, file) {
+         data.append('file-'+i, file);
+         });
+         fd.append("CustomField", "This is some extra data");
+         $.ajax({
+         url: "stash.php",
+         type: "POST",
+         data: fd,
+         processData: false,  // tell jQuery not to process the data
+         contentType: false   // tell jQuery not to set contentType
+         });*/
+        $.ajax({
+            url: "/user/upload-photo",
+            type: "POST",
+            data: data,
+            processData: false, // tell jQuery not to process the data
+            contentType: false,   // tell jQuery not to set contentType
+            success : function (data) {
+                console.log(data);
+                if(data){
+                    window.location.reload();
+                }
+            }
+        });
+    });
+</script>

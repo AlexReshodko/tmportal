@@ -27,8 +27,9 @@ class UploadPhotoForm extends Model
             if(!is_dir($userDir)){
                 mkdir($userDir);
             }
-            $this->savedFilePath = $userDir . 'avatar' . '.' . $this->imageFile->extension;
-            $this->imageFile->saveAs($this->savedFilePath);
+            $this->savedFilePath = $userDir . 'avatar' . '.jpg';
+            move_uploaded_file($this->imageFile["tmp_name"], $this->savedFilePath);
+//            $this->imageFile->saveAs($this->savedFilePath);
             $image = \Yii::$app->image->load($this->savedFilePath);
             $image->resize(200,200)->save($this->savedFilePath);
             return true;

@@ -1,106 +1,180 @@
 var fixedTop = false;
 
-var navbar_initialized = false;
+var mobile_menu_visible = 0,
+    mobile_menu_initialized = false,
+    toggle_initialized = false,
+    bootstrap_nav_initialized = false,
+    $sidebar;
 
 $(document).ready(function(){
     window_width = $(window).width();
 
     // Init navigation toggle for small screens
     if(window_width <= 991){
-        lbd.initRightMenu();
+        pdp.initSidebarMenu();
     }
+
+    pdp.initMinimizeSidebar();
+
+    $('.form-control').on("focus", function(){
+        $(this).parent('.input-group').addClass("input-group-focus");
+    }).on("blur", function(){
+        $(this).parent(".input-group").removeClass("input-group-focus");
+    });
 
     //  Activate the tooltips
     $('[rel="tooltip"]').tooltip();
 
+    // Init Tags Input
+    if($(".tagsinput").length != 0){
+        $(".tagsinput").tagsInput();
+    }
+
+    //  Init Bootstrap Select Picker
+    if($(".selectpicker").length != 0){
+        $(".selectpicker").selectpicker({
+            size: 9
+        });
+    }
+
+
 });
+
+
 
 // activate collapse right menu when the windows is resized
 $(window).resize(function(){
     if($(window).width() <= 991){
-        lbd.initRightMenu();
+        pdp.initSidebarMenu();
+    } else if(mobile_menu_initialized == true){
+        pdp.initSidebarMenu();
     }
 });
 
-lbd = {
+pdp = {
     misc:{
-        navbar_menu_visible: 0
+        navbar_menu_visible: 0,
+        active_collapse: true,
+        disabled_collapse_init: 0
+
     },
 
-    initRightMenu: function(){
-         if(!navbar_initialized){
-            $off_canvas_sidebar = $('nav').find('.navbar-collapse').first().clone(true);
+    initMinimizeSidebar: function(){
+        $('#minimizeSidebar').click(function(){
+            var $btn = $(this);
 
-            $sidebar = $('.sidebar');
-            sidebar_bg_color = $sidebar.data('background-color');
-            sidebar_active_color = $sidebar.data('active-color');
+            if(pdp.misc.sidebar_mini_active == true){
+                $('body').removeClass('sidebar-mini');
+                $btn.html('<i class="ti-more-alt"></i>');
+                pdp.misc.sidebar_mini_active = false;
 
-            $logo = $sidebar.find('.logo').first();
-            logo_content = $logo[0].outerHTML;
+            }else{
+                $('.sidebar .collapse').collapse('hide');
 
-            ul_content = '';
 
-            // set the bg color and active color from the default sidebar to the off canvas sidebar;
-            $off_canvas_sidebar.attr('data-background-color',sidebar_bg_color);
-            $off_canvas_sidebar.attr('data-active-color',sidebar_active_color);
+                setTimeout(function(){
+                    $('body').addClass('sidebar-mini');
+                    $btn.html('<i class="ti-menu-alt"></i>');
+                    pdp.misc.sidebar_mini_active = true;
 
-            $off_canvas_sidebar.addClass('off-canvas-sidebar');
+                },300);
 
-            //add the content from the regular header to the right menu
-            $off_canvas_sidebar.children('ul').each(function(){
+
+            }
+        });
+    },
+
+    initSidebarMenu: function(){
+        $sidebar_wrapper = $('.sidebar-wrapper');
+
+        if(!mobile_menu_initialized){
+
+            $navbar = $('nav').find('.navbar-collapse').first().clone(true);
+
+            nav_content = '';
+            mobile_menu_content = '';
+
+            //add the content from the regular header to the mobile menu
+            $navbar.children('ul').each(function(){
                 content_buff = $(this).html();
-                ul_content = ul_content + content_buff;
+                nav_content = nav_content + content_buff;
             });
 
-            // add the content from the sidebar to the right menu
-            content_buff = $sidebar.find('.nav').html();
-            ul_content = ul_content + '<li class="divider"></li>'+ content_buff;
+            nav_content = '<ul class="nav nav-mobile-menu">' + nav_content + '</ul>';
 
-            ul_content = '<ul class="nav navbar-nav">' + ul_content + '</ul>';
+            $navbar_form = $('nav').find('.navbar-form').clone(true);
 
-            navbar_content = logo_content + ul_content;
-            navbar_content = '<div class="sidebar-wrapper">' + navbar_content + '</div>';
+            $sidebar_nav = $sidebar_wrapper.find(' > .nav');
 
-            $off_canvas_sidebar.html(navbar_content);
+            // insert the navbar form before the sidebar list
+            $nav_content = $(nav_content);
+            $nav_content.insertBefore($sidebar_nav);
+            $navbar_form.insertBefore($nav_content);
 
-            $('body').append($off_canvas_sidebar);
+            $(".sidebar-wrapper .dropdown .dropdown-menu > li > a").click(function(event) {
+                event.stopPropagation();
+            });
 
-             $toggle = $('.navbar-toggle');
+            mobile_menu_initialized = true;
+        } else {
 
-             $off_canvas_sidebar.find('a').removeClass('btn btn-round btn-default');
-             $off_canvas_sidebar.find('button').removeClass('btn-round btn-fill btn-info btn-primary btn-success btn-danger btn-warning btn-neutral');
-             $off_canvas_sidebar.find('button').addClass('btn-simple btn-block');
+            if($(window).width() > 991){
+                // reset all the additions that we made for the sidebar wrapper only if the screen is bigger than 991px
+                $sidebar_wrapper.find('.navbar-form').remove();
+                $sidebar_wrapper.find('.nav-mobile-menu').remove();
 
-             $toggle.click(function (){
-                if(lbd.misc.navbar_menu_visible == 1) {
+                mobile_menu_initialized = false;
+            }
+        }
+
+        if(!toggle_initialized){
+            $toggle = $('.navbar-toggle');
+
+            $toggle.click(function (){
+
+                if(mobile_menu_visible == 1) {
                     $('html').removeClass('nav-open');
-                    lbd.misc.navbar_menu_visible = 0;
-                    $('#bodyClick').remove();
-                     setTimeout(function(){
-                        $toggle.removeClass('toggled');
-                     }, 400);
 
+                    $('.close-layer').remove();
+                    setTimeout(function(){
+                        $toggle.removeClass('toggled');
+                    }, 400);
+
+                    mobile_menu_visible = 0;
                 } else {
                     setTimeout(function(){
                         $toggle.addClass('toggled');
                     }, 430);
 
-                    div = '<div id="bodyClick"></div>';
-                    $(div).appendTo("body").click(function() {
+                    main_panel_height = $('.main-panel')[0].scrollHeight;
+                    $layer = $('<div class="close-layer"></div>');
+                    $layer.css('height',main_panel_height + 'px');
+                    $layer.appendTo(".main-panel");
+
+                    setTimeout(function(){
+                        $layer.addClass('visible');
+                    }, 100);
+
+                    $layer.click(function() {
                         $('html').removeClass('nav-open');
-                        lbd.misc.navbar_menu_visible = 0;
-                        $('#bodyClick').remove();
+                        mobile_menu_visible = 0;
+
+                        $layer.removeClass('visible');
+
                          setTimeout(function(){
+                            $layer.remove();
                             $toggle.removeClass('toggled');
+
                          }, 400);
                     });
 
                     $('html').addClass('nav-open');
-                    lbd.misc.navbar_menu_visible = 1;
+                    mobile_menu_visible = 1;
 
                 }
             });
-            navbar_initialized = true;
+
+            toggle_initialized = true;
         }
 
     }
@@ -124,3 +198,12 @@ function debounce(func, wait, immediate) {
 		if (immediate && !timeout) func.apply(context, args);
 	};
 };
+
+
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','http://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-46172202-1', 'auto');
+ga('send', 'pageview');

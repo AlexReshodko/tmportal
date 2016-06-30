@@ -134,7 +134,9 @@ $bundle = AppAsset::register($this);
                             <?= $form->field($userData, 'skype')->textInput(['maxlength' => true, 'class' => 'form-control border-input']) ?>
                         </div>
 
-                        <?= $form->field($userData, 'comment')->textarea(['rows' => 6, 'class' => 'form-control border-input']) ?>
+                        <div class="col-md-12">
+                            <?= $form->field($userData, 'comment')->textarea(['rows' => 6, 'class' => 'form-control border-input']) ?>
+                        </div>
 
                         <div class="form-group text-center">
                             <?= Html::submitButton($user->isNewRecord ? 'Create' : 'Update', ['class' => $user->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

@@ -8,7 +8,7 @@ use common\models\User;
  *
  * @author AlexR
  */
-class GreetingsWidget extends \yii\bootstrap\Widget{
+class UserWidget extends \yii\bootstrap\Widget{
     
     public function init(){
         parent::init();
@@ -18,11 +18,11 @@ class GreetingsWidget extends \yii\bootstrap\Widget{
         $userID = Yii::$app->user->id;
         $user = User::find()->joinWith('userData')->where(['user.id' => $userID])->one();
         if($user && $user->userData && $user->userData->first_name){
-            $name = $user->userData->first_name;
+            $name = $user->getFullName();
         }else{
             $name = $user->username;
         }
-        return $this->render('greet', [
+        return $this->render('user', [
             'name' => $name,
             'photo' => $user->userData->photo,
         ]);

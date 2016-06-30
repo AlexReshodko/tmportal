@@ -68,3 +68,6 @@
 .table-upgrade td:nth-child(3){
     text-align: center;
 }
+body.nude{
+    background-color: #f4f3ef;
+}

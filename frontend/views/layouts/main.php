@@ -22,6 +22,8 @@ $bundle = AppAsset::register($this);
         <link rel="apple-touch-icon" sizes="76x76" href="<?= $bundle->baseUrl . '/images/apple-icon.png' ?>">
         <link rel="icon" type="image/x-icon" sizes="96x96" href="<?= $bundle->baseUrl . '/images/favicon.ico?' . microtime() ?>">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+        <meta name="viewport" content="width=device-width" />
         <?= Html::csrfMetaTags() ?>
         <title><?= Html::encode($this->title) ?></title>
         <?php $this->head() ?>
@@ -29,46 +31,47 @@ $bundle = AppAsset::register($this);
     <body>
     <?php $this->beginBody() ?>
         <div class="wrapper">
-            <div class="sidebar" data-background-color="white" data-active-color="info">
+            <div class="sidebar" data-background-color="white" data-active-color="danger">
+            <!--
+                Tip 1: you can change the color of the sidebar's background using: data-background-color="white | black"
+                Tip 2: you can change the color of the active button using the data-active-color="primary | info | success | warning | danger"
+            -->
                 <div class="sidebar-wrapper">
                     <div class="logo">
-                        <a href="http://testmatick.com" class="simple-text">
+                        <a href="/" class="simple-text">
                             TestMatick Portal
                         </a>
                     </div>
-
-
-                    <div class="sidebar-user">
-                        <div class="card card-user card-sidebar">
-                            <div class="content">
-                                <div class="author">
-                                    <?= common\widgets\GreetingsWidget::widget() ?>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="logo logo-mini">
+                        <a href="/"  class="simple-text">
+                            TMP
+                        </a>
                     </div>
-
-                <?php
-                echo Menu::widget([
-                    'items' => [
-                        // Important: you need to specify url as 'controller/action',
-                        // not just as 'controller' even if default action is used.
-                        ['label' => Yii::t('app', 'Home'), 'url' => ['site/index'], 'template' => '<a href="{url}"><i class="ti-home"></i><p>{label}</p></a>'],
-                        ['label' => 'User profile', 'url' => ['user/profile'], 'template' => '<a href="{url}"><i class="ti-user"></i><p>{label}</p></a>'],
-                        ['label' => 'Office map', 'url' => ['site/office-map'], 'template' => '<a href="{url}"><i class="ti-map-alt"></i><p>{label}</p></a>'],
-                    ],
-                    'options' => [
-                        'class' => 'nav',
-                    ],
-                    'activeCssClass' => 'active',
-                ]);
-                ?>
+                    <?= common\widgets\UserWidget::widget() ?>
+                    <?php
+                    echo Menu::widget([
+                        'items' => [
+                            // Important: you need to specify url as 'controller/action',
+                            // not just as 'controller' even if default action is used.
+                            ['label' => Yii::t('app', 'Home'), 'url' => ['site/index'], 'template' => '<a href="{url}"><i class="ti-home"></i><p>{label}</p></a>'],
+                            ['label' => 'User profile', 'url' => ['user/profile'], 'template' => '<a href="{url}"><i class="ti-user"></i><p>{label}</p></a>'],
+                            ['label' => 'Office map', 'url' => ['site/office-map'], 'template' => '<a href="{url}"><i class="ti-map-alt"></i><p>{label}</p></a>'],
+                        ],
+                        'options' => [
+                            'class' => 'nav',
+                        ],
+                        'activeCssClass' => 'active',
+                    ]);
+                    ?>
                 </div>
             </div>
 
             <div class="main-panel">
                 <nav class="navbar navbar-default">
                     <div class="container-fluid">
+                        <div class="navbar-minimize">
+                            <button id="minimizeSidebar" class="btn btn-fill btn-icon"><i class="ti-more-alt"></i></button>
+                        </div>
                         <div class="navbar-header">
                             <button type="button" class="navbar-toggle">
                                 <span class="sr-only">Toggle navigation</span>
@@ -81,10 +84,12 @@ $bundle = AppAsset::register($this);
                         <div class="collapse navbar-collapse">
                             <ul class="nav navbar-nav navbar-right">
                                 <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <a href="#" class="dropdown-toggle btn-rotate" data-toggle="dropdown">
                                         <i class="ti-world"></i>
-                                        <p><?= Yii::t('app', 'Language') ?></p>
-                                        <b class="caret"></b>
+                                        <p>
+                                            <?= Yii::t('app', 'Language') ?>
+                                            <b class="caret"></b>
+                                        </p>
                                     </a>
                                     <ul class="dropdown-menu">
                                         <?= LanguageWidget::widget()?>
@@ -98,7 +103,7 @@ $bundle = AppAsset::register($this);
                                         </a>
                                     </li>
                                 <?php endif; ?>
-                                <li>
+                                <li class="btn-magnify">
                                 <?php if (Yii::$app->user->isGuest): ?>
                                         <a href="<?= Url::toRoute('site/login') ?>" data-method="post">
                                             <i class="ti-power-off"></i>
@@ -140,8 +145,6 @@ $bundle = AppAsset::register($this);
                 </footer>
                 <script type="text/javascript">
                     $(document).ready(function () {
-
-                        //                demo.initChartist();
                     });
                 </script>
             </div>

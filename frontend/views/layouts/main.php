@@ -39,7 +39,7 @@ $bundle = AppAsset::register($this);
                 <div class="sidebar-wrapper">
                     <div class="logo">
                         <a href="/" class="simple-text">
-                            TestMatick Portal
+                            <?= Yii::$app->name ?>
                         </a>
                     </div>
                     <div class="logo logo-mini">

@@ -29,29 +29,55 @@
 }
 
 /* Office map styles */
-#office-map-workers .user{
+#office-workers .user{
     border-bottom: 1px solid;
     padding: 5px 0;
 }
-#office-map-workers .name{
-    line-height: 50px;
+#office-workers .name{
+    line-height: 60px;
 }
-#office-map-workers li{
+#office-workers li{
     border-radius: 5px;
     padding: 10px;
 }
-#office-map-workers li:hover{
+#office-workers li:hover{
     background: #f2f2f2;
     cursor: pointer;
 }
-#office-map-workers li.selected{
+#office-workers li.selected{
     background: #ccffb3;
 }
-#office-map-workers label{
+#office-workers label{
     padding: 0;
     margin: 0;
     display: block;
 }
+#office-workers .avatar{
+    width: 60px;
+    height: 60px;
+    overflow: hidden;
+    border-radius: 50%;
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    margin: 0 auto;
+}
 #svg{
     overflow: visible;
+}
+
+/* Users list */
+.card.users-list{
+    border-radius: 0 0 6px 6px;
+}
+.card.users-list .content{
+    height: 700px;
+    overflow: auto;
+}
+
+/* Other */
+.card.card-header{
+    margin-bottom: 0;
+    border-radius: 6px 6px 0 0;
+}
+.card.card-header .form-horizontal{
+    margin-top: 20px;
 }

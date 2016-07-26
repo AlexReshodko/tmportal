@@ -11,7 +11,7 @@ $bundle = \frontend\assets\AppAsset::register($this);
                 <div class="content">
                     <div class="row">
                         <div class="col-xs-2">
-                            <div class="icon-medium icon-warning text-center">
+                            <div class="icon-big icon-warning text-center">
                                 <i class="ti-gift"></i>
                             </div>
                         </div>

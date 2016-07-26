@@ -8358,9 +8358,9 @@ input.textarea {
   -o-user-select: none;
   user-select: none;
   /*   this code is for fixing safari bug with hidden overflow for border-radius   */
-  -webkit-mask: url("../img/mask.png")/*tpa=http://demos.creative-tim.com/paper-dashboard-pro/assets/img/mask.png*/ 0 0 no-repeat;
+  -webkit-mask: url("../images/mask.png")/*tpa=http://demos.creative-tim.com/paper-dashboard-pro/assets/images/mask.png*/ 0 0 no-repeat;
   -webkit-mask-size: 61px 28px;
-  mask: url("../img/mask.png")/*tpa=http://demos.creative-tim.com/paper-dashboard-pro/assets/img/mask.png*/ 0 0 no-repeat;
+  mask: url("../images/mask.png")/*tpa=http://demos.creative-tim.com/paper-dashboard-pro/assets/images/mask.png*/ 0 0 no-repeat;
   mask-size: 61px 28px;
 }
 

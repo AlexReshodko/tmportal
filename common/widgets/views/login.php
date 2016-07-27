@@ -31,7 +31,7 @@ LoginAsset::register($this);
 
                 <div class="panel panel-body login-form">
                     <div class="text-center">
-                        <h1 class="panel-title">TestMatick Portal</h1>
+                        <h1 class="panel-title"><?=Yii::$app->name?></h1>
                         <div class="icon-object border-slate-300 text-slate-300"><i class="icon-reading"></i></div>
                         <h5 class="content-group">Login to your account <small class="display-block">Enter your credentials below</small></h5>
                     </div>

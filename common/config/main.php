@@ -18,6 +18,10 @@ return [
             'showScriptName' => false,
             'enablePrettyUrl' => true,
             'scriptUrl'=>'/backend/index.php',
+            'rules'=>[
+                '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
+                '<controller:\w+>/<action:\w+>/<id:\w+>' => '<controller>/<action>',
+            ],
         ],
         'urlManagerFrontend' => [
             // here is your frontend URL manager config
@@ -27,6 +31,10 @@ return [
             'showScriptName' => false,
             'enablePrettyUrl' => true,
             'scriptUrl'=>'/index.php',
+            'rules'=>[
+                '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
+                '<controller:\w+>/<action:\w+>/<id:\w+>' => '<controller>/<action>',
+            ],
         ],
         'i18n' => [
             'class' => Zelenin\yii\modules\I18n\components\I18N::className(),

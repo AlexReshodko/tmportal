@@ -30,9 +30,7 @@ $bundle = AppAsset::register($this);
                             </h4>
                         </div>
                         <p class="description text-center">
-                            "I like the way you work it <br>
-                            No diggity <br>
-                            I wanna bag it up"
+                            <?= $userData->comment ?>
                         </p>
                     </div>
                     <hr>

@@ -56,6 +56,7 @@ $bundle = AppAsset::register($this);
                             ['label' => Yii::t('app', 'Home'), 'url' => ['site/index'], 'template' => '<a href="{url}"><i class="ti-home"></i><p>{label}</p></a>'],
                             ['label' => 'User profile', 'url' => ['user/profile'], 'template' => '<a href="{url}"><i class="ti-user"></i><p>{label}</p></a>'],
                             ['label' => 'Office map', 'url' => ['site/office-map'], 'template' => '<a href="{url}"><i class="ti-map-alt"></i><p>{label}</p></a>'],
+                            ['label' => 'Gallery', 'active'=>\Yii::$app->controller->id == 'gallery', 'url' => ['gallery/index'], 'template' => '<a href="{url}"><i class="ti-gallery"></i><p>{label}</p></a>'],
                         ],
                         'options' => [
                             'class' => 'nav',

@@ -64,6 +64,7 @@ class m130524_201442_init extends Migration
         
         $this->insert('{{%office}}', ['name'=>'Черкассы','code'=>'CK']);
         $this->insert('{{%office}}', ['name'=>'Кривой Рог','code'=>'KR']);
+        $this->insert('{{%office}}', ['name'=>'Полтава','code'=>'PL']);
         
         $filename = Yii::getAlias('@common').'/data/users.json';
         $addedUsers = [];

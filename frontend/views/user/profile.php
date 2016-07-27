@@ -89,27 +89,18 @@ $bundle = AppAsset::register($this);
         $('#photo').click();
     })
     $('#photo').on('change', function () {
+        console.log('here');
         var data = new FormData();
         data.append('photo', this.files[0]);
         console.log(this.files[0]);
-        /*$.each(this[0].files, function(i, file) {
-         data.append('file-'+i, file);
-         });
-         fd.append("CustomField", "This is some extra data");
-         $.ajax({
-         url: "stash.php",
-         type: "POST",
-         data: fd,
-         processData: false,  // tell jQuery not to process the data
-         contentType: false   // tell jQuery not to set contentType
-         });*/
         $.ajax({
-            url: "/user/upload-photo",
+            url: "upload-photo",
             type: "POST",
             data: data,
             processData: false, // tell jQuery not to process the data
             contentType: false,   // tell jQuery not to set contentType
             success : function (data) {
+                console.log('!!!');
                 console.log(data);
                 if(data){
                     window.location.reload();

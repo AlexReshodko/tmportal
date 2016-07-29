@@ -19,6 +19,7 @@ use Yii;
  * @property string $birthday
  * @property string $comment
  * @property string $photo
+ * @property integer $map_place
  *
  * @property Office $office
  * @property User $user
@@ -39,8 +40,8 @@ class UserData extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['user_id', 'office_id'], 'required'],
-            [['user_id', 'office_id'], 'integer'],
+            [['user_id'], 'required'],
+            [['user_id', 'office_id', 'map_place'], 'integer'],
             [['work_start_date', 'birthday'], 'safe'],
             [['comment'], 'string'],
             [['first_name', 'last_name', 'position', 'phone', 'skype', 'photo'], 'string', 'max' => 255],
@@ -55,18 +56,19 @@ class UserData extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'user_id' => 'User ID',
-            'office_id' => 'Office ID',
-            'first_name' => 'First Name',
-            'last_name' => 'Last Name',
-            'position' => 'Position',
-            'phone' => 'Phone',
-            'skype' => 'Skype',
-            'work_start_date' => 'Work Start Date',
-            'birthday' => 'Birthday',
-            'comment' => 'Comment',
-            'photo' => 'Photo',
+            'id' => Yii::t('UserData', 'ID'),
+            'user_id' => Yii::t('UserData', 'User ID'),
+            'office_id' => Yii::t('UserData', 'Office ID'),
+            'first_name' => Yii::t('UserData', 'First Name'),
+            'last_name' => Yii::t('UserData', 'Last Name'),
+            'position' => Yii::t('UserData', 'Position'),
+            'phone' => Yii::t('UserData', 'Phone'),
+            'skype' => Yii::t('UserData', 'Skype'),
+            'work_start_date' => Yii::t('UserData', 'Work Start Date'),
+            'birthday' => Yii::t('UserData', 'Birthday'),
+            'comment' => Yii::t('UserData', 'Comment'),
+            'photo' => Yii::t('UserData', 'Photo'),
+            'map_place' => Yii::t('UserData', 'Map Place'),
         ];
     }
 

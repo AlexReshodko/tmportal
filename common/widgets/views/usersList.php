@@ -1,5 +1,5 @@
 <?php 
-use common\helpers\AvatarHelper;
+use common\helpers\UserHelper;
 ?>
 <div class="card card-header">
     <div class="header text-center">
@@ -26,7 +26,7 @@ use common\helpers\AvatarHelper;
                         <div class="row">
                             <div class="col-xs-3">
                                 <div class="avatar">
-                                    <img src="<?= AvatarHelper::getAvatarUrl($user->userData->photo)?>" alt="Circle Image" class="img-circle img-no-padding img-responsive">
+                                    <img src="<?= UserHelper::getAvatarUrl($user->userData->photo)?>" alt="Circle Image" class="img-circle img-no-padding img-responsive">
                                 </div>
                             </div>
                             <div class="col-xs-9 name"><?= $user->userData->first_name?> <?= $user->userData->last_name?></div>
@@ -36,7 +36,7 @@ use common\helpers\AvatarHelper;
                                 'hidden' => true,
                                 'data-fname' => $user->userData->first_name,
                                 'data-lname' => $user->userData->last_name,
-                                'data-photo' => AvatarHelper::getAvatarUrl($user->userData->photo),
+                                'data-photo' => UserHelper::getAvatarUrl($user->userData->photo),
                                 'data-place' => $user->userData->map_place
                             ])?>
                         </div>

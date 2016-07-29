@@ -1,11 +1,11 @@
 <?php
 namespace common\helpers;
 /**
- * Description of AvatarHelper
+ * Description of UserHelper
  *
  * @author AlexR
  */
-class AvatarHelper {
+class UserHelper {
     
     public static $defaultAvatar = '/images/default-avatar.jpg';
 

@@ -1,7 +1,7 @@
 <?php
 /* @var $this yii\web\View */
 
-$this->title = 'Dashboard';
+$this->title = Yii::t('pageTitle', 'Dashboard');
 $bundle = \frontend\assets\AppAsset::register($this);
 ?>
 <div class="container-fluid">
@@ -18,7 +18,7 @@ $bundle = \frontend\assets\AppAsset::register($this);
                         <div class="col-xs-10">
                             <div class="text-center" style="font-size: 1.5em;">
                                 <?php foreach ($birthdays as $birthday): ?>
-                                    <?= $birthday['name'] ?>: <?= $birthday['birthday'] ?>
+                                    <?= \yii\helpers\Html::a($birthday['name'], \yii\helpers\Url::to('/user/view/'.$birthday['id'])) ?>: <?= $birthday['birthday'] ?>
                                 <?php endforeach; ?>
                             </div>
                         </div>

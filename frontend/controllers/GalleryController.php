@@ -2,6 +2,8 @@
 
 namespace frontend\controllers;
 
+use common\models\CompanyEvents;
+
 class GalleryController extends \yii\web\Controller
 {
     public function actionDelete()
@@ -11,15 +13,86 @@ class GalleryController extends \yii\web\Controller
 
     public function actionIndex()
     {
-        $events = \common\models\CompanyEvents::find()->joinWith('photos')->all();
+        $events = CompanyEvents::find()->joinWith('photos')->all();
         return $this->render('index',[
             'events' => $events
         ]);
     }
+    
+    public function actionCreatePreviews($id){
+        if(empty($id)){
+            throw new NotFoundHttpException('Please provide event ID');
+        }
+        $photosDir = 'uploads/photos/'.$id;
+        if(is_dir($photosDir)){
+            foreach (new \DirectoryIterator($photosDir) as $fileInfo) {
+                if ($fileInfo->isDot() || $fileInfo->isDir())continue;
+                echo $fileInfo->getFilename() . "<br>\n";
+//                $ext = '.'.$fileInfo->getExtension();
+                $fname = $fileInfo->getFilename();
+                $fpath = $fileInfo->getPathname();
+                $image = \Yii::$app->image->load($fileInfo->getRealPath());
+                if(!is_dir($photosDir.'/thumb/')){
+                    mkdir($photosDir.'/thumb/');
+                }
+                $thumbPath = $photosDir.'/thumb/'.$fname;
+                $image->resize(150,150, \yii\image\drivers\Image::HEIGHT)->save($thumbPath);
+                $photoModel = new \common\models\Photos();
+                $photoModel->setAttributes([
+                    'event_id' => $id,
+                    'name' => $fname,
+                    'path' => '/'.$fpath,
+                    'thumb_path' => '/'.$thumbPath
+                ]);
+                if($photoModel->save()){
+                    echo 'Success';
+                }else{
+                    echo $photoModel->getErrors();
+                }
+            }
+        }else{
+            echo 'Error. Directory not exists';
+        }
+    }
 
-    public function actionView()
+    public function actionView($id)
     {
-        return $this->render('view');
+        $event = $this->findModel($id);
+        $eventPhotos = $event->photos;
+        $photosDir = 'uploads/photos';
+        $photos = [];
+        /*foreach (new \DirectoryIterator($photosDir) as $fileInfo) {
+            if ($fileInfo->isDot() || $fileInfo->isDir())continue;
+            $ext = '.'.$fileInfo->getExtension();
+            $fname = $fileInfo->getFilename();
+//            echo $fileInfo->getPathname() . "<br>\n";
+            array_push($photos, [
+                'url' => '/'.$fileInfo->getPathname(),
+                'src' => '/'.$photosDir.'/thumb/'.str_replace($ext, '_s'.$ext, $fname),
+                'options' => array('title' => $fileInfo->getFilename()),
+//                'imageOptions' => ['width' => 75, 'height' => 75]
+            ]);
+        }*/
+        foreach ($eventPhotos as $photo) {
+            array_push($photos, [
+                'url' => $photo->path,
+                'src' => $photo->thumb_path,
+                'options' => array('title' => $photo->name)
+            ]);
+        }
+        return $this->render('view', [
+            'event' => $this->findModel($id),
+            'photos' => $photos
+        ]);
+    }
+    
+    protected function findModel($id)
+    {
+        if (($model = CompanyEvents::findOne($id)) !== null) {
+            return $model;
+        } else {
+            throw new NotFoundHttpException('The requested page does not exist.');
+        }
     }
 
 }

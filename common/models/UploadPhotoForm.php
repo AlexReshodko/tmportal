@@ -23,7 +23,7 @@ class UploadPhotoForm extends Model
     public function upload()
     {
         if ($this->validate()) {
-            $userDir = 'uploads/' . $this->userID . '/';
+            $userDir = 'uploads/avatars/' . $this->userID . '/';
             if(!is_dir($userDir)){
                 mkdir($userDir);
             }

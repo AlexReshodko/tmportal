@@ -81,6 +81,7 @@ class SiteController extends Controller
     {
         $upcomingBd = [];
         $birthdays = UserData::findBySql('SELECT
+            id,
             first_name,
             birthday,
             birthday + INTERVAL(YEAR(CURRENT_TIMESTAMP) - YEAR(birthday)) + 0 YEAR AS currbirthday,
@@ -95,7 +96,11 @@ class SiteController extends Controller
         LIMIT 3')->all();
         foreach ($birthdays as $birthday) {
             $date = new DateTime($birthday->birthday);
-            array_push($upcomingBd, ['name' => $birthday->first_name, 'birthday' => $date->format('j F')]);
+            array_push($upcomingBd, [
+                'name' => $birthday->first_name,
+                'birthday' => $date->format('j F'),
+                'id' => $birthday->id
+            ]);
         }
         return $this->render('index', ['birthdays' => $upcomingBd]);
     }

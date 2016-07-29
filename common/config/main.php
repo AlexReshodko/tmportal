@@ -19,8 +19,8 @@ return [
             'enablePrettyUrl' => true,
             'scriptUrl'=>'/backend/index.php',
             'rules'=>[
-                '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
-                '<controller:\w+>/<action:\w+>/<id:\w+>' => '<controller>/<action>',
+                '<controller:[\w-]+>/<action:[\w-]+>' => '<controller>/<action>',
+                '<controller:[\w-]+>/<action:[\w-]+>/<id:\w+>' => '<controller>/<action>',
             ],
         ],
         'urlManagerFrontend' => [
@@ -32,8 +32,8 @@ return [
             'enablePrettyUrl' => true,
             'scriptUrl'=>'/index.php',
             'rules'=>[
-                '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
-                '<controller:\w+>/<action:\w+>/<id:\w+>' => '<controller>/<action>',
+                '<controller:[\w-]+>/<action:[\w-]+>' => '<controller>/<action>',
+                '<controller:[\w-]+>/<action:[\w-]+>/<id:\w+>' => '<controller>/<action>',
             ],
         ],
         'i18n' => [

@@ -1,6 +1,5 @@
 <?php
-use common\helpers\AvatarHelper;
-$this->title = 'Office map';
+$this->title = Yii::t('pageTitle', 'Office map');
 ?>
 <div class="container-fluid">
     <div class="row">

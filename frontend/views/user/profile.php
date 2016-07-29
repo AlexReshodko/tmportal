@@ -3,11 +3,11 @@
 use frontend\assets\AppAsset;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-use common\helpers\AvatarHelper;
+use common\helpers\UserHelper;
 
 /* @var $this View */
 
-$this->title = 'User Profile';
+$this->title = Yii::t('pageTitle', 'User Profile');
 $this->params['breadcrumbs'][] = $this->title;
 $bundle = AppAsset::register($this);
 ?>
@@ -21,7 +21,7 @@ $bundle = AppAsset::register($this);
                     </div>
                     <div class="content">
                         <div class="author">
-                            <div class="avatar border-white" style="background-image:url(<?= AvatarHelper::getAvatarUrl($userData->photo) ?>)">
+                            <div class="avatar border-white" style="background-image:url(<?= UserHelper::getAvatarUrl($userData->photo) ?>)">
                                 <div class="icon-big icon-info text-center upload-icon"><i class="ti-upload"></i></div>
                                 <input type="file" id="photo" name="photo" accept=".jpg,.jpeg" style="display: none;">
                             </div>

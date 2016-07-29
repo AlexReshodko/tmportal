@@ -83,10 +83,7 @@ class m130524_201442_init extends Migration
                     if(isset($user['data'])){
                         $data = $user['data'];
                         $userDataModel->office_id = Office::find()->where(['code'=>$data['office']])->one()->id;
-                        $userDataModel->first_name = $data['first_name'];
-                        $userDataModel->last_name = $data['last_name'];
-                        $userDataModel->work_start_date = $data['work_start_date'];
-                        $userDataModel->birthday = $data['birthday'];
+                        $userDataModel->setAttributes($data);
                     }else{
                         $userDataModel->office_id = Office::find()->where(['code'=>'CK'])->one()->id;
                     }

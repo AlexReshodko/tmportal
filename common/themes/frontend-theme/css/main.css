@@ -73,6 +73,17 @@
     overflow: auto;
 }
 
+/* Gallery */
+.gallery .card { transition: all .2s ease-in-out; }
+.gallery .card:hover { transform: scale(1.05); }
+.gallery .card .thumb{
+    margin: 10px;
+}
+a.gallery-item {
+    display: inline-block;
+    margin: 10px;
+}
+
 /* Other */
 .card.card-header{
     margin-bottom: 0;

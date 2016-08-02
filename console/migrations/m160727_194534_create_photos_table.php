@@ -22,7 +22,7 @@ class m160727_194534_create_photos_table extends Migration
         ]);
         
         $this->createIndex('idx-photos-event_id', 'photos', '[[event_id]]');
-        $this->addForeignKey('fk-photos-event_id', 'photos', '[[event_id]]', 'company_events', '[[id]]', 'CASCADE');
+        $this->addForeignKey('fk-photos-event_id', 'photos', '[[event_id]]', 'company_events', '[[id]]', 'CASCADE', 'CASCADE');
     }
 
     /**

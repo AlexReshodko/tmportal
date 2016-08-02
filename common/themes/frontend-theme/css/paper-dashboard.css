@@ -6718,7 +6718,7 @@ star {
 .card-user .author .title small {
   color: #ccc5b9;
 }
-.card-user .avatar {
+/*.card-user .avatar {
   width: 100px;
   height: 100px;
   line-height: 100px;
@@ -6727,7 +6727,7 @@ star {
   margin-bottom: 15px;
   background-size: cover;
   display: inline-block;
-}
+}*/
 .card-user .avatar.border-white {
   border: 5px solid #FFFFFF;
 }

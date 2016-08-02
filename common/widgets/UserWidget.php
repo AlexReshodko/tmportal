@@ -18,7 +18,7 @@ class UserWidget extends \yii\bootstrap\Widget{
         $userID = Yii::$app->user->id;
         $user = User::find()->joinWith('userData')->where(['user.id' => $userID])->one();
         if($user && $user->userData && $user->userData->first_name){
-            $name = $user->getFullName();
+            $name = $user->userData->getFullName();
         }else{
             $name = $user->username;
         }

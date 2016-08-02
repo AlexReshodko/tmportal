@@ -21,8 +21,9 @@ $bundle = AppAsset::register($this);
                     </div>
                     <div class="content">
                         <div class="author">
-                            <div class="avatar border-white" style="background-image:url(<?= UserHelper::getAvatarUrl($userData->photo) ?>)">
-                                <div class="icon-big icon-info text-center upload-icon"><i class="ti-upload"></i></div>
+                            <div class="avatar border-white">
+                                <img src="<?= UserHelper::getAvatarUrl($userData->photo) ?>" />
+                                <div class="icon-info text-center upload-icon"><i class="ti-upload"></i></div>
                                 <input type="file" id="photo" name="photo" accept=".jpg,.jpeg" style="display: none;">
                             </div>
                             <h4 class="title"><?= $userData->first_name ?> <?= $userData->last_name ?><br />

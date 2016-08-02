@@ -29,7 +29,7 @@ use common\helpers\UserHelper;
                                     <img src="<?= UserHelper::getAvatarUrl($user->userData->photo)?>" alt="Circle Image" class="img-circle img-no-padding img-responsive">
                                 </div>
                             </div>
-                            <div class="col-xs-9 name"><?= $user->userData->first_name?> <?= $user->userData->last_name?></div>
+                            <div class="col-xs-9 name"><?= $user->userData->getFullName()?></div>
                             <?=  yii\helpers\Html::checkbox('user_'.$user->id, false, [
                                 'id' => 'user_'.$user->id,
                                 'class' => 'user-cb',

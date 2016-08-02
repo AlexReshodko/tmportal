@@ -26,7 +26,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'skype')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'work_start_date')->textInput() ?>
+    <?= $form->field($model, 'hire_date')->textInput() ?>
 
     <?= $form->field($model, 'birthday')->textInput() ?>
 

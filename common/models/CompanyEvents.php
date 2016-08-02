@@ -17,6 +17,8 @@ use Yii;
  */
 class CompanyEvents extends \yii\db\ActiveRecord
 {
+    public $imageFile;
+    
     /**
      * @inheritdoc
      */
@@ -34,7 +36,8 @@ class CompanyEvents extends \yii\db\ActiveRecord
             [['name'], 'required'],
             [['description'], 'string'],
             [['date'], 'safe'],
-            [['name', 'thumbnail'], 'string', 'max' => 255],
+            [['name'], 'string', 'max' => 255],
+            [['thumbnail'], 'file', 'skipOnEmpty' => true, 'extensions' => 'png, jpg'],
         ];
     }
 

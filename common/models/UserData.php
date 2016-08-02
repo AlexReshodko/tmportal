@@ -10,22 +10,33 @@ use Yii;
  * @property integer $id
  * @property integer $user_id
  * @property integer $office_id
+ * @property integer $position_id
  * @property string $first_name
  * @property string $last_name
- * @property string $position
+ * @property integer $gender
+ * @property string $address
  * @property string $phone
  * @property string $skype
- * @property string $work_start_date
+* @property string $hire_date
  * @property string $birthday
  * @property string $comment
  * @property string $photo
  * @property integer $map_place
  *
  * @property Office $office
+ * @property JobPositions $position
  * @property User $user
  */
 class UserData extends \yii\db\ActiveRecord
 {
+    
+    const GENDER_MALE = 1;
+    const GENDER_FEMALE = 0;
+    public static $genderNames = [
+        self::GENDER_FEMALE => 'Female',
+        self::GENDER_MALE => 'Male'
+    ];
+
     /**
      * @inheritdoc
      */
@@ -41,11 +52,12 @@ class UserData extends \yii\db\ActiveRecord
     {
         return [
             [['user_id'], 'required'],
-            [['user_id', 'office_id', 'map_place'], 'integer'],
-            [['work_start_date', 'birthday'], 'safe'],
+            [['user_id', 'office_id', 'position_id', 'gender', 'map_place'], 'integer'],
+            [['hire_date', 'birthday'], 'safe'],
             [['comment'], 'string'],
-            [['first_name', 'last_name', 'position', 'phone', 'skype', 'photo'], 'string', 'max' => 255],
+            [['first_name', 'last_name', 'address', 'phone', 'skype', 'photo'], 'string', 'max' => 255],
             [['office_id'], 'exist', 'skipOnError' => true, 'targetClass' => Office::className(), 'targetAttribute' => ['office_id' => 'id']],
+            [['position_id'], 'exist', 'skipOnError' => true, 'targetClass' => JobPositions::className(), 'targetAttribute' => ['position_id' => 'id']],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_id' => 'id']],
         ];
     }
@@ -59,12 +71,14 @@ class UserData extends \yii\db\ActiveRecord
             'id' => Yii::t('UserData', 'ID'),
             'user_id' => Yii::t('UserData', 'User ID'),
             'office_id' => Yii::t('UserData', 'Office ID'),
+            'position_id' => Yii::t('UserData', 'Position ID'),
             'first_name' => Yii::t('UserData', 'First Name'),
             'last_name' => Yii::t('UserData', 'Last Name'),
-            'position' => Yii::t('UserData', 'Position'),
+            'gender' => Yii::t('UserData', 'Gender'),
+            'address' => Yii::t('UserData', 'Address'),
             'phone' => Yii::t('UserData', 'Phone'),
             'skype' => Yii::t('UserData', 'Skype'),
-            'work_start_date' => Yii::t('UserData', 'Work Start Date'),
+            'hire_date' => Yii::t('UserData', 'Hire Date'),
             'birthday' => Yii::t('UserData', 'Birthday'),
             'comment' => Yii::t('UserData', 'Comment'),
             'photo' => Yii::t('UserData', 'Photo'),
@@ -83,8 +97,25 @@ class UserData extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
+    public function getPosition()
+    {
+        return $this->hasOne(JobPositions::className(), ['id' => 'position_id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
     public function getUser()
     {
         return $this->hasOne(User::className(), ['id' => 'user_id']);
+    }
+
+    public function getFullName(){
+        return $this->first_name . ' ' . $this->last_name;
+    }
+
+    public static function getGender($gender = 1){
+        if(!$gender)return 'Not set';
+        return \Yii::t('app', self::$genderNames[$gender]);
     }
 }

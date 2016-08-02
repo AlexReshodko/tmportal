@@ -31,6 +31,7 @@ class AppAsset extends AssetBundle
         'js/plugins/forms/selects/bootstrap_multiselect.js',
         'js/plugins/ui/moment/moment.min.js',
         'js/plugins/pickers/daterangepicker.js',
+        'js/plugins/uploaders/fileinput.min.js',
         
         'js/core/app.js'
     ];

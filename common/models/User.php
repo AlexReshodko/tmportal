@@ -202,8 +202,4 @@ class User extends ActiveRecord implements IdentityInterface
     public function getUsers(){
         return $this->find()->joinWith('userData')->where(['role'=>self::ROLE_USER])->all();
     }
-    
-    public function getFullName(){
-        return $this->userData->first_name . ' ' . $this->userData->last_name;
-    }
 }

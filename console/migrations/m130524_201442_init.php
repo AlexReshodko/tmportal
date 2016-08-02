@@ -1,11 +1,7 @@
 <?php
 
-use common\models\Office;
 use common\models\User;
-use common\models\UserData;
-use frontend\models\SignupForm;
 use yii\db\Migration;
-use yii\helpers\Json;
 
 class m130524_201442_init extends Migration
 {
@@ -35,12 +31,14 @@ class m130524_201442_init extends Migration
             'id' => $this->primaryKey(),
             'user_id' => $this->integer()->notNull(),
             'office_id' => $this->integer(),
+            'position_id' => $this->integer(),
             'first_name' => $this->string(),
             'last_name' => $this->string(),
-            'position' => $this->string(),
+            'gender' => $this->integer(2),
+            'address' => $this->string(),
             'phone' => $this->string(),
             'skype' => $this->string(),
-            'work_start_date' => $this->dateTime()->notNull()->defaultExpression('NOW()'),
+            'hire_date' => $this->dateTime()->notNull()->defaultExpression('NOW()'),
             'birthday' => $this->date(),
             'comment' => $this->text(),
             'photo' => $this->string(),
@@ -57,51 +55,14 @@ class m130524_201442_init extends Migration
         ]);
         
         $this->createIndex('idx-user_data-user_id', '{{%user_data}}', '[[user_id]]');
-        $this->addForeignKey('fk-user_data-user_id', '{{%user_data}}', '[[user_id]]', '{{%user}}', '[[id]]', 'CASCADE');
+        $this->addForeignKey('fk-user_data-user_id', '{{%user_data}}', '[[user_id]]', '{{%user}}', '[[id]]', 'CASCADE', 'CASCADE');
         
         $this->createIndex('idx-user_data_office_id', '{{%user_data}}', '[[office_id]]');
-        $this->addForeignKey('fk-user_data-office_id', '{{%user_data}}', '[[office_id]]', '{{%office}}', '[[id]]', 'SET NULL');
+        $this->addForeignKey('fk-user_data-office_id', '{{%user_data}}', '[[office_id]]', '{{%office}}', '[[id]]', 'SET NULL', 'CASCADE');
         
         $this->insert('{{%office}}', ['name'=>'Черкассы','code'=>'CK']);
         $this->insert('{{%office}}', ['name'=>'Кривой Рог','code'=>'KR']);
         $this->insert('{{%office}}', ['name'=>'Полтава','code'=>'PL']);
-        
-        $filename = Yii::getAlias('@common').'/data/users.json';
-        $addedUsers = [];
-        if(file_exists($filename)){
-            $json = file_get_contents($filename);
-            $users = Json::decode($json);
-            foreach ($users as $key => $user) {
-                $model = new SignupForm();
-                $model->username = $user['username'];
-                $model->password = $user['password'];
-                $model->email = $user['email'];
-                $model->role = $user['role'];
-                if ($savedUser = $model->signup()) {
-                    $userDataModel = new UserData();
-                    $userDataModel->user_id = $savedUser->id;
-                    if(isset($user['data'])){
-                        $data = $user['data'];
-                        $userDataModel->office_id = Office::find()->where(['code'=>$data['office']])->one()->id;
-                        $userDataModel->setAttributes($data);
-                    }else{
-                        $userDataModel->office_id = Office::find()->where(['code'=>'CK'])->one()->id;
-                    }
-                    if(!$userDataModel->save()){
-                        throw new Exception($userDataModel->getErrors());
-                    }
-                    echo "User '".$user['username']."' added successfully \r\n";
-                    array_push($addedUsers, $user['username']);
-                }else{
-                    print_r($model->errors);
-                }
-            }
-            echo '<pre>';
-            print_r($addedUsers);
-            echo '</pre>';
-        }  else {
-            throw new Exception("File doesn't exists: " . $filename);
-        }
     }
 
     public function safeDown()

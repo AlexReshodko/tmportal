@@ -104,8 +104,11 @@ class UserController extends Controller
      */
     public function actionView($id)
     {
+        if($id == Yii::$app->user->id){
+            $this->redirect('/user/profile');
+        }
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'userData' => $this->findModel($id),
         ]);
     }
 

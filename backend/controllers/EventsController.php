@@ -5,6 +5,7 @@ namespace backend\controllers;
 use Yii;
 use common\models\CompanyEvents;
 use common\models\CompanyEventsSearch;
+use common\models\UploadForm;
 use yii\web\UploadedFile;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -67,28 +68,16 @@ class EventsController extends Controller
         $model = new CompanyEvents();
 
         if ($model->load(Yii::$app->request->post())) {
-            $dir = Yii::getAlias('@frontend/web/uploads/events/');
-//            var_dump($dir);exit;
-            if(!is_dir($dir)){
-                mkdir($dir);
-            }
             $photo = UploadedFile::getInstance($model, 'thumbnail');
-            if ($photo && $photo->tempName) {
-//                var_dump($photo);exit;
+            $hasPhoto = $photo && $photo->tempName;
+            if ($hasPhoto) {
                 $model->thumbnail = $photo;
-                if ($model->validate()) {
-                    $fileName = 'thumbnail' . '.' . $model->thumbnail->extension;
-                    if($model->save()){
-                        mkdir($dir . $model->id);
-                        $model->thumbnail->saveAs($dir . $model->id . '/' . $fileName);
-                        $model->thumbnail = '/uploads/events/'. $model->id . '/' . $fileName;
-                        if($model->update()){
-                            return $this->redirect(['view', 'id' => $model->id]);
-                        }
-                    }
-                }else{
-                    var_dump($model->getErrors());exit;
-                }
+            }
+            if ($model->validate() && $model->save()) {
+                if($hasPhoto)$model->uploadPreview();
+                return $this->redirect(['view', 'id' => $model->id]);
+            }else{
+                var_dump($model->getErrors());exit;
             }
             return $this->redirect(['create', 'model' => $model]);
         } else {
@@ -128,6 +117,22 @@ class EventsController extends Controller
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
+    }
+    
+    public function actionAddPhotos($id){
+        $model = new UploadForm();
+        $eventModel = $this->findModel($id);
+        
+        if (Yii::$app->request->isPost) {
+            $model->eventID = $eventModel->id;
+            $model->imageFiles = UploadedFile::getInstances($model, 'imageFiles');
+            if ($model->upload()) {
+                // file is uploaded successfully
+                return $this->redirect(['index']);
+            }
+        }
+
+        return $this->render('addPhotos', ['model' => $model]);
     }
 
     /**

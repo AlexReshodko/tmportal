@@ -16,7 +16,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
 
-    <?= $form->field($model, 'date')->textInput() ?>
+    <?= $form->field($model, 'date')->input('date');?>
 
     <?= $form->field($model, 'thumbnail')->fileInput(['maxlength' => true, 'class'=>'file-input']) ?>
 

@@ -16,7 +16,8 @@
                             <div class="card-footer">
                                 <hr />
                                 <div class="stats">
-                                    <i class="ti-calendar"></i>&nbsp;&nbsp;<?= Yii::$app->formatter->format($event->date, 'date'); ?>
+                                    <i class="ti-calendar"></i>&nbsp;&nbsp;<?= Yii::$app->formatter->format($event->date, 'date'); ?>&nbsp;&nbsp;
+                                    <i class="ti-files"></i>&nbsp;&nbsp;<?= count($event->photos) ?>
                                 </div>
                             </div>
                         </a>

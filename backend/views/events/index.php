@@ -27,10 +27,18 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'name',
             'description:ntext',
-            'date',
-            'thumbnail',
+            'date:date',
+            'thumbnail:image',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            [
+                'class' => 'yii\grid\ActionColumn',
+                'template' => '{addPhotos} {view} {update} {delete}',
+                'buttons' => [
+                    'addPhotos' => function ($url,$model,$key) {
+                        return Html::a('<span class="glyphicon glyphicon-plus"></span>', 'add-photos/'.$key, ['title'=> 'Add photos']);
+                    },
+                ],
+            ],
         ],
     ]); ?>
 <?php Pjax::end(); ?></div>

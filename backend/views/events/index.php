@@ -28,8 +28,17 @@ $this->params['breadcrumbs'][] = $this->title;
             'name',
             'description:ntext',
             'date:date',
-            'thumbnail:image',
-
+//            'thumbnail:image',
+            [
+                'label' => 'Thumbnail',
+                'format' => 'raw',
+                'value' => function($data) {
+                    $filePath = common\helpers\UtilsHelper::getImageUrl($data->thumbnail);
+                    return Html::img($filePath, [
+                        'alt' => 'Thumbnail',
+                    ]);
+                },
+            ],
             [
                 'class' => 'yii\grid\ActionColumn',
                 'template' => '{addPhotos} {view} {update} {delete}',

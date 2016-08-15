@@ -7,7 +7,7 @@
                     <div class="card">
                         <a class="thumbnail" href="<?= \yii\helpers\Url::to(['/gallery/view/' . $event->id]) ?>">
                             <div class="thumb text-center">
-                                <img src="<?= $event->thumbnail; ?>" class="img-rounded" alt="<?= $event->name ?>">
+                                <img src="<?= common\helpers\UtilsHelper::getImageUrl($event->thumbnail); ?>" class="img-rounded" alt="<?= $event->name ?>">
                             </div>
                             <div class="caption">
                                 <h6 class="no-margin-top text-semibold"><?= $event->name ?></h6>

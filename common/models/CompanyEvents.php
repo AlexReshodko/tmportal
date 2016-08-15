@@ -26,6 +26,13 @@ class CompanyEvents extends \yii\db\ActiveRecord
     {
         return 'company_events';
     }
+    
+    public function scenarios()
+    {
+        return array(
+            self::SCENARIO_DEFAULT => array('name','description','date','!thumbnail'),
+        );
+    }
 
     /**
      * @inheritdoc
@@ -71,7 +78,7 @@ class CompanyEvents extends \yii\db\ActiveRecord
         return $dir;
     }
     
-    public static function getEventsRelPath($id){
+    public static function getEventsRelPath(){
         return '/uploads/events/';
     }
     
@@ -98,7 +105,9 @@ class CompanyEvents extends \yii\db\ActiveRecord
     public function uploadPreview(){
         $dir = self::getEventsDirPath();
         $fileName = 'thumbnail' . '.' . $this->thumbnail->extension;
-        mkdir($dir . $this->id);
+        if(!is_dir($dir . $this->id)){
+            mkdir($dir . $this->id);
+        }
         $this->thumbnail->saveAs($dir . $this->id . '/' . $fileName);
         $image = \Yii::$app->image->load($dir . $this->id . '/' . $fileName);
         $image->resize(Yii::$app->params['thumbnail']['width'], Yii::$app->params['thumbnail']['height'])->save($dir . $this->id . '/' . $fileName);

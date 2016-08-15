@@ -80,7 +80,7 @@ class UserData extends \yii\db\ActiveRecord
             'skype' => Yii::t('UserData', 'Skype'),
             'hire_date' => Yii::t('UserData', 'Hire Date'),
             'birthday' => Yii::t('UserData', 'Birthday'),
-            'comment' => Yii::t('UserData', 'Comment'),
+            'comment' => Yii::t('UserData', 'About me'),
             'photo' => Yii::t('UserData', 'Photo'),
             'map_place' => Yii::t('UserData', 'Map Place'),
         ];

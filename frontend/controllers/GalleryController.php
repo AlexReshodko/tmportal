@@ -13,7 +13,7 @@ class GalleryController extends \yii\web\Controller
 
     public function actionIndex()
     {
-        $events = CompanyEvents::find()->joinWith('photos')->all();
+        $events = CompanyEvents::find()->innerJoinWith('photos')->all();
         return $this->render('index',[
             'events' => $events
         ]);
@@ -59,20 +59,7 @@ class GalleryController extends \yii\web\Controller
     {
         $event = $this->findModel($id);
         $eventPhotos = $event->photos;
-        $photosDir = 'uploads/photos';
         $photos = [];
-        /*foreach (new \DirectoryIterator($photosDir) as $fileInfo) {
-            if ($fileInfo->isDot() || $fileInfo->isDir())continue;
-            $ext = '.'.$fileInfo->getExtension();
-            $fname = $fileInfo->getFilename();
-//            echo $fileInfo->getPathname() . "<br>\n";
-            array_push($photos, [
-                'url' => '/'.$fileInfo->getPathname(),
-                'src' => '/'.$photosDir.'/thumb/'.str_replace($ext, '_s'.$ext, $fname),
-                'options' => array('title' => $fileInfo->getFilename()),
-//                'imageOptions' => ['width' => 75, 'height' => 75]
-            ]);
-        }*/
         foreach ($eventPhotos as $photo) {
             array_push($photos, [
                 'url' => $photo->path,

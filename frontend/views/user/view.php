@@ -8,7 +8,7 @@ use common\helpers\UtilsHelper;
 /* @var $this yii\web\View */
 /* @var $userData common\models\UserData */
 
-$this->title = Yii::t('pageTitle', 'User profile: '.$userData->getFullName());
+$this->title = Yii::t('pageTitle', 'User profile: ').$userData->getFullName();
 $this->params['breadcrumbs'][] = ['label' => 'User Datas', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

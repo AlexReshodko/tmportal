@@ -96,8 +96,23 @@ class EventsController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+//        $tmpThumbnail = $model->thumbnail;
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+//            $model->thumbnail = $tmpThumbnail;
+            $photo = UploadedFile::getInstance($model, 'thumbnail');
+            $hasPhoto = $photo && $photo->tempName;
+//            \common\helpers\Logger::warn($hasPhoto);
+            if ($hasPhoto) {
+                $model->thumbnail = $photo;
+            }
+//            \common\helpers\Logger::warn($model);
+            if ($model->validate() && $model->save()) {
+                if($hasPhoto)$model->uploadPreview();
+                return $this->redirect(['view', 'id' => $model->id]);
+            }else{
+                var_dump($model->getErrors());exit;
+            }
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [

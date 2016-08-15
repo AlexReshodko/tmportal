@@ -104,11 +104,16 @@ class UserController extends Controller
      */
     public function actionView($id)
     {
+        $userDataModel = $this->findModel($id);
         if($id == Yii::$app->user->id){
             $this->redirect('/user/profile');
+        }else{
+            if($userDataModel->user->role !== User::ROLE_USER && !Yii::$app->user->can('admin')){
+                throw new NotFoundHttpException('The requested page does not exist.');
+            }
         }
         return $this->render('view', [
-            'userData' => $this->findModel($id),
+            'userData' => $userDataModel,
         ]);
     }
 

@@ -31,7 +31,7 @@ class UploadPhotoForm extends Model
             move_uploaded_file($this->imageFile["tmp_name"], $this->savedFilePath);
 //            $this->imageFile->saveAs($this->savedFilePath);
             $image = \Yii::$app->image->load($this->savedFilePath);
-            $image->resize(Yii::$app->params['thumbnail']['width'],Yii::$app->params['thumbnail']['height'])->save($this->savedFilePath);
+            $image->resize(\Yii::$app->params['thumbnail']['width'], \Yii::$app->params['thumbnail']['height'])->save($this->savedFilePath);
             return true;
         } else {
             return false;

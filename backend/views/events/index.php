@@ -40,6 +40,21 @@ $this->params['breadcrumbs'][] = $this->title;
                 },
             ],
             [
+                'label' => 'Published',
+                'format' => 'raw',
+                'value' => function($data){
+                    $isPub = $data->published;
+                    return '<span class="text-highlight '.($isPub ? 'bg-success':'bg-warning').'">'.($isPub ? 'Published':'Not published').'<span>';
+                }
+            ],
+            [
+                'label' => '№ of Photos',
+                'format' => 'raw',
+                'value' => function($data){
+                    return count($data->photos);
+                }
+            ],
+            [
                 'class' => 'yii\grid\ActionColumn',
                 'template' => '{addPhotos} {view} {update} {delete}',
                 'buttons' => [

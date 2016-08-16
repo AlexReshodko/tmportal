@@ -308,7 +308,8 @@ $bundle = AppAsset::register($this);
                                             ['label' => Yii::t('app', 'Go to Frontend'), 'url' => ['/'], 'template' => '<a href="'.Yii::$app->urlManagerFrontend->createUrl('/').'"><i class="icon-arrow-left52"></i><p>{label}</p></a>'],
                                             ['label' => Yii::t('app', 'Home'), 'url' => ['/'], 'template' => '<a href="{url}"><i class="icon-home4"></i><p>{label}</p></a>'],
                                             ['label' => 'Translations', 'url' => ['/translations'], 'template' => '<a href="{url}"><i class="icon-sphere"></i><p>{label}</p></a>'],
-                                            ['label' => 'Company events', 'url' => ['events/index'], 'template' => '<a href="{url}"><i class="icon-megaphone"></i><p>{label}</p></a>'],
+                                            ['label' => 'News', 'url' => ['/news/index'], 'template' => '<a href="{url}"><i class="icon-newspaper"></i><p>{label}</p></a>'],
+                                            ['label' => 'Company events', 'url' => ['/events/index'], 'template' => '<a href="{url}"><i class="icon-megaphone"></i><p>{label}</p></a>'],
                                         ],
                                         'options' => [
                                             'class' => 'nav',

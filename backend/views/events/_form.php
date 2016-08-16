@@ -16,9 +16,13 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
 
-    <?= $form->field($model, 'date')->input('date');?>
+    <?= $form->field($model, 'date')->input('date'); ?>
 
-    <?= $form->field($model, 'thumbnail')->fileInput(['maxlength' => true, 'class'=>'file-input']) ?>
+    <?= $form->field($model, 'thumbnail')->fileInput(['maxlength' => true, 'class' => 'file-input']) ?>
+
+    <div class="checkbox checkbox-switchery">
+        <?= $form->field($model, 'published')->checkbox(['class' => 'switchery']) ?>
+    </div>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
@@ -28,20 +32,23 @@ use yii\widgets\ActiveForm;
 
 </div>
 <script>
-    // Basic example
-    $('.file-input').fileinput({
-        browseLabel: '',
-        browseClass: 'btn btn-primary btn-icon',
-        removeLabel: '',
-        uploadLabel: '',
-        uploadClass: 'btn btn-default btn-icon',
-        browseIcon: '<i class="icon-plus22"></i> ',
-        uploadIcon: '<i class="icon-file-upload"></i> ',
-        removeClass: 'btn btn-danger btn-icon',
-        removeIcon: '<i class="icon-cancel-square"></i> ',
-        layoutTemplates: {
-            caption: '<div tabindex="-1" class="form-control file-caption {class}">\n' + '<span class="icon-file-plus kv-caption-icon"></span><div class="file-caption-name"></div>\n' + '</div>'
-        },
-        initialCaption: "No file selected"
-    });
+    (function () {
+        // Basic example
+        $('.file-input').fileinput({
+            browseLabel: '',
+            browseClass: 'btn btn-primary btn-icon',
+            removeLabel: '',
+            uploadLabel: '',
+            uploadClass: 'btn btn-default btn-icon',
+            browseIcon: '<i class="icon-plus22"></i> ',
+            uploadIcon: '<i class="icon-file-upload"></i> ',
+            removeClass: 'btn btn-danger btn-icon',
+            removeIcon: '<i class="icon-cancel-square"></i> ',
+            layoutTemplates: {
+                caption: '<div tabindex="-1" class="form-control file-caption {class}">\n' + '<span class="icon-file-plus kv-caption-icon"></span><div class="file-caption-name"></div>\n' + '</div>'
+            },
+            initialCaption: "No file selected"
+        });
+        new Switchery($('.switchery').get(0));
+    })()
 </script>

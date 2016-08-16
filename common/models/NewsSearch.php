@@ -5,12 +5,12 @@ namespace common\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use common\models\CompanyEvents;
+use common\models\News;
 
 /**
- * CompanyEventsSearch represents the model behind the search form about `common\models\CompanyEvents`.
+ * NewsSearch represents the model behind the search form about `common\models\News`.
  */
-class CompanyEventsSearch extends CompanyEvents
+class NewsSearch extends News
 {
     /**
      * @inheritdoc
@@ -18,8 +18,8 @@ class CompanyEventsSearch extends CompanyEvents
     public function rules()
     {
         return [
-            [['id', 'published', 'deleted'], 'integer'],
-            [['name', 'description', 'date', 'thumbnail'], 'safe'],
+            [['id', 'author_id', 'published', 'deleted'], 'integer'],
+            [['title', 'text', 'date', 'thumbnail'], 'safe'],
         ];
     }
 
@@ -41,7 +41,7 @@ class CompanyEventsSearch extends CompanyEvents
      */
     public function search($params)
     {
-        $query = CompanyEvents::find();
+        $query = News::find();
 
         // add conditions that should always apply here
 
@@ -60,13 +60,14 @@ class CompanyEventsSearch extends CompanyEvents
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
+            'author_id' => $this->author_id,
             'date' => $this->date,
-            'published' => $this->published, 
-            'deleted' => $this->deleted, 
+            'published' => $this->published,
+            'deleted' => $this->deleted,
         ]);
 
-        $query->andFilterWhere(['like', 'name', $this->name])
-            ->andFilterWhere(['like', 'description', $this->description])
+        $query->andFilterWhere(['like', 'title', $this->title])
+            ->andFilterWhere(['like', 'text', $this->text])
             ->andFilterWhere(['like', 'thumbnail', $this->thumbnail]);
 
         return $dataProvider;

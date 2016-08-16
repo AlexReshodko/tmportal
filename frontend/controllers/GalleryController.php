@@ -13,46 +13,10 @@ class GalleryController extends \yii\web\Controller
 
     public function actionIndex()
     {
-        $events = CompanyEvents::find()->innerJoinWith('photos')->all();
+        $events = CompanyEvents::find()->active()->innerJoinWith('photos')->all();
         return $this->render('index',[
             'events' => $events
         ]);
-    }
-    
-    public function actionCreatePreviews($id){
-        if(empty($id)){
-            throw new NotFoundHttpException('Please provide event ID');
-        }
-        $photosDir = 'uploads/photos/'.$id;
-        if(is_dir($photosDir)){
-            foreach (new \DirectoryIterator($photosDir) as $fileInfo) {
-                if ($fileInfo->isDot() || $fileInfo->isDir())continue;
-                echo $fileInfo->getFilename() . "<br>\n";
-//                $ext = '.'.$fileInfo->getExtension();
-                $fname = $fileInfo->getFilename();
-                $fpath = $fileInfo->getPathname();
-                $image = \Yii::$app->image->load($fileInfo->getRealPath());
-                if(!is_dir($photosDir.'/thumb/')){
-                    mkdir($photosDir.'/thumb/');
-                }
-                $thumbPath = $photosDir.'/thumb/'.$fname;
-                $image->resize(150,150, \yii\image\drivers\Image::HEIGHT)->save($thumbPath);
-                $photoModel = new \common\models\Photos();
-                $photoModel->setAttributes([
-                    'event_id' => $id,
-                    'name' => $fname,
-                    'path' => '/'.$fpath,
-                    'thumb_path' => '/'.$thumbPath
-                ]);
-                if($photoModel->save()){
-                    echo 'Success';
-                }else{
-                    echo $photoModel->getErrors();
-                }
-            }
-        }else{
-            echo 'Error. Directory not exists';
-        }
     }
 
     public function actionView($id)

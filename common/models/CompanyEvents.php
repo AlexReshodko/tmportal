@@ -12,6 +12,8 @@ use Yii;
  * @property string $description
  * @property string $date
  * @property string $thumbnail
+ * @property integer $published 
+ * @property integer $deleted 
  *
  * @property Photos[] $photos
  */
@@ -30,7 +32,7 @@ class CompanyEvents extends \yii\db\ActiveRecord
     public function scenarios()
     {
         return array(
-            self::SCENARIO_DEFAULT => array('name','description','date','!thumbnail'),
+            self::SCENARIO_DEFAULT => array('name','description','date','published','!thumbnail'),
         );
     }
 
@@ -44,6 +46,7 @@ class CompanyEvents extends \yii\db\ActiveRecord
             [['description'], 'string'],
             [['date'], 'safe'],
             [['name'], 'string', 'max' => 255],
+            [['published', 'deleted'], 'integer'],
             [['thumbnail'], 'file', 'skipOnEmpty' => true, 'extensions' => 'png, jpg'],
         ];
     }
@@ -59,7 +62,14 @@ class CompanyEvents extends \yii\db\ActiveRecord
             'description' => Yii::t('CompanyEvents', 'Description'),
             'date' => Yii::t('CompanyEvents', 'Date'),
             'thumbnail' => Yii::t('CompanyEvents', 'Thumbnail'),
+            'published' => Yii::t('UserData', 'Published'),
+            'deleted' => Yii::t('UserData', 'Deleted'),
         ];
+    }
+    
+    public static function find()
+    {
+        return new CompanyEventsQuery(get_called_class());
     }
 
     /**
@@ -113,5 +123,13 @@ class CompanyEvents extends \yii\db\ActiveRecord
         $image->resize(Yii::$app->params['thumbnail']['width'], Yii::$app->params['thumbnail']['height'])->save($dir . $this->id . '/' . $fileName);
         $this->thumbnail = self::getEventRelPath($this->id) . $fileName;
         $this->update();
+    }
+}
+
+class CompanyEventsQuery extends \yii\db\ActiveQuery
+{
+    public function active($state = 1)
+    {
+        return $this->andWhere(['published' => $state]);
     }
 }

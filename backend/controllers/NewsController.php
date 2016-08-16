@@ -3,18 +3,16 @@
 namespace backend\controllers;
 
 use Yii;
-use common\models\CompanyEvents;
-use common\models\CompanyEventsSearch;
-use common\models\UploadForm;
-use yii\web\UploadedFile;
+use common\models\News;
+use common\models\NewsSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * EventsController implements the CRUD actions for CompanyEvents model.
+ * NewsController implements the CRUD actions for News model.
  */
-class EventsController extends Controller
+class NewsController extends Controller
 {
     /**
      * @inheritdoc
@@ -32,12 +30,12 @@ class EventsController extends Controller
     }
 
     /**
-     * Lists all CompanyEvents models.
+     * Lists all News models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new CompanyEventsSearch();
+        $searchModel = new NewsSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -47,7 +45,7 @@ class EventsController extends Controller
     }
 
     /**
-     * Displays a single CompanyEvents model.
+     * Displays a single News model.
      * @param integer $id
      * @return mixed
      */
@@ -59,29 +57,16 @@ class EventsController extends Controller
     }
 
     /**
-     * Creates a new CompanyEvents model.
+     * Creates a new News model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new CompanyEvents();
+        $model = new News();
 
-        if ($model->load(Yii::$app->request->post())) {
-                    \common\helpers\Logger::warn(Yii::$app->request->post());
-
-            $photo = UploadedFile::getInstance($model, 'thumbnail');
-            $hasPhoto = $photo && $photo->tempName;
-            if ($hasPhoto) {
-                $model->thumbnail = $photo;
-            }
-            if ($model->validate() && $model->save()) {
-                if($hasPhoto)$model->uploadPreview();
-                return $this->redirect(['view', 'id' => $model->id]);
-            }else{
-                var_dump($model->getErrors());exit;
-            }
-            return $this->redirect(['create', 'model' => $model]);
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -90,7 +75,7 @@ class EventsController extends Controller
     }
 
     /**
-     * Updates an existing CompanyEvents model.
+     * Updates an existing News model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -100,17 +85,6 @@ class EventsController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            $photo = UploadedFile::getInstance($model, 'thumbnail');
-            $hasPhoto = $photo && $photo->tempName;
-            if ($hasPhoto) {
-                $model->thumbnail = $photo;
-            }
-            if ($model->validate() && $model->save()) {
-                if($hasPhoto)$model->uploadPreview();
-                return $this->redirect(['view', 'id' => $model->id]);
-            }else{
-                var_dump($model->getErrors());exit;
-            }
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [
@@ -120,7 +94,7 @@ class EventsController extends Controller
     }
 
     /**
-     * Deletes an existing CompanyEvents model.
+     * Deletes an existing News model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -131,32 +105,17 @@ class EventsController extends Controller
 
         return $this->redirect(['index']);
     }
-    
-    public function actionAddPhotos($id){
-        $model = new UploadForm();
-        $eventModel = $this->findModel($id);
-        
-        if (Yii::$app->request->isPost) {
-            $model->eventID = $eventModel->id;
-            $model->imageFiles = UploadedFile::getInstances($model, 'imageFiles');
-            if ($model->upload()) {
-                return $this->redirect(['index']);
-            }
-        }
-
-        return $this->render('addPhotos', ['model' => $model]);
-    }
 
     /**
-     * Finds the CompanyEvents model based on its primary key value.
+     * Finds the News model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return CompanyEvents the loaded model
+     * @return News the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = CompanyEvents::findOne($id)) !== null) {
+        if (($model = News::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

@@ -348,6 +348,9 @@ $bundle = AppAsset::register($this);
 
 				<!-- Content area -->
 				<div class="content">
+                    <?= yii\widgets\Breadcrumbs::widget([
+                        'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+                    ]);?>
                     <?= Alert::widget() ?>
                     <?= $content ?>
 

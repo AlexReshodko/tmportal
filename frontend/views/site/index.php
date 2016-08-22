@@ -6,7 +6,52 @@ $bundle = \frontend\assets\AppAsset::register($this);
 ?>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-lg-3 col-sm-6">
+        <div class="col-md-6">
+            <h3 class="title text-center"><?= Yii::t('app', 'Latest news');?></h3>
+            <ul class="news">
+                <li>
+                    <div class="news-panel">
+                        <div class="timeline-heading">
+                            <span class="label label-danger">Mussum ipsum cacilds</span>
+                        </div>
+                        <div class="timeline-body">
+                            <p>Mussum ipsum cacilds, vidis litro abertis. Consetis adipiscings elitis. Pra lá , depois divoltis porris, paradis. Paisis, filhis, espiritis santis. Mé faiz elementum girarzis, nisi eros vermeio, in elementis mé pra quem é amistosis quis leo.
+                                Manduma pindureta quium dia nois paga. Sapien in monti palavris qui num significa nadis i pareci latim. Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis.</p>
+                        </div>
+                        <h6>
+                            <i class="ti-time"></i>
+                            11 hours ago via Twitter
+                        </h6>
+                    </div>
+                </li>
+                <li>
+                    <div class="news-panel">
+                        <div class="timeline-heading">
+                            <span class="label label-success">Mussum ipsum cacilds</span>
+                        </div>
+                        <div class="timeline-body">
+                            <p>Mussum ipsum cacilds, vidis litro abertis. Consetis adipiscings elitis. Pra lá , depois divoltis porris, paradis. Paisis, filhis, espiritis santis. Mé faiz elementum girarzis, nisi eros vermeio, in elementis mé pra quem é amistosis quis leo.
+                                Manduma pindureta quium dia nois paga. Sapien in monti palavris qui num significa nadis i pareci latim. Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis.</p>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="news-panel">
+                        <div class="timeline-heading">
+                            <span class="label label-info">Mussum ipsum cacilds</span>
+                        </div>
+                        <div class="timeline-body">
+                            <p>Mussum ipsum cacilds, vidis litro abertis. Consetis adipiscings elitis. Pra lá , depois divoltis porris, paradis. Paisis, filhis, espiritis santis. Mé faiz elementum girarzis, nisi eros vermeio, in elementis mé pra quem é amistosis quis leo.
+                                Manduma pindureta quium dia nois paga. Sapien in monti palavris qui num significa nadis i pareci latim. Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis.</p>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-6">
+            <h3 class="title text-center"><?= Yii::t('app', 'Information');?></h3>
+        </div>
+<!--        <div class="col-lg-3 col-sm-6">
             <div class="card">
                 <div class="content">
                     <div class="row">
@@ -17,9 +62,7 @@ $bundle = \frontend\assets\AppAsset::register($this);
                         </div>
                         <div class="col-xs-10">
                             <div class="text-center" style="font-size: 1.5em;">
-                                <?php foreach ($birthdays as $birthday): ?>
-                                    <?= \yii\helpers\Html::a($birthday['name'], \yii\helpers\Url::to('/user/view/'.$birthday['id'])) ?>: <?= $birthday['birthday'] ?>
-                                <?php endforeach; ?>
+                                
                             </div>
                         </div>
                     </div>
@@ -29,6 +72,30 @@ $bundle = \frontend\assets\AppAsset::register($this);
                     <div class="stats">
                         <i class="ti-reload"></i> Updated now
                     </div>
+                </div>
+            </div>
+        </div>-->
+        <div class="col-lg-3 col-sm-6">
+            <div class="card card-circle-chart" data-background="color"  data-color="blue">
+                <div class="header text-center">
+                    <h5 class="title"><i class="ti-gift"></i> <?= Yii::t('app', 'Upcoming birthdays');?></h5>
+                    <p class="description"></p>
+                </div>
+                <div class="content">
+                    <?php foreach ($birthdays as $birthday): ?>
+                        <?= \yii\helpers\Html::a($birthday['name'], \yii\helpers\Url::to('/user/view/'.$birthday['id'])) ?>: <?= $birthday['birthday'] ?>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-sm-6">
+            <div class="card card-circle-chart" data-background="color"  data-color="blue">
+                <div class="header text-center">
+                    <h5 class="title">Dashboard</h5>
+                    <p class="description">Monthly sales target</p>
+                </div>
+                <div class="content">
+                    <div id="chartDashboard" class="chart-circle" data-percent="70">70%</div>
                 </div>
             </div>
         </div>
@@ -53,56 +120,6 @@ $bundle = \frontend\assets\AppAsset::register($this);
                     <hr />
                     <div class="stats">
                         <i class="ti-calendar"></i> Last day
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-sm-6">
-            <div class="card">
-                <div class="content">
-                    <div class="row">
-                        <div class="col-xs-5">
-                            <div class="icon-big icon-danger text-center">
-                                <i class="ti-pulse"></i>
-                            </div>
-                        </div>
-                        <div class="col-xs-7">
-                            <div class="numbers">
-                                <p>Errors</p>
-                                23
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-footer">
-                    <hr />
-                    <div class="stats">
-                        <i class="ti-timer"></i> In the last hour
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-sm-6">
-            <div class="card">
-                <div class="content">
-                    <div class="row">
-                        <div class="col-xs-5">
-                            <div class="icon-big icon-info text-center">
-                                <i class="ti-twitter-alt"></i>
-                            </div>
-                        </div>
-                        <div class="col-xs-7">
-                            <div class="numbers">
-                                <p>Followers</p>
-                                +45
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-footer">
-                    <hr />
-                    <div class="stats">
-                        <i class="ti-reload"></i> Updated now
                     </div>
                 </div>
             </div>
@@ -634,69 +651,6 @@ $bundle = \frontend\assets\AppAsset::register($this);
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-md-6">
-            <ul class="timeline timeline-simple">
-                <li class="timeline-inverted">
-                    <div class="timeline-badge danger">
-                        <i class="ti-gallery"></i>
-                    </div>
-                    <div class="timeline-panel">
-                        <div class="timeline-heading">
-                            <span class="label label-danger">Mussum ipsum cacilds</span>
-                        </div>
-                        <div class="timeline-body">
-                            <p>Mussum ipsum cacilds, vidis litro abertis. Consetis adipiscings elitis. Pra lá , depois divoltis porris, paradis. Paisis, filhis, espiritis santis. Mé faiz elementum girarzis, nisi eros vermeio, in elementis mé pra quem é amistosis quis leo.
-                                Manduma pindureta quium dia nois paga. Sapien in monti palavris qui num significa nadis i pareci latim. Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis.</p>
-                        </div>
-                        <h6>
-                            <i class="ti-time"></i>
-                            11 hours ago via Twitter
-                        </h6>
-                    </div>
-                </li>
-                <li class="timeline-inverted">
-                    <div class="timeline-badge success">
-                        <i class="ti-check-box"></i>
-                    </div>
-                    <div class="timeline-panel">
-                        <div class="timeline-heading">
-                            <span class="label label-success">Mussum ipsum cacilds</span>
-                        </div>
-                        <div class="timeline-body">
-                            <p>Mussum ipsum cacilds, vidis litro abertis. Consetis adipiscings elitis. Pra lá , depois divoltis porris, paradis. Paisis, filhis, espiritis santis. Mé faiz elementum girarzis, nisi eros vermeio, in elementis mé pra quem é amistosis quis leo.
-                                Manduma pindureta quium dia nois paga. Sapien in monti palavris qui num significa nadis i pareci latim. Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis.</p>
-                        </div>
-                    </div>
-                </li>
-                <li class="timeline-inverted">
-                    <div class="timeline-badge info">
-                        <i class="ti-credit-card"></i>
-                    </div>
-                    <div class="timeline-panel">
-                        <div class="timeline-heading">
-                            <span class="label label-info">Mussum ipsum cacilds</span>
-                        </div>
-                        <div class="timeline-body">
-                            <p>Mussum ipsum cacilds, vidis litro abertis. Consetis adipiscings elitis. Pra lá , depois divoltis porris, paradis. Paisis, filhis, espiritis santis. Mé faiz elementum girarzis, nisi eros vermeio, in elementis mé pra quem é amistosis quis leo.
-                                Manduma pindureta quium dia nois paga. Sapien in monti palavris qui num significa nadis i pareci latim. Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis.</p>
-                            <hr>
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
-                                    <i class="ti-settings"></i> <span class="caret"></span>
-                                </button>
-                                <ul class="dropdown-menu" role="menu">
-                                    <li><a href="#action">Action</a></li>
-                                    <li><a href="#action">Another action</a></li>
-                                    <li><a href="#here">Something else here</a></li>
-                                    <li class="divider"></li>
-                                    <li><a href="#link">Separated link</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-            </ul>
         </div>
     </div>
 </div>

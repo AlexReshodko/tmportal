@@ -13,6 +13,7 @@ class m160815_160846_create_news_table_and_update_events extends Migration
             'text' => $this->text(),
             'date' => $this->date(),
             'thumbnail' => $this->string(),
+            'views' => $this->integer(),
             'published' => $this->integer(2),
             'deleted' => $this->integer(2)
         ]);

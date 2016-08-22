@@ -30,9 +30,10 @@ $bundle = AppAsset::register($this);
                                 <!--<a href="#"><small>@chetfaker</small></a>-->
                             </h4>
                         </div>
-                        <p class="description text-center">
+                        <h4 class="text-center">About me</h4>
+                        <blockquote class="description text-center">
                             <?= $userData->comment ?>
-                        </p>
+                        </blockquote>
                     </div>
                     <hr>
 <!--                    <div class="text-center">

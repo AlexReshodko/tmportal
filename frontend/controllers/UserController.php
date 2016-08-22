@@ -89,6 +89,7 @@ class UserController extends Controller
                     $user->userData->photo = '/'.$model->savedFilePath;
                     $user->userData->save();
                     // file is uploaded successfully
+                    Yii::$app->session->setFlash('success', Yii::t('app', 'Avatar updated'));
                     return true;
                 }else{
                     return false;

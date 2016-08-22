@@ -13,6 +13,7 @@ use Yii;
  * @property string $text
  * @property string $date
  * @property string $thumbnail
+ * @property integer $views
  * @property integer $published
  * @property integer $deleted
  */
@@ -33,7 +34,7 @@ class News extends \yii\db\ActiveRecord
     {
         return [
             [['author_id', 'title'], 'required'],
-            [['author_id', 'published', 'deleted'], 'integer'],
+            [['author_id', 'views', 'published', 'deleted'], 'integer'],
             [['text'], 'string'],
             [['date'], 'safe'],
             [['title', 'thumbnail'], 'string', 'max' => 255],
@@ -52,6 +53,7 @@ class News extends \yii\db\ActiveRecord
             'text' => Yii::t('UserData', 'Text'),
             'date' => Yii::t('UserData', 'Date'),
             'thumbnail' => Yii::t('UserData', 'Thumbnail'),
+            'views' => Yii::t('UserData', 'Views'),
             'published' => Yii::t('UserData', 'Published'),
             'deleted' => Yii::t('UserData', 'Deleted'),
         ];

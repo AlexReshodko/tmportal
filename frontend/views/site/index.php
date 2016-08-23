@@ -11,16 +11,18 @@ $bundle = \frontend\assets\AppAsset::register($this);
             <ul class="news">
                 <li>
                     <div class="news-panel">
-                        <div class="timeline-heading">
-                            <span class="label label-danger">Mussum ipsum cacilds</span>
+                        <div class="news-heading text-center">
+                            <h4 class="header"><a href="#">Mussum ipsum cacilds</a></h4>
+                            <!--<span class="label label-danger">Mussum ipsum cacilds</span>-->
                         </div>
-                        <div class="timeline-body">
+                        <div class="news-body">
                             <p>Mussum ipsum cacilds, vidis litro abertis. Consetis adipiscings elitis. Pra lá , depois divoltis porris, paradis. Paisis, filhis, espiritis santis. Mé faiz elementum girarzis, nisi eros vermeio, in elementis mé pra quem é amistosis quis leo.
                                 Manduma pindureta quium dia nois paga. Sapien in monti palavris qui num significa nadis i pareci latim. Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis.</p>
                         </div>
-                        <h6>
-                            <i class="ti-time"></i>
-                            11 hours ago via Twitter
+                        <h6 class="text-right">
+                            <a href="#">
+                                Read more...
+                            </a>
                         </h6>
                     </div>
                 </li>
@@ -47,6 +49,11 @@ $bundle = \frontend\assets\AppAsset::register($this);
                     </div>
                 </li>
             </ul>
+            <h6 class="text-right">
+                <a href="#">
+                    All news
+                </a>
+            </h6>
         </div>
         <div class="col-md-6">
             <h3 class="title text-center"><?= Yii::t('app', 'Information');?></h3>

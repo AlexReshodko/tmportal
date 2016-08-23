@@ -32,6 +32,10 @@
     margin-bottom: 20px;
     position: relative;
 }
+.news-heading .header{
+    padding: 0;
+    margin: 10px 0 10px 0;
+}
 
 /* Sidebar */
 .sidebar .sidebar-user{

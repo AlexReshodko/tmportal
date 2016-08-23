@@ -106,10 +106,7 @@ class SiteController extends Controller
     }
     
     public function actionOfficeMap(){
-        $users = (new User)->getUsers();
-        return $this->render('officeMap',[
-            'users'=>$users
-        ]);
+        return $this->render('officeMap');
     }
 
     /**

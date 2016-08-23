@@ -42,11 +42,7 @@ class UserController extends Controller
      */
     public function actionProfile()
     {
-        /*if(Yii::$app->request->post()){
-            print_r(Yii::$app->request->post());exit;
-        }*/
-//        $model = new UploadPhotoForm();
-        $user = User::find()->joinWith('userData')->where(['{{user}}.id'=>\Yii::$app->user->id])->one();
+        $user = User::getUser(\Yii::$app->user->id);
         if(!$user->userData){
             $userDataModel = new UserData();
             $userDataModel->user_id = $user->id;
@@ -55,26 +51,16 @@ class UserController extends Controller
                 \yii\helpers\VarDumper::dump($userDataModel);
                 print_r($userDataModel->getErrors());exit;
             }
-            $user = User::find()->joinWith('userData')->where(['{{user}}.id'=>\Yii::$app->user->id])->one();
+            $user = User::getUser(\Yii::$app->user->id);
         }
         if($user->userData->load(Yii::$app->request->post())){
             if($user->userData->validate()){
                 $user->userData->save();
             }
-
-            /*if ($model->imageFile = UploadedFile::getInstance($user->userData, 'photo')) {
-                $model->userID = $user->id;
-                if ($model->upload()) {
-                    $user->userData->photo = '/'.$model->savedFilePath;
-                    $user->userData->save();
-                    // file is uploaded successfully
-                }
-            }*/
         }
         return $this->render('profile', [
             'user' => $user,
             'userData' => $user->userData,
-//            'photoModel' => $model
         ]);
     }
     

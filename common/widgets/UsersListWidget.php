@@ -14,7 +14,7 @@ class UsersListWidget extends \yii\bootstrap\Widget{
     }
     public function run()
     {
-        $users = (new User)->getUsers();
+        $users = User::getUsers();
         return $this->render('usersList',[
             'users'=>$users
         ]);

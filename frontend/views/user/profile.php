@@ -32,7 +32,7 @@ $bundle = AppAsset::register($this);
                         </div>
                         <h4 class="text-center">About me</h4>
                         <blockquote class="description text-center">
-                            <?= $userData->comment ?>
+                            <em><?= $userData->comment ? $userData->comment : '...' ?></em>
                         </blockquote>
                     </div>
                     <hr>

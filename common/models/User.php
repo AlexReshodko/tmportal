@@ -19,6 +19,7 @@ use yii\web\IdentityInterface;
  * @property integer $status
  * @property integer $created_at
  * @property integer $updated_at
+ * @property integer $deleted_at
  * @property string $password write-only password
  * @property integer $role
  */
@@ -199,7 +200,24 @@ class User extends ActiveRecord implements IdentityInterface
         return $this->hasOne(UserData::className(), ['user_id' => 'id']);
     }
     
-    public function getUsers(){
-        return $this->find()->joinWith('userData')->where(['role'=>self::ROLE_USER])->all();
+    /**
+     * Return user with data by ID
+     * @param type $id User ID
+     * @return type
+     * @throws Exception
+     */
+    public static function getUser($id = null){
+        if(!$id){
+            throw new Exception('User ID not specified');
+        }
+        return static::find()->joinWith('userData')->where(['{{user}}.id'=>$id])->one();
+    }
+    
+    /**
+     * Return all users with their data and which have ROLE_USER
+     * @return type
+     */
+    public static function getUsers(){
+        return static::find()->joinWith('userData')->where(['role'=>self::ROLE_USER])->all();
     }
 }

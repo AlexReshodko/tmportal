@@ -7,7 +7,7 @@ use yii\widgets\Pjax;
 /* @var $searchModel common\models\CompanyEventsSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('app', 'Company Events');
+$this->title = Yii::t('backend-title', 'Company Events');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="company-events-index">
@@ -16,11 +16,12 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a(Yii::t('app', 'Create Company Event'), ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(Yii::t('backend-button', 'Create Company Event'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 <?php Pjax::begin(); ?>    <?= GridView::widget([
         'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
+//        'filterModel' => $searchModel,
+        'tableOptions' => ['class'=>'table datatable-basic table-bordered table-striped table-hover'],
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 

@@ -17,7 +17,7 @@ use Yii;
  * @property string $address
  * @property string $phone
  * @property string $skype
-* @property string $hire_date
+ * @property string $hire_date
  * @property string $birthday
  * @property string $comment
  * @property string $photo
@@ -115,7 +115,7 @@ class UserData extends \yii\db\ActiveRecord
     }
 
     public static function getGender($gender = 1){
-        if(!$gender)return 'Not set';
+        if(!$gender)return '(not set)';
         return \Yii::t('app', self::$genderNames[$gender]);
     }
 }

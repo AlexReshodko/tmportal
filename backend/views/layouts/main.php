@@ -305,11 +305,12 @@ $bundle = AppAsset::register($this);
                                         'items' => [
                                             // Important: you need to specify url as 'controller/action',
                                             // not just as 'controller' even if default action is used.
-                                            ['label' => Yii::t('app', 'Go to Frontend'), 'url' => ['/'], 'template' => '<a href="'.Yii::$app->urlManagerFrontend->createUrl('/').'"><i class="icon-arrow-left52"></i><p>{label}</p></a>'],
-                                            ['label' => Yii::t('app', 'Home'), 'url' => ['/'], 'template' => '<a href="{url}"><i class="icon-home4"></i><p>{label}</p></a>'],
-                                            ['label' => 'Translations', 'url' => ['/translations'], 'template' => '<a href="{url}"><i class="icon-sphere"></i><p>{label}</p></a>'],
-                                            ['label' => 'News', 'url' => ['/news/index'], 'template' => '<a href="{url}"><i class="icon-newspaper"></i><p>{label}</p></a>'],
-                                            ['label' => 'Company events', 'url' => ['/events/index'], 'template' => '<a href="{url}"><i class="icon-megaphone"></i><p>{label}</p></a>'],
+                                            ['label' => Yii::t('backendMenu', 'Go to Frontend'), 'url' => ['/'], 'template' => '<a href="'.Yii::$app->urlManagerFrontend->createUrl('/').'"><i class="icon-arrow-left52"></i><p>{label}</p></a>'],
+                                            ['label' => Yii::t('backendMenu', 'Home'), 'url' => ['/'], 'template' => '<a href="{url}"><i class="icon-home4"></i><p>{label}</p></a>'],
+                                            ['label' => Yii::t('backendMenu', 'Translations'), 'url' => ['/translations'], 'template' => '<a href="{url}"><i class="icon-sphere"></i><p>{label}</p></a>'],
+                                            ['label' => Yii::t('backendMenu', 'Users'), 'url' => ['/user/index'], 'template' => '<a href="{url}"><i class="icon-user"></i><p>{label}</p></a>'],
+                                            ['label' => Yii::t('backendMenu', 'News'), 'url' => ['/news/index'], 'template' => '<a href="{url}"><i class="icon-newspaper"></i><p>{label}</p></a>'],
+                                            ['label' => Yii::t('backendMenu', 'Company events'), 'url' => ['/events/index'], 'template' => '<a href="{url}"><i class="icon-megaphone"></i><p>{label}</p></a>'],
                                         ],
                                         'options' => [
                                             'class' => 'nav',

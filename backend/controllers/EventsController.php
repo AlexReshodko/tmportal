@@ -132,6 +132,11 @@ class EventsController extends Controller
         return $this->redirect(['index']);
     }
     
+    /**
+     * Add photos to event
+     * @param type $id
+     * @return type
+     */
     public function actionAddPhotos($id){
         $model = new UploadForm();
         $eventModel = $this->findModel($id);

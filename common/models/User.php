@@ -57,6 +57,8 @@ class User extends ActiveRecord implements IdentityInterface
         return [
             ['status', 'default', 'value' => self::STATUS_ACTIVE],
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_DELETED]],
+            [['username','email'], 'unique'],
+            [['username','email'], 'required'],
         ];
     }
 
@@ -218,5 +220,13 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public static function getUsers(){
         return static::find()->joinWith('userData')->where(['role'=>self::ROLE_USER])->all();
+    }
+    
+    public static function getRoles(){
+        return [
+            self::ROLE_ADMIN => Yii::t('userRole', 'Admin'),
+            self::ROLE_MODER => Yii::t('userRole', 'Moderator'),
+            self::ROLE_USER => Yii::t('userRole', 'User'),
+        ];
     }
 }

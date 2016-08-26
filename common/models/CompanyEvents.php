@@ -19,6 +19,9 @@ use Yii;
  */
 class CompanyEvents extends \yii\db\ActiveRecord
 {
+    const STATUS_ACTIVE = NULL;
+    const STATUS_DELETED = 1;
+
     public $imageFile;
     
     /**
@@ -130,6 +133,6 @@ class CompanyEventsQuery extends \yii\db\ActiveQuery
 {
     public function active($state = 1)
     {
-        return $this->andWhere(['published' => $state]);
+        return $this->andWhere(['published' => $state, 'deleted' => null]);
     }
 }

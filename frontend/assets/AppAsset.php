@@ -40,44 +40,38 @@ class AppAsset extends AssetBundle {
         'js/bootstrap-checkbox-radio-switch-tags.js',
         
         // Circle Percentage-chart
-        'js/jquery.easypiechart.min.js',
+//        'js/jquery.easypiechart.min.js',
         
         // Charts Plugin
-        'js/chartist.min.js',
+//        'js/chartist.min.js',
         
         // Notifications Plugin
-        'js/bootstrap-notify.js',
+//        'js/bootstrap-notify.js',
         
         // Sweet Alert 2 plugin
         'js/sweetalert2.js',
         
         // Vector Map plugin
-        'js/jquery-jvectormap.js',
+//        'js/jquery-jvectormap.js',
         
         // Google Maps Plugin
-        'https://maps.googleapis.com/maps/api/js?key=AIzaSyD3GYtyW1f-uK_elYFRsC-drM2XO1W-6Z8',
+//        'https://maps.googleapis.com/maps/api/js?key=AIzaSyBFEbpuIHsQQeWN0UhmO568TQaVH-oaDps',
         
         // Wizard Plugin
-        'js/jquery.bootstrap.wizard.min.js',
+//        'js/jquery.bootstrap.wizard.min.js',
         
         // Datatable Plugin
-        'js/bootstrap-table.js',
+//        'js/bootstrap-table.js',
         
         // Full Calendar Plugin
-        'js/fullcalendar.min.js',
-        
-        // Datatable Plugin
-        'js/bootstrap-table.js',
-        
-        // Datatable Plugin
-        'js/bootstrap-table.js',
+//        'js/fullcalendar.min.js',
         
         // SNAP SVG for office map
         'js/snap.svg-min.js',
         
         // Paper Dashboard Core javascript and methods for Demo purpose
         'js/paper-dashboard.js',
-        'js/demo.js',
+//        'js/demo.js',
         
         // Application scripts
         'js/main.js',

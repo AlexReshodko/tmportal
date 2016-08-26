@@ -40,6 +40,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             [
                 'label' => 'Hire date',
+                'format' => 'raw',
                 'value' => function($data){
                     return common\helpers\UtilsHelper::getFormattedDate($data->userData->hire_date);
                 }

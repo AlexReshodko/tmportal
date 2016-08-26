@@ -8,6 +8,7 @@ use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use common\models\UserData;
 
 /**
  * UserController implements the CRUD actions for User model.
@@ -64,13 +65,42 @@ class UserController extends Controller
      */
     public function actionCreate()
     {
-        $model = new User();
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        $user = new \frontend\models\SignupForm();
+        
+        $userData = new UserData(['scenario' => UserData::SCENARIO_CREATE]);
+        
+        if (Yii::$app->request->isAjax && $user->load(Yii::$app->request->post()) && $userData->load(Yii::$app->request->post())) {
+            Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+            return \yii\widgets\ActiveForm::validateMultiple([$user, $userData]);
+        }
+//        \common\helpers\Logger::warn($userData->hire_date);
+        if ($user->load(Yii::$app->request->post()) && $userData->load(Yii::$app->request->post())) {
+//            \common\helpers\Logger::warn(Yii::$app->request->post());
+//            \common\helpers\Logger::warn($user);
+            $isValid = $user->validate();
+            $isValid = $userData->validate() && $isValid;
+            if($isValid){
+//                \common\helpers\Logger::warn($user);
+                if ($savedUser = $user->signup()) {
+                    $userData->user_id = $savedUser->id;
+                    if (!$userData->save()) {
+                        \common\helpers\Logger::warn($userData->getErrors());
+                    }
+                } else {
+                    \common\helpers\Logger::warn($user->errors);
+                }
+                return $this->redirect(['view', 'id' => $savedUser->id]);
+            }else{
+                return $this->render('create', [
+                    'user' => $user,
+                    'userData' => $userData,
+                ]);
+                \common\helpers\Logger::warn($user->getErrors(), $userData->getErrors());
+            }
         } else {
             return $this->render('create', [
-                'model' => $model,
+                'user' => $user,
+                'userData' => $userData,
             ]);
         }
     }
@@ -83,13 +113,29 @@ class UserController extends Controller
      */
     public function actionUpdate($id)
     {
-        $model = $this->findModel($id);
+        $user = $this->findModel($id);
+        $userData = $user->userData;
+        $userData->scenario = UserData::SCENARIO_CREATE;
+        if (Yii::$app->request->isAjax && $user->load(Yii::$app->request->post()) && $userData->load(Yii::$app->request->post())) {
+            Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+            return \yii\widgets\ActiveForm::validate($user);
+        }
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($user->load(Yii::$app->request->post()) && $userData->load(Yii::$app->request->post())) {
+            $isValid = $user->validate();
+            $isValid = $userData->validate() && $isValid;
+            if ($isValid) {
+                $user->save(false);
+                $userData->save(false);
+                return $this->redirect(['view', 'id' => $user->id]);
+            }else{
+                return $this->render('update', [
+                    'user' => $user,
+                ]);
+            }
         } else {
             return $this->render('update', [
-                'model' => $model,
+                'user' => $user,
             ]);
         }
     }
@@ -108,7 +154,7 @@ class UserController extends Controller
         }
         $user->status = User::STATUS_DELETED;
         if(!$user->save()){
-            throw new Exception('Wrong user ID');
+            \common\helpers\Logger::warn($user->getErrors());
         }
 
         return $this->redirect(['index']);

@@ -37,11 +37,11 @@ class EventsController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new CompanyEventsSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $dataProvider = new \yii\data\ActiveDataProvider([
+            'query' => CompanyEvents::find()->active(),
+        ]);
 
         return $this->render('index', [
-            'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
     }
@@ -68,7 +68,6 @@ class EventsController extends Controller
         $model = new CompanyEvents();
 
         if ($model->load(Yii::$app->request->post())) {
-                    \common\helpers\Logger::warn(Yii::$app->request->post());
 
             $photo = UploadedFile::getInstance($model, 'thumbnail');
             $hasPhoto = $photo && $photo->tempName;
@@ -107,11 +106,10 @@ class EventsController extends Controller
             }
             if ($model->validate() && $model->save()) {
                 if($hasPhoto)$model->uploadPreview();
-                return $this->redirect(['view', 'id' => $model->id]);
             }else{
-                var_dump($model->getErrors());exit;
+                \common\helpers\Logger::warn($model->getErrors());
             }
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['index']);
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -127,7 +125,14 @@ class EventsController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        $event = $this->findModel($id);
+        if(!$event){
+            throw new NotFoundHttpException('Wrong event ID');
+        }
+        $event->deleted = CompanyEvents::STATUS_DELETED;
+        if(!$event->save()){
+            \common\helpers\Logger::warn($event->getErrors());
+        }
 
         return $this->redirect(['index']);
     }

@@ -12,10 +12,16 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="user-create">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-
-    <?= $this->render('_form', [
-        'model' => $model,
-    ]) ?>
+    <div class="panel panel-flat">
+        <div class="panel-heading">
+            <h1><?= Html::encode($this->title) ?></h1>
+        </div>
+        <div class="panel-body">
+            <?= $this->render('_form', [
+                'user' => $user,
+                'userData' => $userData,
+            ]) ?>
+        </div>
+    </div>
 
 </div>

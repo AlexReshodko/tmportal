@@ -11,7 +11,7 @@ use common\models\LoginForm;
  *
  * @author AlexR
  */
-class LoginWidget extends \yii\bootstrap\Widget{
+class LoginWidget extends \yii\base\Widget{
     
     public function init(){
         parent::init();

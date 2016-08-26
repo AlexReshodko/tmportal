@@ -1,5 +1,5 @@
 <?php
-$this->title = Yii::t('pageTitle', 'Office map');
+$this->title = Yii::t('page-title', 'Office map');
 ?>
 <div class="container-fluid">
     <div class="row">

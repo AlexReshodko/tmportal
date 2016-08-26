@@ -2,6 +2,7 @@
 
 use common\models\User;
 use yii\db\Migration;
+use yii\helpers\Json;
 
 class m130524_201442_init extends Migration
 {
@@ -38,7 +39,7 @@ class m130524_201442_init extends Migration
             'address' => $this->string(),
             'phone' => $this->string(),
             'skype' => $this->string(),
-            'hire_date' => $this->dateTime()->notNull()->defaultExpression('NOW()'),
+            'hire_date' => $this->date(),
             'birthday' => $this->date(),
             'comment' => $this->text(),
             'photo' => $this->string(),
@@ -60,9 +61,14 @@ class m130524_201442_init extends Migration
         $this->createIndex('idx-user_data_office_id', '{{%user_data}}', '[[office_id]]');
         $this->addForeignKey('fk-user_data-office_id', '{{%user_data}}', '[[office_id]]', '{{%office}}', '[[id]]', 'SET NULL', 'CASCADE');
         
-        $this->insert('{{%office}}', ['name'=>'Черкассы','code'=>'CK']);
-        $this->insert('{{%office}}', ['name'=>'Кривой Рог','code'=>'KR']);
-        $this->insert('{{%office}}', ['name'=>'Полтава','code'=>'PL']);
+        $filename = Yii::getAlias('@common').'/data/offices.json';
+        if(file_exists($filename)){
+            $offices = Json::decode(file_get_contents($filename));
+            foreach ($offices as $key => $office) {
+                $this->insert('{{%office}}', ['name'=>$office['name'],'code'=>$office['code']]);
+                echo 'Office "' . $office['name'] . '(' . $office['code'] . ')" added';
+            }
+        }
     }
 
     public function safeDown()

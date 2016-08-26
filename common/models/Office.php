@@ -25,6 +25,11 @@ class Office extends \yii\db\ActiveRecord
     {
         return 'office';
     }
+    
+    public function afterFind() {
+        parent::afterFind();
+        $this->name = \Yii::t('officeName', $this->name);
+    }
 
     /**
      * @inheritdoc
@@ -45,12 +50,12 @@ class Office extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'code' => 'Code',
-            'name' => 'Name',
-            'address' => 'Address',
-            'open_date' => 'Open Date',
-            'photo' => 'Photo',
+            'id' => Yii::t('Office', 'ID'),
+            'code' => Yii::t('Office', 'Code'),
+            'name' => Yii::t('Office', 'Name'),
+            'address' => Yii::t('Office', 'Address'),
+            'open_date' => Yii::t('Office', 'Open Date'),
+            'photo' => Yii::t('Office', 'Photo'),
         ];
     }
 

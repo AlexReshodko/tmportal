@@ -631,6 +631,16 @@ $(function() {
 
 
     // Basic datatable
-    $('.datatable-basic').DataTable();
+    var dtParams = {}
+    if($('.datatable-basic tbody .empty').length) {
+        dtParams = {
+            'columns': [
+                null
+            ]
+        };
+    }
+    $('.datatable-basic').DataTable(dtParams);
 
+    // Switcheru
+    $(".switch").bootstrapSwitch();
 });

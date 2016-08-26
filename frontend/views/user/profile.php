@@ -7,7 +7,7 @@ use common\helpers\UserHelper;
 
 /* @var $this View */
 
-$this->title = Yii::t('pageTitle', 'User Profile');
+$this->title = Yii::t('page-title', 'User Profile');
 $this->params['breadcrumbs'][] = $this->title;
 $bundle = AppAsset::register($this);
 ?>

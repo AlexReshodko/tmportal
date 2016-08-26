@@ -1,35 +1,29 @@
 <?php
 
 use yii\helpers\Html;
-use yii\grid\GridView;
+use common\components\BackendGridView;
 use yii\widgets\Pjax;
 /* @var $this yii\web\View */
-/* @var $searchModel common\models\CompanyEventsSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('backend-title', 'Company Events');
+$this->title = Yii::t('page-title', 'Company Events');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="company-events-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
         <?= Html::a(Yii::t('backend-button', 'Create Company Event'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
-<?php Pjax::begin(); ?>    <?= GridView::widget([
+<?php Pjax::begin(); ?>    <?= BackendGridView::widget([
         'dataProvider' => $dataProvider,
-//        'filterModel' => $searchModel,
         'tableOptions' => ['class'=>'table datatable-basic table-bordered table-striped table-hover'],
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-
             'id',
             'name',
             'description:ntext',
             'date:date',
-//            'thumbnail:image',
             [
                 'label' => 'Thumbnail',
                 'format' => 'raw',
@@ -41,11 +35,15 @@ $this->params['breadcrumbs'][] = $this->title;
                 },
             ],
             [
-                'label' => 'Published',
+                'label' => 'Status',
                 'format' => 'raw',
                 'value' => function($data){
                     $isPub = $data->published;
-                    return '<span class="text-highlight '.($isPub ? 'bg-success':'bg-warning').'">'.($isPub ? 'Published':'Not published').'<span>';
+                    $isDel = $data->deleted;
+                    if($isDel){
+                        return ' <span class="text-highlight bg-warning">Deleted</span>';
+                    }
+                    return '<span class="text-highlight '.($isPub ? 'bg-success':'bg-warning').'">'.($isPub ? 'Published':'Not published').'</span>';
                 }
             ],
             [

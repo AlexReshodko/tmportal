@@ -3,6 +3,7 @@
 namespace frontend\controllers;
 
 use common\models\CompanyEvents;
+use yii\web\NotFoundHttpException;
 
 class GalleryController extends \yii\web\Controller
 {

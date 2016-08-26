@@ -25,15 +25,16 @@ class m160801_102102_add_users extends Migration
                 if ($savedUser = $model->signup()) {
                     $userDataModel = new UserData();
                     $userDataModel->user_id = $savedUser->id;
+                    $officeCode = 'CK';
+                    if(isset($user['data']) && isset($user['data']['office'])){
+                        $officeCode = $user['data']['office'];
+                    }
+                    $userDataModel->office_id = Office::find()->where(['code'=>$officeCode])->one()->id;
                     if(isset($user['data'])){
-                        $data = $user['data'];
-                        $userDataModel->office_id = Office::find()->where(['code'=>$data['office']])->one()->id;
-                        $userDataModel->setAttributes($data);
-                    }else{
-                        $userDataModel->office_id = Office::find()->where(['code'=>'CK'])->one()->id;
+                        $userDataModel->setAttributes($user['data']);
                     }
                     if(!$userDataModel->save()){
-                        throw new Exception($userDataModel->getErrors());
+                        common\helpers\Logger::warn($userDataModel->getErrors());
                     }
                     echo "User '".$user['username']."' added successfully \r\n";
                     array_push($addedUsers, $user['username']);

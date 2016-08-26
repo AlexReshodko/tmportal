@@ -1,5 +1,5 @@
 <?php if (!empty($events)): ?>
-    <?php $this->title = Yii::t('pageTitle', 'Gallery'); ?>
+    <?php $this->title = Yii::t('page-title', 'Gallery'); ?>
     <div class="gallery">
         <div class="row">
             <?php foreach ($events as $event): ?>
@@ -27,5 +27,5 @@
         </div>
     </div>
 <?php else: ?>
-    <h2 class="text-center"><?= Yii::t('emptyData', 'No albums') ?></h2>
+    <h2 class="text-center"><?= Yii::t('empty-data', 'No albums') ?></h2>
 <?php endif; ?>

@@ -29,13 +29,9 @@ use Yii;
  */
 class UserData extends \yii\db\ActiveRecord
 {
-    
+    const SCENARIO_CREATE = 'create';
     const GENDER_MALE = 1;
-    const GENDER_FEMALE = 0;
-    public static $genderNames = [
-        self::GENDER_FEMALE => 'Female',
-        self::GENDER_MALE => 'Male'
-    ];
+    const GENDER_FEMALE = 2;
 
     /**
      * @inheritdoc
@@ -51,7 +47,8 @@ class UserData extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['user_id'], 'required'],
+            [['user_id'], 'required', 'on' => 'default'],
+            [['hire_date','office_id'], 'required', 'on' => 'create'],
             [['user_id', 'office_id', 'position_id', 'gender', 'map_place'], 'integer'],
             [['hire_date', 'birthday'], 'safe'],
             [['comment'], 'string'],
@@ -60,6 +57,12 @@ class UserData extends \yii\db\ActiveRecord
             [['position_id'], 'exist', 'skipOnError' => true, 'targetClass' => JobPositions::className(), 'targetAttribute' => ['position_id' => 'id']],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_id' => 'id']],
         ];
+    }
+    
+    public function scenarios() {
+        $scenarios = parent::scenarios();
+        $scenarios[self::SCENARIO_CREATE] = ['hire_date','office_id'];
+        return $scenarios;
     }
 
     /**
@@ -113,9 +116,23 @@ class UserData extends \yii\db\ActiveRecord
     public function getFullName(){
         return $this->first_name . ' ' . $this->last_name;
     }
-
-    public static function getGender($gender = 1){
-        if(!$gender)return '(not set)';
-        return \Yii::t('app', self::$genderNames[$gender]);
+    
+    public static function getGenders(){
+        return [
+            self::GENDER_FEMALE => Yii::t('app', 'Female'),
+            self::GENDER_MALE => Yii::t('app', 'Male')
+        ];
+    }
+    
+    /**
+     * Get gender name
+     * @param type $gender
+     * @return type
+     */
+    public static function getGender($gender = 1) {
+        if (!$gender) {
+            return \common\helpers\UtilsHelper::getNotSetMsg();
+        }
+        return \Yii::t('app', self::getGenders()[$gender]);
     }
 }

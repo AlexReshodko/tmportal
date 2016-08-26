@@ -8,7 +8,7 @@ use common\models\User;
  *
  * @author AlexR
  */
-class UserWidget extends \yii\bootstrap\Widget{
+class UserWidget extends \yii\base\Widget{
     
     public function init(){
         parent::init();

@@ -12,21 +12,31 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
+        <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
+        <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
 
-    <?= $form->field($model, 'date')->input('date'); ?>
 
-    <?= $form->field($model, 'thumbnail')->fileInput(['maxlength' => true, 'class' => 'file-input']) ?>
+        <?= $form->field($model, 'date')->input('date'); ?>
 
-    <div class="checkbox checkbox-switchery">
-        <?= $form->field($model, 'published')->checkbox(['class' => 'switchery']) ?>
-    </div>
+        <?= $form->field($model, 'thumbnail')->fileInput(['maxlength' => true, 'class' => 'file-input']) ?>
 
-    <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
-    </div>
+        <div class="checkbox checkbox-switch">
+            <?= $form->field($model, 'published')->checkbox([
+                'class' => 'switch',
+                'data-on-color' => "success",
+                'data-off-color' => "danger",
+                'data-on-text' => "Yes",
+                'data-off-text' => "No"
+            ])?>
+        </div>
+<!--            <div class="checkbox checkbox-switchery">
+            <?= $form->field($model, 'published')->checkbox(['class' => 'switchery']) ?>
+        </div>-->
+
+        <div class="form-group text-center">
+            <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success btn-xlg' : 'btn btn-primary btn-xlg']) ?>
+        </div>
 
     <?php ActiveForm::end(); ?>
 
@@ -49,6 +59,5 @@ use yii\widgets\ActiveForm;
             },
             initialCaption: "No file selected"
         });
-        new Switchery($('.switchery').get(0));
     })()
 </script>

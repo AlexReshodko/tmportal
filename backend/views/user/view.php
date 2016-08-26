@@ -47,7 +47,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'last_name',
             [
                 'label' => 'Office',
-                'value' => $model->userData->office->name
+                'value' => $model->userData->office ? $model->userData->office->name : ''
             ],
             [
                 'label' => 'Position',

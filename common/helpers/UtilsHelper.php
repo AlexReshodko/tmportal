@@ -19,4 +19,8 @@ class UtilsHelper {
         $filePath = \Yii::getAlias('@frontend/web').$imageUrl;
         return (file_exists($filePath) && is_file($filePath)) ? $imageUrl : self::$defaultImage; 
     }
+    
+    public static function getNotSetMsg(){
+        return \Yii::t('app', '(not set)');
+    }
 }

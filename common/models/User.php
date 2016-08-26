@@ -202,6 +202,14 @@ class User extends ActiveRecord implements IdentityInterface
     }
     
     /**
+     * Get translated role name
+     * @return string role
+     */
+    public function getRoleName(){
+        return self::getRoles()[$this->role];
+    }
+    
+    /**
      * Return user with data by ID
      * @param type $id User ID
      * @return type
@@ -222,6 +230,10 @@ class User extends ActiveRecord implements IdentityInterface
         return static::find()->joinWith('userData')->where(['role'=>self::ROLE_USER])->all();
     }
     
+    /**
+     * Returns array of all user roles
+     * @return array roles
+     */
     public static function getRoles(){
         return [
             self::ROLE_ADMIN => Yii::t('userRole', 'Admin'),

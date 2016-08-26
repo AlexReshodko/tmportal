@@ -16,25 +16,33 @@ use yii\helpers\ArrayHelper;
         'id' => 'up',
         'enableAjaxValidation' => true
     ]); ?>
-    
+    <?php if(!$userData->isNewRecord && $user->status == User::STATUS_DELETED): ?>
+            <?= $form->field($user, 'status')->checkbox([
+                'class' => 'switch',
+                'data-on-color' => "success",
+                'data-off-color' => "danger",
+                'data-on-text' => "Yes",
+                'data-off-text' => "No",
+                'value' => User::STATUS_ACTIVE,
+                'uncheck' => User::STATUS_DELETED
+            ], false)->label('Restore user')?>
+    <?php endif; ?>
     <div class="row">
         <div class="col-md-4">
             <?= $form->field($user, 'username')->textInput() ?>
+            
             <?php if($userData->isNewRecord):?>
                 <?= $form->field($user, 'password')->textInput() ?>
                 <?= $form->field($user, 'role')->dropDownList(User::getRoles(), ['options' =>[ User::ROLE_USER => ['Selected' => true]]]) ?>
             <?php else: ?>
                 <?= $form->field($user, 'role')->dropDownList(User::getRoles()) ?>
             <?php endif; ?>
+            
             <?= $form->field($user, 'email')->textInput() ?>
+            
             <?= $form->field($userData, 'office_id')->dropDownList(
                 ArrayHelper::map(\common\models\Office::find()->all(), 'id', 'name')
             )->label('Office') ?>
-            <?php if($user->status == User::STATUS_DELETED): ?>
-                <div class="checkbox checkbox-switchery">
-                    <?= $form->field($user, 'status')->checkbox(['class' => 'switchery','uncheck'=>10]) ?>
-                </div>
-            <?php endif; ?>
         </div>
         <div class="col-md-4">
             <?= $form->field($userData, 'first_name')->textInput() ?>

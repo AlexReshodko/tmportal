@@ -50,7 +50,7 @@ class UserData extends \yii\db\ActiveRecord
             [['user_id'], 'required', 'on' => 'default'],
             [['hire_date','office_id'], 'required', 'on' => 'create'],
             [['user_id', 'office_id', 'position_id', 'gender', 'map_place'], 'integer'],
-            [['hire_date', 'birthday'], 'safe'],
+            [['hire_date', 'birthday', 'gender'], 'safe'],
             [['comment'], 'string'],
             [['first_name', 'last_name', 'address', 'phone', 'skype', 'photo'], 'string', 'max' => 255],
             [['office_id'], 'exist', 'skipOnError' => true, 'targetClass' => Office::className(), 'targetAttribute' => ['office_id' => 'id']],
@@ -61,7 +61,18 @@ class UserData extends \yii\db\ActiveRecord
     
     public function scenarios() {
         $scenarios = parent::scenarios();
-        $scenarios[self::SCENARIO_CREATE] = ['hire_date','office_id'];
+        $scenarios[self::SCENARIO_CREATE] = [
+            'office_id',
+            'position_id',
+            'first_name',
+            'last_name',
+            'gender',
+            'address',
+            'phone',
+            'skype',
+            'hire_date',
+            'birthday',
+        ];
         return $scenarios;
     }
 
@@ -129,10 +140,10 @@ class UserData extends \yii\db\ActiveRecord
      * @param type $gender
      * @return type
      */
-    public static function getGender($gender = 1) {
-        if (!$gender) {
+    public function getGenderName() {
+        if (!$this->gender) {
             return \common\helpers\UtilsHelper::getNotSetMsg();
         }
-        return \Yii::t('app', self::getGenders()[$gender]);
+        return \Yii::t('app', self::getGenders()[$this->gender]);
     }
 }

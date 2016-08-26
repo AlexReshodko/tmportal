@@ -39,7 +39,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                     </tr>
                                     <tr>
                                         <td>Gender</td>
-                                        <td><?= common\models\UserData::getGender($userData->gender)?></td>
+                                        <td><?= $userData->getGenderName()?></td>
                                     </tr>
                                     <tr>
                                         <td>Home Address</td>

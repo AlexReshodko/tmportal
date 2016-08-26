@@ -9,6 +9,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use common\models\UserData;
+use common\helpers\Logger;
 
 /**
  * UserController implements the CRUD actions for User model.
@@ -73,21 +74,17 @@ class UserController extends Controller
             Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
             return \yii\widgets\ActiveForm::validateMultiple([$user, $userData]);
         }
-//        \common\helpers\Logger::warn($userData->hire_date);
         if ($user->load(Yii::$app->request->post()) && $userData->load(Yii::$app->request->post())) {
-//            \common\helpers\Logger::warn(Yii::$app->request->post());
-//            \common\helpers\Logger::warn($user);
             $isValid = $user->validate();
             $isValid = $userData->validate() && $isValid;
             if($isValid){
-//                \common\helpers\Logger::warn($user);
                 if ($savedUser = $user->signup()) {
                     $userData->user_id = $savedUser->id;
                     if (!$userData->save()) {
-                        \common\helpers\Logger::warn($userData->getErrors());
+                        Logger::warn($userData->getErrors());
                     }
                 } else {
-                    \common\helpers\Logger::warn($user->errors);
+                    Logger::warn($user->errors);
                 }
                 return $this->redirect(['view', 'id' => $savedUser->id]);
             }else{
@@ -95,7 +92,6 @@ class UserController extends Controller
                     'user' => $user,
                     'userData' => $userData,
                 ]);
-                \common\helpers\Logger::warn($user->getErrors(), $userData->getErrors());
             }
         } else {
             return $this->render('create', [
@@ -154,7 +150,7 @@ class UserController extends Controller
         }
         $user->status = User::STATUS_DELETED;
         if(!$user->save()){
-            \common\helpers\Logger::warn($user->getErrors());
+            Logger::warn($user->getErrors());
         }
 
         return $this->redirect(['index']);

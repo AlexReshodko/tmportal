@@ -641,6 +641,6 @@ $(function() {
     }
     $('.datatable-basic').DataTable(dtParams);
 
-    // Switcheru
+    // Switch
     $(".switch").bootstrapSwitch();
 });

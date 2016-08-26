@@ -25,26 +25,37 @@ $this->params['breadcrumbs'][] = $this->title;
         ]) ?>
     </p>
 
-    <?= ''/*= DetailView::widget([
+    <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
             'id',
             'username',
-            'auth_key',
-            'password_hash',
-            'password_reset_token',
             'email:email',
-            'role',
+            [
+                'label' => 'Role',
+                'value' => $model->getRoleName()
+            ],
             'status',
-            'created_at',
-            'updated_at',
-        ],
-    ]) */?>
-    <?= DetailView::widget([
-        'model' => $model->userData,
-        'attributes' => [
-            'first_name',
-            'last_name',
+            [
+                'label' => 'First name',
+                'value' => $model->userData->first_name
+            ],
+            [
+                'label' => 'Last name',
+                'value' => $model->userData->last_name
+            ],
+            [
+                'label' => 'Address',
+                'value' => $model->userData->address
+            ],
+            [
+                'label' => 'Phone',
+                'value' => $model->userData->phone
+            ],
+            [
+                'label' => 'Skype',
+                'value' => $model->userData->skype
+            ],
             [
                 'label' => 'Office',
                 'value' => $model->userData->office ? $model->userData->office->name : ''
@@ -55,16 +66,22 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             [
                 'label' => 'Gender',
-                'value' => common\models\UserData::getGender($model->userData->gender)
+                'value' => $model->userData->getGenderName()
             ],
-            'address',
-            'phone',
-            'skype',
-            'hire_date:date', 
-            'birthday:date',
-//            'comment',
-            'photo',
-            'map_place', 
+            [
+                'label' => 'Hire date',
+                'format' => 'raw',
+                'value' => common\helpers\UtilsHelper::getFormattedDate($model->userData->hire_date)
+            ],
+            [
+                'label' => 'Birthday',
+                'format' => 'raw',
+                'value' => common\helpers\UtilsHelper::getFormattedDate($model->userData->birthday)
+            ]
+//            'hire_date:date', 
+//            'birthday:date',
+////            'comment',
+//            'photo',
         ],
     ]) ?>
 

@@ -8,17 +8,13 @@ use common\components\BackendGridView;
 $this->title = Yii::t('app', 'Users');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="panel panel-flat">
+<div class="user-index">
 
-    <div class="panel-heading">
         <h1><?= Html::encode($this->title) ?></h1>
-    </div>
 
-    <div class="panel-body">
         <p>
             <?= Html::a(Yii::t('app', 'Create User'), ['create'], ['class' => 'btn btn-success']) ?>
         </p>
-    </div>
     <?= BackendGridView::widget([
         'dataProvider' => $dataProvider,
         'columns' => [

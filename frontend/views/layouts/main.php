@@ -6,8 +6,6 @@ use yii\widgets\Menu;
 use yii\helpers\Url;
 use frontend\assets\AppAsset;
 use yii\helpers\Html;
-use yii\bootstrap\Nav;
-use yii\bootstrap\NavBar;
 use common\widgets\Alert;
 use common\widgets\LanguageWidget;
 
@@ -72,9 +70,9 @@ $bundle = AppAsset::register($this);
             <div class="main-panel">
                 <nav class="navbar navbar-default">
                     <div class="container-fluid">
-                        <div class="navbar-minimize">
+<!--                        <div class="navbar-minimize">
                             <button id="minimizeSidebar" class="btn btn-fill btn-icon"><i class="ti-more-alt"></i></button>
-                        </div>
+                        </div>-->
                         <div class="navbar-header">
                             <button type="button" class="navbar-toggle">
                                 <span class="sr-only">Toggle navigation</span>
@@ -125,12 +123,12 @@ $bundle = AppAsset::register($this);
                     </div>
                 </nav>
 
-
                 <div class="content">
-                    <?= ''//Alert::widget() ?>
-                    <?= $content ?>
+                    <div class="container-fluid">
+                        <?= ''//Alert::widget() ?>
+                        <?= $content ?>
+                    </div>
                 </div>
-
 
                 <footer class="footer">
                     <div class="container-fluid">
@@ -152,13 +150,6 @@ $bundle = AppAsset::register($this);
                 </script>
             </div>
         </div>
-        <!--<footer class="footer">
-            <div class="container">
-                <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
-        
-                <p class="pull-right"><?= Yii::powered() ?></p>
-            </div>
-        </footer>-->
 
 <?php $this->endBody() ?>
     </body>

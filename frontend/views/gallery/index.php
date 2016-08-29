@@ -1,3 +1,6 @@
+<?php 
+$this->title = Yii::t('page-title', 'Gallery');
+?>
 <?php if (!empty($events)): ?>
     <?php $this->title = Yii::t('page-title', 'Gallery'); ?>
     <div class="gallery">

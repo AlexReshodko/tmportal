@@ -23,8 +23,8 @@
 .news > li {
     margin-bottom: 20px;
 }
-.news > li > .news-panel {
-    padding: 20px;
+.news > .news-panel {
+    padding: 20px 20px 10px 20px;
     border-radius: 6px;
     box-shadow: 0 2px 2px rgba(204, 197, 185, 0.5);
     background-color: #FFFFFF;

@@ -1,7 +1,7 @@
 <?php
 
 use yii\helpers\Html;
-
+use common\widgets\CreateUpdateWidget;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\CompanyEvents */
@@ -11,7 +11,7 @@ $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Company Events'), 'u
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="company-events-create">
-    <?= common\widgets\CreateUpdateWidget::widget([
+    <?= CreateUpdateWidget::widget([
         'params' => [
             'title' => Html::encode($this->title),
             'view' => 'events',

@@ -102,7 +102,12 @@ class SiteController extends Controller
                 'id' => $birthday->id
             ]);
         }
-        return $this->render('index', ['birthdays' => $upcomingBd]);
+        $news = \common\models\News::find()->joinWith('author')->limit(3)->all();
+//        \common\helpers\Logger::warn($news);
+        return $this->render('index', [
+            'birthdays' => $upcomingBd,
+            'news' => $news
+        ]);
     }
     
     public function actionOfficeMap(){

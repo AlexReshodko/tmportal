@@ -19,6 +19,10 @@ use Yii;
  */
 class News extends \yii\db\ActiveRecord
 {
+    
+    const STATUS_ACTIVE = NULL;
+    const STATUS_DELETED = 1;
+    
     /**
      * @inheritdoc
      */
@@ -38,6 +42,7 @@ class News extends \yii\db\ActiveRecord
             [['text'], 'string'],
             [['date'], 'safe'],
             [['title', 'thumbnail'], 'string', 'max' => 255],
+            [['author_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['author_id' => 'id']], 
         ];
     }
 
@@ -58,4 +63,12 @@ class News extends \yii\db\ActiveRecord
             'deleted' => Yii::t('UserData', 'Deleted'),
         ];
     }
+    
+    /** 
+    * @return \yii\db\ActiveQuery 
+    */ 
+   public function getAuthor() 
+   { 
+       return $this->hasOne(User::className(), ['id' => 'author_id']); 
+   } 
 }

@@ -12,19 +12,23 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'author_id')->textInput() ?>
-
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'text')->textarea(['rows' => 6]) ?>
 
-    <?= $form->field($model, 'date')->textInput() ?>
+    <?= $form->field($model, 'date')->input('date', ['value'=>date('Y-m-d')]) ?>
 
-    <?= $form->field($model, 'thumbnail')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'thumbnail')->fileInput(['maxlength' => true, 'class' => 'file-input']) ?>
 
-    <?= $form->field($model, 'published')->textInput() ?>
-
-    <?= $form->field($model, 'deleted')->textInput() ?>
+    <div class="checkbox checkbox-switch">
+        <?= $form->field($model, 'published')->checkbox([
+            'class' => 'switch',
+            'data-on-color' => "success",
+            'data-off-color' => "danger",
+            'data-on-text' => "Yes",
+            'data-off-text' => "No"
+        ])?>
+    </div>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

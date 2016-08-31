@@ -56,7 +56,7 @@ use yii\helpers\ArrayHelper;
             <?= $form->field($userData, 'birthday')->input('date') ?>
             <?= $form->field($userData, 'address')->textInput() ?>
             <?= $form->field($userData, 'position_id')->dropDownList(
-                ArrayHelper::map(common\models\JobPositions::find()->all(), 'id', 'name')
+                ArrayHelper::map(common\models\JobPosition::find()->all(), 'id', 'name')
             ) ?>
         </div>
     </div>

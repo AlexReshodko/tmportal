@@ -3,16 +3,16 @@
 use yii\db\Migration;
 
 /**
- * Handles the creation for table `job_positions`.
+ * Handles the creation for table `job_position`.
  */
-class m160801_093622_create_job_positions_table extends Migration
+class m160801_093622_create_job_position_table extends Migration
 {
     /**
      * @inheritdoc
      */
     public function up()
     {
-        $this->createTable('job_positions', [
+        $this->createTable('job_position', [
             'id' => $this->primaryKey(),
             'name' => $this->string()->notNull(),
             'description' => $this->text(),
@@ -20,7 +20,7 @@ class m160801_093622_create_job_positions_table extends Migration
         ]);
         
         $this->createIndex('idx-user_data_position_id', '{{%user_data}}', '[[position_id]]');
-        $this->addForeignKey('fk-user_data-position_id', '{{%user_data}}', '[[position_id]]', '{{%job_positions}}', '[[id]]', 'SET NULL');
+        $this->addForeignKey('fk-user_data-position_id', '{{%user_data}}', '[[position_id]]', '{{%job_position}}', '[[id]]', 'SET NULL');
     }
 
     /**
@@ -30,6 +30,6 @@ class m160801_093622_create_job_positions_table extends Migration
     {
         $this->dropForeignKey('fk-user_data-position_id', '{{%user_data}}');
         $this->dropIndex('idx-user_data_position_id', '{{%user_data}}');
-        $this->dropTable('job_positions');
+        $this->dropTable('job_position');
     }
 }

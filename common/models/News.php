@@ -55,15 +55,15 @@ class News extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => Yii::t('UserData', 'ID'),
-            'author_id' => Yii::t('UserData', 'Author ID'),
-            'title' => Yii::t('UserData', 'Title'),
-            'text_preview' => Yii::t('UserData', 'Text Preview'), 
-            'text' => Yii::t('UserData', 'Text'),
-            'date' => Yii::t('UserData', 'Date'),
-            'views' => Yii::t('UserData', 'Views'),
-            'published' => Yii::t('UserData', 'Published'),
-            'deleted' => Yii::t('UserData', 'Deleted'),
+            'id' => Yii::t('News', 'ID'),
+            'author_id' => Yii::t('News', 'Author ID'),
+            'title' => Yii::t('News', 'Title'),
+            'text_preview' => Yii::t('News', 'Text Preview'), 
+            'text' => Yii::t('News', 'Text'),
+            'date' => Yii::t('News', 'Date'),
+            'views' => Yii::t('News', 'Views'),
+            'published' => Yii::t('News', 'Published'),
+            'deleted' => Yii::t('News', 'Deleted'),
         ];
     }
     

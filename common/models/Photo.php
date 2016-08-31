@@ -5,7 +5,7 @@ namespace common\models;
 use Yii;
 
 /**
- * This is the model class for table "photos".
+ * This is the model class for table "photo".
  *
  * @property integer $id
  * @property integer $event_id
@@ -14,16 +14,16 @@ use Yii;
  * @property string $path
  * @property string $thumb_path
  *
- * @property CompanyEvents $event
+ * @property CompanyEvent $event
  */
-class Photos extends \yii\db\ActiveRecord
+class Photo extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return 'photos';
+        return 'photo';
     }
 
     /**
@@ -35,7 +35,7 @@ class Photos extends \yii\db\ActiveRecord
             [['event_id'], 'integer'],
             [['description'], 'string'],
             [['name', 'path', 'thumb_path'], 'string', 'max' => 255],
-            [['event_id'], 'exist', 'skipOnError' => true, 'targetClass' => CompanyEvents::className(), 'targetAttribute' => ['event_id' => 'id']],
+            [['event_id'], 'exist', 'skipOnError' => true, 'targetClass' => CompanyEvent::className(), 'targetAttribute' => ['event_id' => 'id']],
         ];
     }
 
@@ -45,12 +45,12 @@ class Photos extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => Yii::t('Photos', 'ID'),
-            'event_id' => Yii::t('Photos', 'Event ID'),
-            'name' => Yii::t('Photos', 'Name'),
-            'description' => Yii::t('Photos', 'Description'),
-            'path' => Yii::t('Photos', 'Path'),
-            'thumb_path' => Yii::t('Photos', 'Thumb Path'),
+            'id' => Yii::t('Photo', 'ID'),
+            'event_id' => Yii::t('Photo', 'Event ID'),
+            'name' => Yii::t('Photo', 'Name'),
+            'description' => Yii::t('Photo', 'Description'),
+            'path' => Yii::t('Photo', 'Path'),
+            'thumb_path' => Yii::t('Photo', 'Thumb Path'),
         ];
     }
 
@@ -59,6 +59,6 @@ class Photos extends \yii\db\ActiveRecord
      */
     public function getEvent()
     {
-        return $this->hasOne(CompanyEvents::className(), ['id' => 'event_id']);
+        return $this->hasOne(CompanyEvent::className(), ['id' => 'event_id']);
     }
 }

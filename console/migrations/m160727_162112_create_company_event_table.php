@@ -3,16 +3,16 @@
 use yii\db\Migration;
 
 /**
- * Handles the creation for table `company_events`.
+ * Handles the creation for table `company_event`.
  */
-class m160727_162112_create_company_events_table extends Migration
+class m160727_162112_create_company_event_table extends Migration
 {
     /**
      * @inheritdoc
      */
     public function up()
     {
-        $this->createTable('company_events', [
+        $this->createTable('company_event', [
             'id' => $this->primaryKey(),
             'name' => $this->string()->notNull(),
             'description' => $this->text(),
@@ -26,6 +26,6 @@ class m160727_162112_create_company_events_table extends Migration
      */
     public function down()
     {
-        $this->dropTable('company_events');
+        $this->dropTable('company_event');
     }
 }

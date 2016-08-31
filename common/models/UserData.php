@@ -24,7 +24,7 @@ use Yii;
  * @property integer $map_place
  *
  * @property Office $office
- * @property JobPositions $position
+ * @property JobPosition $position
  * @property User $user
  */
 class UserData extends \yii\db\ActiveRecord
@@ -54,7 +54,7 @@ class UserData extends \yii\db\ActiveRecord
             [['comment'], 'string'],
             [['first_name', 'last_name', 'address', 'phone', 'skype', 'photo'], 'string', 'max' => 255],
             [['office_id'], 'exist', 'skipOnError' => true, 'targetClass' => Office::className(), 'targetAttribute' => ['office_id' => 'id']],
-            [['position_id'], 'exist', 'skipOnError' => true, 'targetClass' => JobPositions::className(), 'targetAttribute' => ['position_id' => 'id']],
+            [['position_id'], 'exist', 'skipOnError' => true, 'targetClass' => JobPosition::className(), 'targetAttribute' => ['position_id' => 'id']],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_id' => 'id']],
         ];
     }
@@ -113,7 +113,7 @@ class UserData extends \yii\db\ActiveRecord
      */
     public function getPosition()
     {
-        return $this->hasOne(JobPositions::className(), ['id' => 'position_id']);
+        return $this->hasOne(JobPosition::className(), ['id' => 'position_id']);
     }
 
     /**

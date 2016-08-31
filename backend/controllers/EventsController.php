@@ -3,8 +3,7 @@
 namespace backend\controllers;
 
 use Yii;
-use common\models\CompanyEvents;
-use common\models\CompanyEventsSearch;
+use common\models\CompanyEvent;
 use common\models\UploadForm;
 use yii\web\UploadedFile;
 use yii\web\Controller;
@@ -12,7 +11,7 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * EventsController implements the CRUD actions for CompanyEvents model.
+ * EventsController implements the CRUD actions for CompanyEvent model.
  */
 class EventsController extends Controller
 {
@@ -32,13 +31,13 @@ class EventsController extends Controller
     }
 
     /**
-     * Lists all CompanyEvents models.
+     * Lists all CompanyEvent models.
      * @return mixed
      */
     public function actionIndex()
     {
         $dataProvider = new \yii\data\ActiveDataProvider([
-            'query' => CompanyEvents::find()->active(),
+            'query' => CompanyEvent::find()->active(),
         ]);
 
         return $this->render('index', [
@@ -47,7 +46,7 @@ class EventsController extends Controller
     }
 
     /**
-     * Displays a single CompanyEvents model.
+     * Displays a single CompanyEvent model.
      * @param integer $id
      * @return mixed
      */
@@ -59,13 +58,13 @@ class EventsController extends Controller
     }
 
     /**
-     * Creates a new CompanyEvents model.
+     * Creates a new CompanyEvent model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new CompanyEvents();
+        $model = new CompanyEvent();
 
         if ($model->load(Yii::$app->request->post())) {
 
@@ -89,7 +88,7 @@ class EventsController extends Controller
     }
 
     /**
-     * Updates an existing CompanyEvents model.
+     * Updates an existing CompanyEvent model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -118,7 +117,7 @@ class EventsController extends Controller
     }
 
     /**
-     * Deletes an existing CompanyEvents model.
+     * Deletes an existing CompanyEvent model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -129,7 +128,7 @@ class EventsController extends Controller
         if(!$event){
             throw new NotFoundHttpException('Wrong event ID');
         }
-        $event->deleted = CompanyEvents::STATUS_DELETED;
+        $event->deleted = CompanyEvent::STATUS_DELETED;
         if(!$event->save()){
             \common\helpers\Logger::warn($event->getErrors());
         }
@@ -158,15 +157,15 @@ class EventsController extends Controller
     }
 
     /**
-     * Finds the CompanyEvents model based on its primary key value.
+     * Finds the CompanyEvent model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return CompanyEvents the loaded model
+     * @return CompanyEvent the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = CompanyEvents::findOne($id)) !== null) {
+        if (($model = CompanyEvent::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

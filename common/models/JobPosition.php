@@ -5,7 +5,7 @@ namespace common\models;
 use Yii;
 
 /**
- * This is the model class for table "job_positions".
+ * This is the model class for table "job_position".
  *
  * @property integer $id
  * @property string $name
@@ -14,14 +14,14 @@ use Yii;
  *
  * @property UserData[] $userDatas
  */
-class JobPositions extends \yii\db\ActiveRecord
+class JobPosition extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return 'job_positions';
+        return 'job_position';
     }
 
     /**
@@ -42,10 +42,10 @@ class JobPositions extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => Yii::t('UserData', 'ID'),
-            'name' => Yii::t('UserData', 'Name'),
-            'description' => Yii::t('UserData', 'Description'),
-            'icon_path' => Yii::t('UserData', 'Icon Path'),
+            'id' => Yii::t('JobPosition', 'ID'),
+            'name' => Yii::t('JobPosition', 'Name'),
+            'description' => Yii::t('JobPosition', 'Description'),
+            'icon_path' => Yii::t('JobPosition', 'Icon Path'),
         ];
     }
 

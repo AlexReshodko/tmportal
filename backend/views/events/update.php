@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
-/* @var $model common\models\CompanyEvents */
+/* @var $model common\models\CompanyEvent */
 
 $this->title = Yii::t('app', 'Update {modelClass}: ', [
     'modelClass' => 'Company Events',

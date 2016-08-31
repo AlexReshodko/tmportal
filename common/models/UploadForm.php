@@ -3,7 +3,7 @@ namespace common\models;
 
 use yii\base\Model;
 use yii\web\UploadedFile;
-use common\models\CompanyEvents;
+use common\models\CompanyEvent;
 
 class UploadForm extends Model
 {
@@ -24,7 +24,7 @@ class UploadForm extends Model
     public function upload()
     {
         if ($this->validate()) {
-            $eventsDir = CompanyEvents::getEventsDirPath();
+            $eventsDir = CompanyEvent::getEventsDirPath();
             if(!is_dir($eventsDir . $this->eventID . '/photos/thumb/')){
                 mkdir($eventsDir . $this->eventID . '/photos/thumb/', 0777, true);
             }
@@ -38,12 +38,12 @@ class UploadForm extends Model
                         \Yii::$app->params['thumbnail']['height']
                     )->save($eventsDir . $this->eventID . '/photos/thumb/' . $this->saveFilename);
                 
-                    $photoModel = new \common\models\Photos();
+                    $photoModel = new \common\models\Photo();
                     $photoModel->setAttributes([
                         'event_id' => $this->eventID,
                         'name' => $this->saveFilename,
-                        'path' => CompanyEvents::getEventPhotosRelPath($this->eventID).$this->saveFilename,
-                        'thumb_path' => CompanyEvents::getEventPhotosRelPath($this->eventID, true).$this->saveFilename
+                        'path' => CompanyEvent::getEventPhotosRelPath($this->eventID).$this->saveFilename,
+                        'thumb_path' => CompanyEvent::getEventPhotosRelPath($this->eventID, true).$this->saveFilename
                     ]);
                     if(!$photoModel->save()){
                         echo $photoModel->getErrors();

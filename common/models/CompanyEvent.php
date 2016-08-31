@@ -6,7 +6,7 @@ use Yii;
 use common\helpers\UtilsHelper;
 
 /**
- * This is the model class for table "company_events".
+ * This is the model class for table "company_event".
  *
  * @property integer $id
  * @property string $name
@@ -16,9 +16,9 @@ use common\helpers\UtilsHelper;
  * @property integer $published 
  * @property integer $deleted 
  *
- * @property Photos[] $photos
+ * @property Photo[] $photos
  */
-class CompanyEvents extends \yii\db\ActiveRecord
+class CompanyEvent extends \yii\db\ActiveRecord
 {
     const STATUS_ACTIVE = NULL;
     const STATUS_DELETED = 1;
@@ -30,7 +30,7 @@ class CompanyEvents extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'company_events';
+        return 'company_event';
     }
     
     public function scenarios()
@@ -61,19 +61,19 @@ class CompanyEvents extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => Yii::t('CompanyEvents', 'ID'),
-            'name' => Yii::t('CompanyEvents', 'Name'),
-            'description' => Yii::t('CompanyEvents', 'Description'),
-            'date' => Yii::t('CompanyEvents', 'Date'),
-            'thumbnail' => Yii::t('CompanyEvents', 'Thumbnail'),
-            'published' => Yii::t('UserData', 'Published'),
-            'deleted' => Yii::t('UserData', 'Deleted'),
+            'id' => Yii::t('CompanyEvent', 'ID'),
+            'name' => Yii::t('CompanyEvent', 'Name'),
+            'description' => Yii::t('CompanyEvent', 'Description'),
+            'date' => Yii::t('CompanyEvent', 'Date'),
+            'thumbnail' => Yii::t('CompanyEvent', 'Thumbnail'),
+            'published' => Yii::t('CompanyEvent', 'Published'),
+            'deleted' => Yii::t('CompanyEvent', 'Deleted'),
         ];
     }
     
     public static function find()
     {
-        return new CompanyEventsQuery(get_called_class());
+        return new CompanyEventQuery(get_called_class());
     }
 
     /**
@@ -81,7 +81,7 @@ class CompanyEvents extends \yii\db\ActiveRecord
      */
     public function getPhotos()
     {
-        return $this->hasMany(Photos::className(), ['event_id' => 'id']);
+        return $this->hasMany(Photo::className(), ['event_id' => 'id']);
     }
     
     public static function getEventsDirPath(){
@@ -130,7 +130,7 @@ class CompanyEvents extends \yii\db\ActiveRecord
     }
 }
 
-class CompanyEventsQuery extends \yii\db\ActiveQuery
+class CompanyEventQuery extends \yii\db\ActiveQuery
 {
     public function active()
     {

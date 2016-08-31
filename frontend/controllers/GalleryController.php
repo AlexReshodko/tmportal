@@ -2,7 +2,7 @@
 
 namespace frontend\controllers;
 
-use common\models\CompanyEvents;
+use common\models\CompanyEvent;
 use yii\web\NotFoundHttpException;
 
 class GalleryController extends \yii\web\Controller
@@ -14,7 +14,7 @@ class GalleryController extends \yii\web\Controller
 
     public function actionIndex()
     {
-        $events = CompanyEvents::find()->active()->innerJoinWith('photos')->all();
+        $events = CompanyEvent::find()->active()->innerJoinWith('photos')->all();
         return $this->render('index',[
             'events' => $events
         ]);
@@ -40,7 +40,7 @@ class GalleryController extends \yii\web\Controller
     
     protected function findModel($id)
     {
-        if (($model = CompanyEvents::findOne($id)) !== null) {
+        if (($model = CompanyEvent::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

@@ -42,5 +42,9 @@ $bundle = \frontend\assets\AppAsset::register($this);
     </div>
 </div>
 <div class="row">
-    fsdf
+    <div class="card">
+        <div class="content">
+            fsdf
+        </div>
+    </div>
 </div>

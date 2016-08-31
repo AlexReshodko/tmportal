@@ -19,16 +19,16 @@ class m160815_160846_create_news_table_and_update_events extends Migration
         ]);
         $this->createIndex('idx-news-author_id', 'news', '[[author_id]]');
         $this->addForeignKey('fk-news-author_id', 'news', '[[author_id]]', 'user', '[[id]]', 'CASCADE', 'CASCADE');
-        $this->addColumn('company_events', 'published', $this->integer(2)->defaultValue(0));
-        $this->addColumn('company_events', 'deleted', $this->integer(2)->defaultValue(0));
+        $this->addColumn('company_event', 'published', $this->integer(2)->defaultValue(0));
+        $this->addColumn('company_event', 'deleted', $this->integer(2)->defaultValue(0));
     }
 
     public function down()
     {
         $this->dropForeignKey('fk-news-author_id', 'news');
         $this->dropIndex('idx-news-author_id', 'news');
-        $this->dropColumn('company_events', 'published');
-        $this->dropColumn('company_events', 'deleted');
+        $this->dropColumn('company_event', 'published');
+        $this->dropColumn('company_event', 'deleted');
         $this->dropTable('news');
     }
 

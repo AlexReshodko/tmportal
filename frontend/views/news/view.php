@@ -13,7 +13,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <h1 class="text-center"><?= Html::encode($this->title) ?></h1>
 
-    <div class="card full-page">
+    <div class="card">
         <div class="content">
             <?= $model->text ?>
         </div>

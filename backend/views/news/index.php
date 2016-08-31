@@ -20,7 +20,6 @@ $this->params['breadcrumbs'][] = $this->title;
     </p>
     <?= BackendGridView::widget([
         'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
@@ -30,7 +29,6 @@ $this->params['breadcrumbs'][] = $this->title;
             'text:raw',
             'date',
             'views',
-            // 'thumbnail',
             // 'published',
             // 'deleted',
 

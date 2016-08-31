@@ -37,9 +37,13 @@ class NewsController extends Controller
     {
         $dataProvider = new ActiveDataProvider([
             'query' => News::find(),
+            'pagination' => [
+                'pageSize' => 10,
+            ]
         ]);
 
         return $this->render('index', [
+            'news' => News::find()->active()->all(),
             'dataProvider' => $dataProvider,
         ]);
     }

@@ -3,6 +3,7 @@
 namespace common\models;
 
 use Yii;
+use common\helpers\UtilsHelper;
 
 /**
  * This is the model class for table "company_events".
@@ -131,8 +132,8 @@ class CompanyEvents extends \yii\db\ActiveRecord
 
 class CompanyEventsQuery extends \yii\db\ActiveQuery
 {
-    public function active($state = 1)
+    public function active()
     {
-        return $this->andWhere(['published' => $state, 'deleted' => null]);
+        return $this->andWhere(['published' => UtilsHelper::STATUS_PUBLISHED, 'deleted' => UtilsHelper::STATUS_NOT_DELETED]);
     }
 }

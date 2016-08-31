@@ -38,3 +38,7 @@ var NotificationManager = {
         });
     }
 }
+
+var MainApp = {
+    afterAjaxListViewUpdate: function(){}
+}

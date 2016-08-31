@@ -14,7 +14,7 @@ namespace common\components;
  */
 class BackendGridView extends \yii\grid\GridView{
     
-    public $tableOptions = ['class'=>'table datatable-basic table-bordered table-hover'];
+    public $tableOptions = ['class'=>'table datatable-basic table-bordered table-striped table-hover'];
     
     public $layout = '{items}';
     

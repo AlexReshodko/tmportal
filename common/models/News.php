@@ -3,6 +3,7 @@
 namespace common\models;
 
 use Yii;
+use common\helpers\UtilsHelper;
 
 /**
  * This is the model class for table "news".
@@ -10,12 +11,14 @@ use Yii;
  * @property integer $id
  * @property integer $author_id
  * @property string $title
+ * @property string $text_preview 
  * @property string $text
  * @property string $date
- * @property string $thumbnail
  * @property integer $views
  * @property integer $published
  * @property integer $deleted
+ * 
+ * @property User $author 
  */
 class News extends \yii\db\ActiveRecord
 {
@@ -41,8 +44,8 @@ class News extends \yii\db\ActiveRecord
             [['author_id', 'views', 'published', 'deleted'], 'integer'],
             [['text'], 'string'],
             [['date'], 'safe'],
-            [['title', 'thumbnail'], 'string', 'max' => 255],
-            [['author_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['author_id' => 'id']], 
+            [['title', 'text_preview'], 'string', 'max' => 255],
+            [['author_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['author_id' => 'id']],
         ];
     }
 
@@ -55,13 +58,18 @@ class News extends \yii\db\ActiveRecord
             'id' => Yii::t('UserData', 'ID'),
             'author_id' => Yii::t('UserData', 'Author ID'),
             'title' => Yii::t('UserData', 'Title'),
+            'text_preview' => Yii::t('UserData', 'Text Preview'), 
             'text' => Yii::t('UserData', 'Text'),
             'date' => Yii::t('UserData', 'Date'),
-            'thumbnail' => Yii::t('UserData', 'Thumbnail'),
             'views' => Yii::t('UserData', 'Views'),
             'published' => Yii::t('UserData', 'Published'),
             'deleted' => Yii::t('UserData', 'Deleted'),
         ];
+    }
+    
+    public static function find()
+    {
+        return new NewsQuery(get_called_class());
     }
     
     /** 
@@ -70,5 +78,13 @@ class News extends \yii\db\ActiveRecord
    public function getAuthor() 
    { 
        return $this->hasOne(User::className(), ['id' => 'author_id']); 
-   } 
+   }
+}
+
+class NewsQuery extends \yii\db\ActiveQuery
+{
+    public function active()
+    {
+        return $this->andWhere(['published' => UtilsHelper::STATUS_PUBLISHED, 'deleted' => UtilsHelper::STATUS_NOT_DELETED]);
+    }
 }

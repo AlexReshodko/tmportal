@@ -2,6 +2,8 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use dosamigos\ckeditor\CKEditor;
+
 
 /* @var $this yii\web\View */
 /* @var $model common\models\News */
@@ -14,11 +16,22 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'text')->textarea(['rows' => 6]) ?>
+    <?= $form->field($model, 'text_preview')->widget(CKEditor::className(), [
+        'options' => [
+            'rows' => 1,
+        ],
+        'preset' => 'basic',
+    ]) ?>
+    
+    <?= $form->field($model, 'text')->widget(CKEditor::className(), [
+        'options' => [
+            'rows' => 6,
+        ],
+        'preset' => 'standard',
+    ]) ?>
 
     <?= $form->field($model, 'date')->input('date', ['value'=>date('Y-m-d')]) ?>
 
-    <?= $form->field($model, 'thumbnail')->fileInput(['maxlength' => true, 'class' => 'file-input']) ?>
 
     <div class="checkbox checkbox-switch">
         <?= $form->field($model, 'published')->checkbox([

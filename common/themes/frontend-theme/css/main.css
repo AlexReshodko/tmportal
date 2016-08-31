@@ -16,6 +16,8 @@
     max-width: 100%;
     height: auto;
 }
+
+/* News */
 .news {
     padding-left: 0;
     list-style: none;
@@ -32,9 +34,15 @@
     margin-bottom: 20px;
     position: relative;
 }
+.news-heading{
+    padding: 10px 0;
+}
 .news-heading .header{
     padding: 0;
     margin: 10px 0 10px 0;
+}
+#infscr-loading {
+    text-align: center;
 }
 
 /* Sidebar */
@@ -123,6 +131,9 @@ a.gallery-item {
 }
 
 /* Other */
+.card{
+    list-style: none;
+}
 .card.card-header{
     margin-bottom: 0;
     border-radius: 6px 6px 0 0;

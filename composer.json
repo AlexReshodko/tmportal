@@ -12,7 +12,8 @@
         "irc": "irc://irc.freenode.net/yii",
         "source": "https://github.com/yiisoft/yii2"
     },
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "require": {
         "php": ">=5.4.0",
         "yiisoft/yii2": ">=2.0.6",
@@ -21,7 +22,10 @@
         "zelenin/yii2-i18n-module": "dev-master",
         "codemix/yii2-localeurls": "dev-master",
         "yurkinx/yii2-image": "dev-master",
-        "2amigos/yii2-gallery-widget": "~1.0"
+        "2amigos/yii2-gallery-widget": "~1.0",
+        "2amigos/yii2-ckeditor-widget" : "~1.0",
+        "iutbay/yii2-kcfinder" : "dev-master",
+        "nirvana-msu/yii2-infinite-scroll": "1.0.*@dev"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",

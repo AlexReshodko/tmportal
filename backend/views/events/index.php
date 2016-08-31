@@ -18,7 +18,6 @@ $this->params['breadcrumbs'][] = $this->title;
     </p>
 <?php Pjax::begin(); ?>    <?= BackendGridView::widget([
         'dataProvider' => $dataProvider,
-        'tableOptions' => ['class'=>'table datatable-basic table-bordered table-striped table-hover'],
         'columns' => [
             'id',
             'name',

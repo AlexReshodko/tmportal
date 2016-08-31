@@ -8,7 +8,7 @@ use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use common\models\LoginForm;
-use common\models\User;
+use common\models\News;
 use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
@@ -102,11 +102,17 @@ class SiteController extends Controller
                 'id' => $birthday->id
             ]);
         }
-        $news = \common\models\News::find()->joinWith('author')->limit(3)->all();
-//        \common\helpers\Logger::warn($news);
+        $newsDataProvider = new \yii\data\ActiveDataProvider([
+            'query' => News::find()->with('author')->orderBy('date DESC')->active(),
+            'totalCount' => 3,
+            'pagination' => [
+                'pageSize' => 3
+            ]
+        ]);
+//        \common\helpers\Logger::warn($newsDataProvider->getModels());
         return $this->render('index', [
             'birthdays' => $upcomingBd,
-            'news' => $news
+            'newsDataProvider' => $newsDataProvider
         ]);
     }
     

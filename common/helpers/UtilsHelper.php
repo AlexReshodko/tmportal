@@ -9,6 +9,12 @@ namespace common\helpers;
  */
 class UtilsHelper {
     
+    const STATUS_PUBLISHED = 1;
+    const STATUS_NOT_PUBLISHED = 0;
+    
+    const STATUS_DELETED = 1;
+    const STATUS_NOT_DELETED = 0;
+
     public static $defaultImage = '/images/placeholder-s.jpg';
     
     public static function getFormattedDate($date = null){

@@ -16,7 +16,8 @@ class AppAsset extends AssetBundle
         'css/minified/bootstrap.min.css',
         'css/minified/core.min.css',
         'css/minified/components.min.css',
-        'css/minified/colors.min.css'
+        'css/minified/colors.min.css',
+        'css/main.css'
     ];
     public $js = [
         'js/plugins/loaders/pace.min.js',

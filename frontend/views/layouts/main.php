@@ -5,11 +5,13 @@
 use yii\widgets\Menu;
 use yii\helpers\Url;
 use frontend\assets\AppAsset;
+use common\assets\NotificationAsset;
 use yii\helpers\Html;
 use common\widgets\Alert;
 use common\widgets\LanguageWidget;
 
 $bundle = AppAsset::register($this);
+NotificationAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>

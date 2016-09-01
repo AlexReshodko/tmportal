@@ -232,8 +232,8 @@
 			this.$ele.find('[data-notify="dismiss"]').css({
 				position: 'absolute',
 				right: '10px',
-				top: '20px',
-				marginTop: '-6px',
+				top: '50%',
+				marginTop: '-11px',
 				zIndex: this.settings.z_index + 2
 			});
 		},
@@ -402,3 +402,28 @@
 	};
 
 }));
+var NotificationManager = {
+    TYPE_INFO: 'info',
+    TYPE_SUCCESS: 'success',
+    TYPE_WARNING: 'warning',
+    TYPE_ERROR: 'danger',
+    showMessage: function(type, message){
+        type = type || NotificationManager.TYPE_INFO;
+    	$.notify({
+        	icon: "ti-info",
+        	message: message
+        },{
+            type: type,
+            delay: 2000,
+            placement: {
+                from: 'top',
+                align: 'center'
+            }
+        });
+	},
+    showMessages: function (messages) {
+        $.each(messages, function (type, message) {
+            NotificationManager.showMessage(type, message);
+        });
+    }
+}

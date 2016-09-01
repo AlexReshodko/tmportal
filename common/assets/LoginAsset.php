@@ -20,10 +20,8 @@ class LoginAsset extends AssetBundle {
     ];
     public $js = [
         'js/plugins/loaders/pace.min.js',
-        'js/core/libraries/jquery.min.js',
         'js/core/libraries/bootstrap.min.js',
         'js/plugins/loaders/blockui.min.js',
-        'js/core/app.js',
     ];
     public $jsOptions = [
         'position' => \yii\web\View::POS_HEAD

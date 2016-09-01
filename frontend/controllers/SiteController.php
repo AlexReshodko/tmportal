@@ -37,7 +37,7 @@ class SiteController extends Controller
 //                        'roles' => ['?'],
 //                    ],
                     [
-                        'actions' => ['login'],
+                        'actions' => ['login','request-password-reset','reset-password'],
                         'allow' => true,
                         'roles' => ['?']
                     ],

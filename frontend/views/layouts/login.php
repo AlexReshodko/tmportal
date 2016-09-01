@@ -3,9 +3,12 @@
 /* @var $content string */
 
 use yii\helpers\Html;
-//use common\assets\LoginAsset;
+use common\widgets\Alert;
+use common\assets\LoginAsset;
+use common\assets\NotificationAsset;
 
-//$bundle = LoginAsset::register($this);
+LoginAsset::register($this);
+NotificationAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -17,12 +20,76 @@ use yii\helpers\Html;
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
+    <?php $this->registerJs("NotificationManager.showMessages(".\yii\helpers\Json::encode(Yii::$app->session->getAllFlashes()).");", yii\web\View::POS_END, 'my-options');?>
 </head>
 <body>
 <?php $this->beginBody() ?>
+    <!-- Page container -->
+    <div class="page-container login-container">
+        <!-- Page content -->
+        <div class="page-content">
+            <!-- Main content -->
+            <div class="content-wrapper">
+                <!-- Content area -->
+                <div class="content">
+                    <div class="panel panel-body login-form">
+                        <?= $content ?>
+                    </div>
+                    <div class="footer text-muted">
+                        &copy; <?= date('Y') ?>. <a href="http://testmatick.com">TestMatick</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function containerHeight() {
+            var availableHeight = $(window).height() - $('body > .navbar').outerHeight() - $('body > .navbar + .navbar').outerHeight() - $('body > .navbar + .navbar-collapse').outerHeight();
 
-<?=$content?>
+            $('.page-container').attr('style', 'min-height:' + availableHeight + 'px');
+        }
+        // Mobile sidebar setup
+        // -------------------------
 
+        $(window).on('resize', function() {
+            setTimeout(function() {
+                containerHeight();
+
+                if($(window).width() <= 768) {
+
+                    // Add mini sidebar indicator
+                    $('body').addClass('sidebar-xs-indicator');
+
+                    // Place right sidebar before content
+                    $('.sidebar-opposite').insertBefore('.content-wrapper');
+
+                    // Place detached sidebar before content
+                    $('.sidebar-detached').insertBefore('.content-wrapper');
+                }
+                else {
+
+                    // Remove mini sidebar indicator
+                    $('body').removeClass('sidebar-xs-indicator');
+
+                    // Revert back right sidebar
+                    $('.sidebar-opposite').insertAfter('.content-wrapper');
+
+                    // Remove all mobile sidebar classes
+                    $('body').removeClass('sidebar-mobile-main sidebar-mobile-secondary sidebar-mobile-detached sidebar-mobile-opposite');
+
+                    // Revert left detached position
+                    if($('body').hasClass('has-detached-left')) {
+                        $('.sidebar-detached').insertBefore('.container-detached');
+                    }
+
+                    // Revert right detached position
+                    else if($('body').hasClass('has-detached-right')) {
+                        $('.sidebar-detached').insertAfter('.container-detached');
+                    }
+                }
+            }, 100);
+        }).resize();
+    </script>
 <?php $this->endBody() ?>
 </body>
 </html>

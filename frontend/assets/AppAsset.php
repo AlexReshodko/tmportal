@@ -49,7 +49,7 @@ class AppAsset extends AssetBundle {
 //        'js/bootstrap-notify.js',
         
         // Sweet Alert 2 plugin
-        'js/sweetalert2.js',
+//        'js/sweetalert2.js',
         
         // Vector Map plugin
 //        'js/jquery-jvectormap.js',

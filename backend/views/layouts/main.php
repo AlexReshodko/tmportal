@@ -11,8 +11,10 @@ use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use backend\assets\AppAsset;
 use common\widgets\Alert;
+use common\assets\NotificationAsset;
 
 $bundle = AppAsset::register($this);
+NotificationAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>

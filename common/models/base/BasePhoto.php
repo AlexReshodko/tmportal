@@ -1,6 +1,6 @@
 <?php
 
-namespace common\models;
+namespace common\models\base;
 
 use Yii;
 
@@ -16,7 +16,7 @@ use Yii;
  *
  * @property CompanyEvent $event
  */
-class Photo extends base\BasePhoto
+class BasePhoto extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

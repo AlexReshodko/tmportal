@@ -77,7 +77,7 @@ OMap = {
             delete OMap.tooltips[this.attr('id')];
         }
     }
-}
+};
 OMap.init(function(){
     $.each(OMap.svg.selectAll(".user"), function(){
         this.hover(OMap.showTooltip,OMap.hideTooltip);

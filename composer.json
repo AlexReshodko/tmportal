@@ -25,7 +25,8 @@
         "2amigos/yii2-gallery-widget": "~1.0",
         "2amigos/yii2-ckeditor-widget" : "~1.0",
         "iutbay/yii2-kcfinder" : "dev-master",
-        "nirvana-msu/yii2-infinite-scroll": "1.0.*@dev"
+        "nirvana-msu/yii2-infinite-scroll": "1.0.*@dev",
+        "wbraganca/yii2-dynamicform": "*"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",

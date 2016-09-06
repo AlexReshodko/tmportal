@@ -1,6 +1,6 @@
 <?php
 
-namespace common\models;
+namespace common\models\base;
 
 use Yii;
 
@@ -16,7 +16,7 @@ use Yii;
  *
  * @property UserData[] $userDatas
  */
-class Office extends base\BaseOffice
+class BaseOffice extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc
@@ -24,11 +24,6 @@ class Office extends base\BaseOffice
     public static function tableName()
     {
         return 'office';
-    }
-    
-    public function afterFind() {
-        parent::afterFind();
-        $this->name = \Yii::t('officeName', $this->name);
     }
 
     /**

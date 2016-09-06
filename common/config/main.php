@@ -54,6 +54,14 @@ return [
     'modules' => [
         'gii' => [
             'class' => 'yii\gii\Module',
+            'generators' => [
+                'mymodel' => [
+                    'class' => 'common\generators\model\Generator',
+                    'templates' => [
+                        'base' => '@common/generators/model/default',
+                    ]
+                ]
+            ],
         ],
     ],
 ];

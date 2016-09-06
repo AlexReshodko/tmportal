@@ -1,6 +1,6 @@
 <?php
 
-namespace common\models;
+namespace common\models\base;
 
 use Yii;
 
@@ -14,7 +14,7 @@ use Yii;
  *
  * @property UserData[] $userDatas
  */
-class JobPosition extends base\BaseJobPosition
+class BaseJobPosition extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

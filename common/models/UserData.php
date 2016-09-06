@@ -27,19 +27,11 @@ use Yii;
  * @property JobPosition $position
  * @property User $user
  */
-class UserData extends \yii\db\ActiveRecord
+class UserData extends base\BaseUserData
 {
     const SCENARIO_CREATE = 'create';
     const GENDER_MALE = 1;
     const GENDER_FEMALE = 2;
-
-    /**
-     * @inheritdoc
-     */
-    public static function tableName()
-    {
-        return 'user_data';
-    }
 
     /**
      * @inheritdoc
@@ -74,54 +66,6 @@ class UserData extends \yii\db\ActiveRecord
             'birthday',
         ];
         return $scenarios;
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function attributeLabels()
-    {
-        return [
-            'id' => Yii::t('UserData', 'ID'),
-            'user_id' => Yii::t('UserData', 'User ID'),
-            'office_id' => Yii::t('UserData', 'Office ID'),
-            'position_id' => Yii::t('UserData', 'Position ID'),
-            'first_name' => Yii::t('UserData', 'First Name'),
-            'last_name' => Yii::t('UserData', 'Last Name'),
-            'gender' => Yii::t('UserData', 'Gender'),
-            'address' => Yii::t('UserData', 'Address'),
-            'phone' => Yii::t('UserData', 'Phone'),
-            'skype' => Yii::t('UserData', 'Skype'),
-            'hire_date' => Yii::t('UserData', 'Hire Date'),
-            'birthday' => Yii::t('UserData', 'Birthday'),
-            'comment' => Yii::t('UserData', 'About me'),
-            'photo' => Yii::t('UserData', 'Photo'),
-            'map_place' => Yii::t('UserData', 'Map Place'),
-        ];
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getOffice()
-    {
-        return $this->hasOne(Office::className(), ['id' => 'office_id']);
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getPosition()
-    {
-        return $this->hasOne(JobPosition::className(), ['id' => 'position_id']);
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getUser()
-    {
-        return $this->hasOne(User::className(), ['id' => 'user_id']);
     }
 
     public function getFullName(){

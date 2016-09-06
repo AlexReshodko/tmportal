@@ -9,7 +9,7 @@ $params = array_merge(
 return [
     'id' => 'app-console',
     'basePath' => dirname(__DIR__),
-    'bootstrap' => ['log'],
+    'bootstrap' => ['log', 'gii'],
     'controllerNamespace' => 'console\controllers',
     'components' => [
         'log' => [
@@ -22,6 +22,19 @@ return [
         ],
         'authManager' => [
             'class' => 'yii\rbac\PhpManager',
+        ],
+    ],
+    'modules' => [
+        'gii' => [
+            'class' => 'yii\gii\Module',
+            'generators' => [
+                'mymodel' => [
+                    'class' => 'common\generators\model\Generator',
+                    'templates' => [
+                        'base' => '@common/generators/model/default',
+                    ]
+                ]
+            ],
         ],
     ],
     'params' => $params,

@@ -18,7 +18,7 @@ use common\helpers\UtilsHelper;
  *
  * @property Photo[] $photos
  */
-class CompanyEvent extends \yii\db\ActiveRecord
+class CompanyEvent extends base\BaseCompanyEvent
 {
     const STATUS_ACTIVE = NULL;
     const STATUS_DELETED = 1;

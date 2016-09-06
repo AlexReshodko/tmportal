@@ -1,0 +1,10 @@
+user            User
+user_data       UserData
+company_event   CompanyEvent
+job_position    JobPosition
+news            News
+office          Office
+photo           Photo
+poll            Poll
+poll_value      PollValue
+user_poll_value UserPollValue

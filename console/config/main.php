@@ -28,7 +28,7 @@ return [
         'gii' => [
             'class' => 'yii\gii\Module',
             'generators' => [
-                'mymodel' => [
+                'model' => [
                     'class' => 'common\generators\model\Generator',
                     'templates' => [
                         'base' => '@common/generators/model/default',

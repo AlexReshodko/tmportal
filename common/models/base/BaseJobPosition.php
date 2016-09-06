@@ -54,6 +54,6 @@ class BaseJobPosition extends \yii\db\ActiveRecord
      */
     public function getUserDatas()
     {
-        return $this->hasMany(UserData::className(), ['position_id' => 'id']);
+        return $this->hasMany(\common\models\UserData::className(), ['position_id' => 'id']);
     }
 }

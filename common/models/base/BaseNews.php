@@ -17,7 +17,7 @@ use Yii;
  * @property integer $published
  * @property integer $deleted
  *
- * @property User $author
+ * @property \common\models\User $author
  */
 class BaseNews extends \yii\db\ActiveRecord
 {
@@ -67,6 +67,6 @@ class BaseNews extends \yii\db\ActiveRecord
      */
     public function getAuthor()
     {
-        return $this->hasOne(User::className(), ['id' => 'author_id']);
+        return $this->hasOne(\common\models\User::className(), ['id' => 'author_id']);
     }
 }

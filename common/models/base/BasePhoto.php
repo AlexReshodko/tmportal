@@ -14,7 +14,7 @@ use Yii;
  * @property string $path
  * @property string $thumb_path
  *
- * @property CompanyEvent $event
+ * @property \common\models\CompanyEvent $event
  */
 class BasePhoto extends \yii\db\ActiveRecord
 {
@@ -59,6 +59,6 @@ class BasePhoto extends \yii\db\ActiveRecord
      */
     public function getEvent()
     {
-        return $this->hasOne(CompanyEvent::className(), ['id' => 'event_id']);
+        return $this->hasOne(\common\models\CompanyEvent::className(), ['id' => 'event_id']);
     }
 }

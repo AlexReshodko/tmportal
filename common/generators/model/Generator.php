@@ -28,6 +28,7 @@ class Generator extends \yii\gii\Generator
     const RELATIONS_NONE = 'none';
     const RELATIONS_ALL = 'all';
     const RELATIONS_ALL_INVERSE = 'all-inverse';
+    const MODELS_NS = "\common\models\\";
 
     public $db = 'db';
     public $ns = 'common\models';
@@ -457,7 +458,7 @@ class Generator extends \yii\gii\Generator
                     }
                     unset($refs[0]);
                     $fks = array_keys($refs);
-                    $refClassName = "\common\models\\" . $this->generateClassName($refTable);
+                    $refClassName = self::MODELS_NS . $this->generateClassName($refTable);
 
                     // Add relation for this table
                     $link = $this->generateRelationLink(array_flip($refs));
@@ -473,7 +474,7 @@ class Generator extends \yii\gii\Generator
                     $link = $this->generateRelationLink($refs);
                     $relationName = $this->generateRelationName($relations, $refTableSchema, $className, $hasMany);
                     $relations[$refTableSchema->fullName][$relationName] = [
-                        "return \$this->" . ($hasMany ? 'hasMany' : 'hasOne') . "($className::className(), $link);",
+                        "return \$this->" . ($hasMany ? 'hasMany' : 'hasOne') . "(". self::MODELS_NS . "$className::className(), $link);",
                         $className,
                         $hasMany,
                     ];

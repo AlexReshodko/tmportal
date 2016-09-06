@@ -62,6 +62,6 @@ class BaseCompanyEvent extends \yii\db\ActiveRecord
      */
     public function getPhotos()
     {
-        return $this->hasMany(Photo::className(), ['event_id' => 'id']);
+        return $this->hasMany(\common\models\Photo::className(), ['event_id' => 'id']);
     }
 }

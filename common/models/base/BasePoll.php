@@ -51,6 +51,6 @@ class BasePoll extends \yii\db\ActiveRecord
      */
     public function getPollValues()
     {
-        return $this->hasMany(PollValue::className(), ['poll_id' => 'id']);
+        return $this->hasMany(\common\models\PollValue::className(), ['poll_id' => 'id']);
     }
 }

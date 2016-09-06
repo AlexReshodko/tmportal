@@ -25,14 +25,6 @@ class CompanyEvent extends base\BaseCompanyEvent
 
     public $imageFile;
     
-    /**
-     * @inheritdoc
-     */
-    public static function tableName()
-    {
-        return 'company_event';
-    }
-    
     public function scenarios()
     {
         return array(
@@ -55,35 +47,11 @@ class CompanyEvent extends base\BaseCompanyEvent
         ];
     }
 
-    /**
-     * @inheritdoc
-     */
-    public function attributeLabels()
-    {
-        return [
-            'id' => Yii::t('CompanyEvent', 'ID'),
-            'name' => Yii::t('CompanyEvent', 'Name'),
-            'description' => Yii::t('CompanyEvent', 'Description'),
-            'date' => Yii::t('CompanyEvent', 'Date'),
-            'thumbnail' => Yii::t('CompanyEvent', 'Thumbnail'),
-            'published' => Yii::t('CompanyEvent', 'Published'),
-            'deleted' => Yii::t('CompanyEvent', 'Deleted'),
-        ];
-    }
-    
     public static function find()
     {
         return new CompanyEventQuery(get_called_class());
     }
 
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getPhotos()
-    {
-        return $this->hasMany(Photo::className(), ['event_id' => 'id']);
-    }
-    
     public static function getEventsDirPath(){
         $dir = Yii::getAlias('@frontend/web/uploads/events/');
         if (!is_dir($dir)) {

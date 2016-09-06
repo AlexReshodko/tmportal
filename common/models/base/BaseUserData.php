@@ -23,9 +23,9 @@ use Yii;
  * @property string $photo
  * @property integer $map_place
  *
- * @property Office $office
- * @property JobPosition $position
- * @property User $user
+ * @property \common\models\Office $office
+ * @property \common\models\JobPosition $position
+ * @property \common\models\User $user
  */
 class BaseUserData extends \yii\db\ActiveRecord
 {
@@ -83,7 +83,7 @@ class BaseUserData extends \yii\db\ActiveRecord
      */
     public function getOffice()
     {
-        return $this->hasOne(Office::className(), ['id' => 'office_id']);
+        return $this->hasOne(\common\models\Office::className(), ['id' => 'office_id']);
     }
 
     /**
@@ -91,7 +91,7 @@ class BaseUserData extends \yii\db\ActiveRecord
      */
     public function getPosition()
     {
-        return $this->hasOne(JobPosition::className(), ['id' => 'position_id']);
+        return $this->hasOne(\common\models\JobPosition::className(), ['id' => 'position_id']);
     }
 
     /**
@@ -99,6 +99,6 @@ class BaseUserData extends \yii\db\ActiveRecord
      */
     public function getUser()
     {
-        return $this->hasOne(User::className(), ['id' => 'user_id']);
+        return $this->hasOne(\common\models\User::className(), ['id' => 'user_id']);
     }
 }

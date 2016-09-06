@@ -72,7 +72,7 @@ class BaseUser extends \yii\db\ActiveRecord
      */
     public function getNews()
     {
-        return $this->hasMany(News::className(), ['author_id' => 'id']);
+        return $this->hasMany(\common\models\News::className(), ['author_id' => 'id']);
     }
 
     /**
@@ -80,7 +80,7 @@ class BaseUser extends \yii\db\ActiveRecord
      */
     public function getUserDatas()
     {
-        return $this->hasMany(UserData::className(), ['user_id' => 'id']);
+        return $this->hasMany(\common\models\UserData::className(), ['user_id' => 'id']);
     }
 
     /**
@@ -88,6 +88,6 @@ class BaseUser extends \yii\db\ActiveRecord
      */
     public function getUserPollValues()
     {
-        return $this->hasMany(UserPollValue::className(), ['user_id' => 'id']);
+        return $this->hasMany(\common\models\UserPollValue::className(), ['user_id' => 'id']);
     }
 }

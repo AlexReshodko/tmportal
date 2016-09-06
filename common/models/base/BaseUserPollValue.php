@@ -11,8 +11,8 @@ use Yii;
  * @property integer $user_id
  * @property integer $poll_value_id
  *
- * @property PollValue $pollValue
- * @property User $user
+ * @property \common\models\PollValue $pollValue
+ * @property \common\models\User $user
  */
 class BaseUserPollValue extends \yii\db\ActiveRecord
 {
@@ -53,7 +53,7 @@ class BaseUserPollValue extends \yii\db\ActiveRecord
      */
     public function getPollValue()
     {
-        return $this->hasOne(PollValue::className(), ['id' => 'poll_value_id']);
+        return $this->hasOne(\common\models\PollValue::className(), ['id' => 'poll_value_id']);
     }
 
     /**
@@ -61,6 +61,6 @@ class BaseUserPollValue extends \yii\db\ActiveRecord
      */
     public function getUser()
     {
-        return $this->hasOne(User::className(), ['id' => 'user_id']);
+        return $this->hasOne(\common\models\User::className(), ['id' => 'user_id']);
     }
 }

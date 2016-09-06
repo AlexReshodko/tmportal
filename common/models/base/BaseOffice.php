@@ -59,6 +59,6 @@ class BaseOffice extends \yii\db\ActiveRecord
      */
     public function getUserDatas()
     {
-        return $this->hasMany(UserData::className(), ['office_id' => 'id']);
+        return $this->hasMany(\common\models\UserData::className(), ['office_id' => 'id']);
     }
 }

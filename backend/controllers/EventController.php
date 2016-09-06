@@ -11,9 +11,9 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * EventsController implements the CRUD actions for CompanyEvent model.
+ * EventController implements the CRUD actions for CompanyEvent model.
  */
-class EventsController extends Controller
+class EventController extends Controller
 {
     /**
      * @inheritdoc

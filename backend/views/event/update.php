@@ -12,11 +12,11 @@ $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Company Events'), 'u
 $this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = Yii::t('app', 'Update');
 ?>
-<div class="company-events-update">
+<div class="company-event-update">
     <?= common\widgets\CreateUpdateWidget::widget([
         'params' => [
             'title' => Html::encode($this->title),
-            'view' => 'events',
+            'view' => 'event',
             'viewParams' => [
                 'model' => $model,
             ]

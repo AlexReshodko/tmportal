@@ -9,7 +9,7 @@ use yii\widgets\Pjax;
 $this->title = Yii::t('page-title', 'Company Events');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="company-events-index">
+<div class="company-event-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
 

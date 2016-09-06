@@ -10,11 +10,11 @@ $this->title = Yii::t('app', 'Create Company Event');
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Company Events'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="company-events-create">
+<div class="company-event-create">
     <?= CreateUpdateWidget::widget([
         'params' => [
             'title' => Html::encode($this->title),
-            'view' => 'events',
+            'view' => 'event',
             'viewParams' => [
                 'model' => $model,
             ]

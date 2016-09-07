@@ -13,22 +13,18 @@ use common\helpers\UtilsHelper;
  * @property string $description
  * @property string $date
  * @property string $thumbnail
- * @property integer $published 
- * @property integer $deleted 
+ * @property integer $status 
  *
  * @property Photo[] $photos
  */
 class CompanyEvent extends base\BaseCompanyEvent
 {
-    const STATUS_ACTIVE = NULL;
-    const STATUS_DELETED = 1;
-
     public $imageFile;
     
     public function scenarios()
     {
         return array(
-            self::SCENARIO_DEFAULT => array('name','description','date','published','!thumbnail'),
+            self::SCENARIO_DEFAULT => array('name','description','date','status','!thumbnail'),
         );
     }
 
@@ -42,7 +38,7 @@ class CompanyEvent extends base\BaseCompanyEvent
             [['description'], 'string'],
             [['date'], 'safe'],
             [['name'], 'string', 'max' => 255],
-            [['published', 'deleted'], 'integer'],
+            [['status'], 'integer'],
             [['thumbnail'], 'file', 'skipOnEmpty' => true, 'extensions' => 'png, jpg'],
         ];
     }
@@ -102,6 +98,6 @@ class CompanyEventQuery extends \yii\db\ActiveQuery
 {
     public function active()
     {
-        return $this->andWhere(['published' => UtilsHelper::STATUS_PUBLISHED, 'deleted' => UtilsHelper::STATUS_NOT_DELETED]);
+        return $this->andWhere(['status' => UtilsHelper::STATUS_ACTIVE]);
     }
 }

@@ -20,12 +20,20 @@ class Poll extends base\BasePoll
     {
         return new PollQuery(get_called_class());
     }
+    
+    public function getValuesNames(){
+        $values = [];
+        foreach ($this->pollValues as $pollValue) {
+            array_push($values, $pollValue->value);
+        }
+        return join("\n", $values);
+    }
 }
 
 class PollQuery extends \yii\db\ActiveQuery
 {
     public function active()
     {
-        return $this->andWhere(['active' => UtilsHelper::STATUS_TRUE]);
+        return $this->andWhere(['status' => UtilsHelper::STATUS_ACTIVE]);
     }
 }

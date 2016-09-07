@@ -100,7 +100,7 @@ NotificationAsset::register($this);
                                 </li>
                                 <?php if (Yii::$app->user->identity->role == \common\models\User::ROLE_ADMIN): ?>
                                     <li>
-                                        <a href="<?= Url::toRoute('/backend') ?>">
+                                        <a class="btn-rotate" href="<?= Url::toRoute('/backend') ?>">
                                             <i class="ti-settings"></i>
                                             <p><?= Yii::t('app', 'Administration')?></p>
                                         </a>

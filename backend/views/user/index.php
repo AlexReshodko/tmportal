@@ -2,6 +2,8 @@
 
 use yii\helpers\Html;
 use common\components\BackendGridView;
+use common\helpers\UtilsHelper;
+
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
@@ -26,14 +28,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     return $data->userData->getFullName();
                 }
             ],
-            [
-                'label' => 'Status',
-                'format' => 'raw',
-                'value' => function($data){
-                    $isActive = $data->status == common\models\User::STATUS_ACTIVE;
-                    return '<span class="label label-'.($isActive ? 'success' : 'danger').'">'.($isActive ? 'Active' : 'Deleted').'</span>';
-                }
-            ],
+            UtilsHelper::getStatusGridLabel($dataProvider),
             [
                 'label' => 'Hire date',
                 'format' => 'raw',

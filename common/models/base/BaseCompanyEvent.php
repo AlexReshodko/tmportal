@@ -12,8 +12,7 @@ use Yii;
  * @property string $description
  * @property string $date
  * @property string $thumbnail
- * @property integer $published
- * @property integer $deleted
+ * @property integer $status
  *
  * @property Photo[] $photos
  */
@@ -36,7 +35,7 @@ class BaseCompanyEvent extends \yii\db\ActiveRecord
             [['name'], 'required'],
             [['description'], 'string'],
             [['date'], 'safe'],
-            [['published', 'deleted'], 'integer'],
+            [['status'], 'integer'],
             [['name', 'thumbnail'], 'string', 'max' => 255],
         ];
     }
@@ -52,8 +51,7 @@ class BaseCompanyEvent extends \yii\db\ActiveRecord
             'description' => Yii::t('CompanyEvent', 'Description'),
             'date' => Yii::t('CompanyEvent', 'Date'),
             'thumbnail' => Yii::t('CompanyEvent', 'Thumbnail'),
-            'published' => Yii::t('CompanyEvent', 'Published'),
-            'deleted' => Yii::t('CompanyEvent', 'Deleted'),
+            'status' => Yii::t('CompanyEvent', 'Status'),
         ];
     }
 

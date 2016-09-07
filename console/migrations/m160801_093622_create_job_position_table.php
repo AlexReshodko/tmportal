@@ -20,7 +20,7 @@ class m160801_093622_create_job_position_table extends Migration
         ]);
         
         $this->createIndex('idx-user_data_position_id', '{{%user_data}}', '[[position_id]]');
-        $this->addForeignKey('fk-user_data-position_id', '{{%user_data}}', '[[position_id]]', '{{%job_position}}', '[[id]]', 'SET NULL');
+        $this->addForeignKey('fk-user_data-position_id', '{{%user_data}}', '[[position_id]]', '{{%job_position}}', '[[id]]', 'SET NULL', 'CASCADE');
     }
 
     /**

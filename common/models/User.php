@@ -6,6 +6,7 @@ use yii\base\NotSupportedException;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
 use yii\web\IdentityInterface;
+use common\helpers\UtilsHelper;
 
 /**
  * User model
@@ -25,7 +26,7 @@ use yii\web\IdentityInterface;
 class User extends base\BaseUser implements IdentityInterface
 {
     const STATUS_DELETED = 0;
-    const STATUS_ACTIVE = 10;
+    const STATUS_ACTIVE = 1;
 
     const ROLE_ADMIN = 0;
     const ROLE_MODER = 1;
@@ -47,8 +48,8 @@ class User extends base\BaseUser implements IdentityInterface
     public function rules()
     {
         return [
-            ['status', 'default', 'value' => self::STATUS_ACTIVE],
-            ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_DELETED]],
+            ['status', 'default', 'value' => UtilsHelper::STATUS_ACTIVE],
+            ['status', 'in', 'range' => [UtilsHelper::STATUS_ACTIVE, UtilsHelper::STATUS_NOT_ACTIVE]],
             [['username','email'], 'unique'],
             [['username','email'], 'required'],
         ];
@@ -59,7 +60,7 @@ class User extends base\BaseUser implements IdentityInterface
      */
     public static function findIdentity($id)
     {
-        return static::findOne(['id' => $id, 'status' => self::STATUS_ACTIVE]);
+        return static::findOne(['id' => $id, 'status' => UtilsHelper::STATUS_ACTIVE]);
     }
 
     /**
@@ -78,7 +79,7 @@ class User extends base\BaseUser implements IdentityInterface
      */
     public static function findByUsername($username)
     {
-        return static::findOne(['username' => $username, 'status' => self::STATUS_ACTIVE]);
+        return static::findOne(['username' => $username, 'status' => UtilsHelper::STATUS_ACTIVE]);
     }
 
     /**
@@ -95,7 +96,7 @@ class User extends base\BaseUser implements IdentityInterface
 
         return static::findOne([
             'password_reset_token' => $token,
-            'status' => self::STATUS_ACTIVE,
+            'status' => UtilsHelper::STATUS_ACTIVE,
         ]);
     }
 

@@ -2,6 +2,8 @@
 
 namespace common\helpers;
 
+use Yii;
+
 /**
  * Description of UtilsHelper
  *
@@ -9,15 +11,9 @@ namespace common\helpers;
  */
 class UtilsHelper {
     
-    const STATUS_TRUE = 1;
-    const STATUS_FALSE = 0;
+    const STATUS_ACTIVE = 1;
+    const STATUS_NOT_ACTIVE = 0;
     
-    const STATUS_PUBLISHED = 1;
-    const STATUS_NOT_PUBLISHED = 0;
-    
-    const STATUS_DELETED = 1;
-    const STATUS_NOT_DELETED = 0;
-
     public static $defaultImage = '/images/placeholder-s.jpg';
     
     public static function getFormattedDate($date = null){
@@ -31,5 +27,16 @@ class UtilsHelper {
     
     public static function getNotSetMsg(){
         return \Yii::t('app', '(not set)');
+    }
+    
+    public static function getStatusGridLabel($data){
+        return [
+            'label' => 'Status',
+            'format' => 'raw',
+            'value' => function($data){
+                $isActive = $data->status == UtilsHelper::STATUS_ACTIVE;
+                return '<span class="label label-'.($isActive ? 'success' : 'danger').'">'.($isActive ? Yii::t('status', "Active") : Yii::t('status', "Disabled")).'</span>';
+            }
+        ];
     }
 }

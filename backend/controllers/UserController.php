@@ -5,31 +5,16 @@ namespace backend\controllers;
 use Yii;
 use common\models\User;
 use yii\data\ActiveDataProvider;
-use yii\web\Controller;
+use common\components\BackendController;
 use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
 use common\models\UserData;
 use common\helpers\Logger;
 
 /**
  * UserController implements the CRUD actions for User model.
  */
-class UserController extends Controller
+class UserController extends BackendController
 {
-    /**
-     * @inheritdoc
-     */
-    public function behaviors()
-    {
-        return [
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'delete' => ['POST'],
-                ],
-            ],
-        ];
-    }
 
     /**
      * Lists all User models.
@@ -148,7 +133,7 @@ class UserController extends Controller
         if(!$user){
             throw new Exception('Wrong user ID');
         }
-        $user->status = User::STATUS_DELETED;
+        $user->status = \common\helpers\UtilsHelper::STATUS_NOT_ACTIVE;
         if(!$user->save()){
             Logger::warn($user->getErrors());
         }

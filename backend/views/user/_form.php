@@ -4,6 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use common\models\User;
 use yii\helpers\ArrayHelper;
+use common\helpers\UtilsHelper;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\User */
@@ -16,16 +17,14 @@ use yii\helpers\ArrayHelper;
         'id' => 'up',
         'enableAjaxValidation' => true
     ]); ?>
-    <?php if(!$userData->isNewRecord && $user->status == User::STATUS_DELETED): ?>
+    <?php if(!$userData->isNewRecord): ?>
             <?= $form->field($user, 'status')->checkbox([
                 'class' => 'switch',
                 'data-on-color' => "success",
                 'data-off-color' => "danger",
-                'data-on-text' => "Yes",
-                'data-off-text' => "No",
-                'value' => User::STATUS_ACTIVE,
-                'uncheck' => User::STATUS_DELETED
-            ], false)->label('Restore user')?>
+                'data-on-text' => Yii::t('status', "Active"),
+                'data-off-text' => Yii::t('status', "Disabled"),
+            ], false)->label(false)?>
     <?php endif; ?>
     <div class="row">
         <div class="col-md-4">
@@ -62,7 +61,7 @@ use yii\helpers\ArrayHelper;
     </div>
     
 
-    <div class="form-group">
+    <div class="form-group text-center">
         <?= Html::submitButton($userData->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => $userData->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
 

@@ -14,8 +14,7 @@ use Yii;
  * @property string $text
  * @property string $date
  * @property integer $views
- * @property integer $published
- * @property integer $deleted
+ * @property integer $status
  *
  * @property \common\models\User $author
  */
@@ -36,7 +35,7 @@ class BaseNews extends \yii\db\ActiveRecord
     {
         return [
             [['author_id', 'title'], 'required'],
-            [['author_id', 'views', 'published', 'deleted'], 'integer'],
+            [['author_id', 'views', 'status'], 'integer'],
             [['text'], 'string'],
             [['date'], 'safe'],
             [['title', 'text_preview'], 'string', 'max' => 255],
@@ -57,8 +56,7 @@ class BaseNews extends \yii\db\ActiveRecord
             'text' => Yii::t('News', 'Text'),
             'date' => Yii::t('News', 'Date'),
             'views' => Yii::t('News', 'Views'),
-            'published' => Yii::t('News', 'Published'),
-            'deleted' => Yii::t('News', 'Deleted'),
+            'status' => Yii::t('News', 'Status'),
         ];
     }
 

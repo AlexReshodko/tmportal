@@ -1,7 +1,7 @@
 <?php
 
 use yii\helpers\Html;
-
+use common\widgets\CreateUpdateWidget;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\User */
@@ -12,16 +12,15 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="user-create">
 
-    <div class="panel panel-flat">
-        <div class="panel-heading">
-            <h1><?= Html::encode($this->title) ?></h1>
-        </div>
-        <div class="panel-body">
-            <?= $this->render('_form', [
+    <?= CreateUpdateWidget::widget([
+        'params' => [
+            'title' => Html::encode($this->title),
+            'view' => 'user',
+            'viewParams' => [
                 'user' => $user,
                 'userData' => $userData,
-            ]) ?>
-        </div>
-    </div>
+            ]
+        ]
+    ])?>
 
 </div>

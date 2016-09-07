@@ -3,6 +3,10 @@
 namespace common\widgets;
 
 use yii\helpers\ArrayHelper;
+use common\models\Poll;
+use common\models\PollValue;
+use common\models\UserPollValue;
+use common\models\User;
 
 /**
  * Description of PollWidget
@@ -17,16 +21,16 @@ class PollWidget extends \yii\base\Widget{
     public function init()
     {
         parent::init();
-        $this->poll = \common\models\Poll::find()->with('pollValues')->active()->one();
+        $this->poll = Poll::find()->with('pollValues')->active()->one();
         if(!empty($this->poll)){
             $pollIDs = ArrayHelper::getColumn($this->poll->pollValues, 'id');
-            $this->isVoted = !empty(\common\models\UserPollValue::find()->where(['user_id'=>\Yii::$app->user->id, 'poll_value_id'=>$pollIDs])->one());
+            $this->isVoted = !empty(UserPollValue::find()->where(['user_id'=>\Yii::$app->user->id, 'poll_value_id'=>$pollIDs])->one());
         }
     }
 
     public function run()
     {
-        $model = new \common\models\UserPollValue();
+        $model = new UserPollValue();
         return $this->render('poll', [
             'widget' => $this,
             'model' => $model
@@ -34,7 +38,7 @@ class PollWidget extends \yii\base\Widget{
     }
     
     public function getResults(){
-        $max = \common\models\User::find()->where(['status'=>\common\models\User::STATUS_ACTIVE])->count();
+        $max = User::find()->where(['status'=>User::STATUS_ACTIVE])->count();
         foreach ($this->poll->pollValues as $pollValue) {
             $cnt = count($pollValue->userPollValues);
             $percent = round(($cnt / $max) * 100);
@@ -48,7 +52,7 @@ class PollWidget extends \yii\base\Widget{
     }
     
     public function getVotedValue(){
-        $votedPollValue = \common\models\PollValue::find()->joinWith([
+        $votedPollValue = PollValue::find()->joinWith([
             'userPollValues' => function ($query) {
                 $query->andWhere(['user_id' => \Yii::$app->user->id]);
             },

@@ -34,16 +34,16 @@ use dosamigos\ckeditor\CKEditor;
 
 
     <div class="checkbox checkbox-switch">
-        <?= $form->field($model, 'published')->checkbox([
+        <?= $form->field($model, 'status')->checkbox([
             'class' => 'switch',
             'data-on-color' => "success",
             'data-off-color' => "danger",
-            'data-on-text' => "Yes",
-            'data-off-text' => "No"
-        ])?>
+            'data-on-text' => Yii::t('status', "Active"),
+            'data-off-text' => Yii::t('status', "Disabled"),
+        ], false)->label(false)?>
     </div>
 
-    <div class="form-group">
+    <div class="form-group text-center">
         <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
 

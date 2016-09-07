@@ -4,29 +4,15 @@ namespace backend\controllers;
 
 use Yii;
 use common\models\News;
-use yii\web\Controller;
+use common\components\BackendController;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
  * NewsController implements the CRUD actions for News model.
  */
-class NewsController extends Controller
+class NewsController extends BackendController
 {
-    /**
-     * @inheritdoc
-     */
-    public function behaviors()
-    {
-        return [
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'delete' => ['POST'],
-                ],
-            ],
-        ];
-    }
 
     /**
      * Lists all News models.
@@ -102,9 +88,7 @@ class NewsController extends Controller
      */
     public function actionDelete($id)
     {
-        $model = $this->findModel($id);
-        $model->deleted = News::STATUS_DELETED;
-        $model->save();
+        $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
     }

@@ -1,6 +1,7 @@
 <?php
 
 use yii\db\Migration;
+use common\helpers\UtilsHelper;
 
 class m160906_115920_create_poll_table_and_poll_variant_table extends Migration
 {
@@ -9,7 +10,7 @@ class m160906_115920_create_poll_table_and_poll_variant_table extends Migration
         $this->createTable('poll', [
             'id' => $this->primaryKey(),
             'title' => $this->text(),
-            'active' => $this->integer(2)
+            'status' => $this->smallInteger()->defaultValue(UtilsHelper::STATUS_ACTIVE)
         ]);
         
         $this->createTable('poll_value', [

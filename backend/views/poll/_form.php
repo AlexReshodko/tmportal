@@ -15,21 +15,16 @@ use wbraganca\dynamicform\DynamicFormWidget;
     <?php $form = ActiveForm::begin(['id' => 'dynamic-form']); ?>
 
     <div class="checkbox checkbox-switch">
-        <?= $form->field($modelPoll, 'active')->checkbox([
+        <?= $form->field($modelPoll, 'status')->checkbox([
             'class' => 'switch',
             'data-on-color' => "success",
             'data-off-color' => "danger",
-            'data-on-text' => "Yes",
-            'data-off-text' => "No"
-        ])?>
+            'data-on-text' => Yii::t('status', "Active"),
+            'data-off-text' => Yii::t('status', "Disabled"),
+        ], false)->label(false)?>
     </div>
     
-    <?= $form->field($modelPoll, 'title')->widget(CKEditor::className(), [
-        'options' => [
-            'rows' => 1,
-        ],
-        'preset' => 'basic',
-    ]) ?>
+    <?= $form->field($modelPoll, 'title')->textInput() ?>
 
     <?php
     DynamicFormWidget::begin([
@@ -48,8 +43,8 @@ use wbraganca\dynamicform\DynamicFormWidget;
     ]);
     ?>
     <div class="row">
-        <div class="col-md-1">
-            <h4><i class="glyphicon glyphicon-envelope"></i> Poll values</h4>
+        <div class="col-md-2">
+            <h4><?= Yii::t('poll', 'Poll values')?></h4>
         </div>
         <div class="col-md-1">
             <h4><button type="button" class="add-item btn btn-success btn-xs"><i class="glyphicon glyphicon-plus"></i></button></h4>
@@ -59,7 +54,7 @@ use wbraganca\dynamicform\DynamicFormWidget;
     <div class="container-items"><!-- widgetContainer -->
         <?php foreach ($modelsPollValue as $i => $modelPollValue): ?>
                 <div class="item row"><!-- widgetBody -->
-                    <div class="col-md-5">
+                    <div class="col-md-7">
                         <?php
                         // necessary for update action.
                         if (!$modelPollValue->isNewRecord) {
@@ -68,7 +63,7 @@ use wbraganca\dynamicform\DynamicFormWidget;
                         ?>
                         <?= $form->field($modelPollValue, "[{$i}]value")->textInput(['maxlength' => true])->label(false) ?>
                     </div>
-                    <div class="col-md-2 form-group">
+                    <div class="col-md-1 form-group text-right">
                         <button type="button" class="remove-item btn btn-danger btn-xs"><i class="glyphicon glyphicon-minus"></i></button>
                     </div>
                 </div>
@@ -76,7 +71,7 @@ use wbraganca\dynamicform\DynamicFormWidget;
     </div>
     <?php DynamicFormWidget::end(); ?>
     
-    <div class="form-group">
+    <div class="form-group text-center">
         <?= Html::submitButton($modelPollValue->isNewRecord ? 'Create' : 'Update', ['class' => 'btn btn-primary']) ?>
     </div>
 

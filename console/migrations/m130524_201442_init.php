@@ -3,6 +3,7 @@
 use common\models\User;
 use yii\db\Migration;
 use yii\helpers\Json;
+use common\helpers\UtilsHelper;
 
 class m130524_201442_init extends Migration
 {
@@ -23,7 +24,7 @@ class m130524_201442_init extends Migration
             'email' => $this->string()->notNull()->unique(),
 
             'role' => $this->integer()->notNull()->defaultValue(User::ROLE_USER),
-            'status' => $this->smallInteger()->notNull()->defaultValue(10),
+            'status' => $this->smallInteger()->notNull()->defaultValue(UtilsHelper::STATUS_ACTIVE),
             'created_at' => $this->integer()->notNull(),
             'updated_at' => $this->integer()->notNull(),
         ], $tableOptions);
@@ -35,7 +36,7 @@ class m130524_201442_init extends Migration
             'position_id' => $this->integer(),
             'first_name' => $this->string(),
             'last_name' => $this->string(),
-            'gender' => $this->integer(2),
+            'gender' => $this->smallInteger(),
             'address' => $this->string(),
             'phone' => $this->string(),
             'skype' => $this->string(),

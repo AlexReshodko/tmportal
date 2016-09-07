@@ -124,14 +124,7 @@ class EventController extends Controller
      */
     public function actionDelete($id)
     {
-        $event = $this->findModel($id);
-        if(!$event){
-            throw new NotFoundHttpException('Wrong event ID');
-        }
-        $event->deleted = CompanyEvent::STATUS_DELETED;
-        if(!$event->save()){
-            \common\helpers\Logger::warn($event->getErrors());
-        }
+        $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
     }

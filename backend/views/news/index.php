@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use common\components\BackendGridView;
+use common\helpers\UtilsHelper;
 
 /* @var $this yii\web\View */
 /* @var $searchModel common\models\NewsSearch */
@@ -29,8 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'text:raw',
             'date',
             'views',
-            // 'published',
-            // 'deleted',
+            UtilsHelper::getStatusGridLabel($dataProvider),
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

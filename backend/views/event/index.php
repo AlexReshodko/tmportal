@@ -3,6 +3,8 @@
 use yii\helpers\Html;
 use common\components\BackendGridView;
 use yii\widgets\Pjax;
+use common\helpers\UtilsHelper;
+
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
@@ -33,18 +35,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     ]);
                 },
             ],
-            [
-                'label' => 'Status',
-                'format' => 'raw',
-                'value' => function($data){
-                    $isPub = $data->published;
-                    $isDel = $data->deleted;
-                    if($isDel){
-                        return ' <span class="text-highlight bg-warning">Deleted</span>';
-                    }
-                    return '<span class="text-highlight '.($isPub ? 'bg-success':'bg-warning').'">'.($isPub ? 'Published':'Not published').'</span>';
-                }
-            ],
+            UtilsHelper::getStatusGridLabel($dataProvider),
             [
                 'label' => '№ of Photos',
                 'format' => 'raw',

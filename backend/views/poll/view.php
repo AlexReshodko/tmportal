@@ -29,8 +29,12 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'title:ntext',
-            'active',
+            'title:raw',
+            'status',
+            [
+                'label' => 'Values',
+                'value' => $model->getValuesNames()
+            ]
         ],
     ]) ?>
 

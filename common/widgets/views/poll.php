@@ -11,7 +11,7 @@ use yii\widgets\Pjax;
         'id'=>'pjax-poll',
         'enablePushState' => false
     ]); ?>
-        <span class="text-center"><?= $widget->poll->title?></span>
+        <div class="text-center"><?= $widget->poll->title?></div>
 
         <?php if($widget->isVoted): ?>
 
@@ -44,7 +44,7 @@ use yii\widgets\Pjax;
         
     <?php Pjax::end(); ?>
 <?php else: ?>
-        
-    <?= Yii::t('poll', 'No polls')?>
-        
+
+    <div class="text-center"><?= Yii::t('poll', 'No polls')?></div>
+
 <?php endif; ?>

@@ -9,7 +9,7 @@ use Yii;
  *
  * @property integer $id
  * @property string $title
- * @property integer $active
+ * @property integer $status
  *
  * @property PollValue[] $pollValues
  */
@@ -30,7 +30,7 @@ class BasePoll extends \yii\db\ActiveRecord
     {
         return [
             [['title'], 'string'],
-            [['active'], 'integer'],
+            [['status'], 'integer'],
         ];
     }
 
@@ -42,7 +42,7 @@ class BasePoll extends \yii\db\ActiveRecord
         return [
             'id' => Yii::t('Poll', 'ID'),
             'title' => Yii::t('Poll', 'Title'),
-            'active' => Yii::t('Poll', 'Active'),
+            'status' => Yii::t('Poll', 'Status'),
         ];
     }
 

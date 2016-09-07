@@ -54,25 +54,34 @@ $bundle = AppAsset::register($this);
             <div class="col-lg-8 col-md-7">
                 <div class="card">
                     <div class="header">
-                        <h4 class="title">Edit Profile</h4>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h4 class="title">Edit Profile</h4>
+                            </div>
+                        </div>
                     </div>
                     <div class="content">
                         <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
-                        <div class="col-md-6">
-                            <?= $form->field($userData, 'first_name')->textInput(['maxlength' => true, 'class' => 'form-control border-input']) ?>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <?= $form->field($userData, 'first_name')->textInput(['maxlength' => true, 'class' => 'form-control border-input']) ?>
+                            </div>
+                            <div class="col-md-6">
+                                <?= $form->field($userData, 'last_name')->textInput(['maxlength' => true, 'class' => 'form-control border-input']) ?>
+                            </div>
                         </div>
-                        <div class="col-md-6">
-                            <?= $form->field($userData, 'last_name')->textInput(['maxlength' => true, 'class' => 'form-control border-input']) ?>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <?= $form->field($userData, 'phone')->textInput(['maxlength' => true, 'class' => 'form-control border-input']) ?>
+                            </div>
+                            <div class="col-md-6">
+                                <?= $form->field($userData, 'skype')->textInput(['maxlength' => true, 'class' => 'form-control border-input']) ?>
+                            </div>
                         </div>
-                        <div class="col-md-6">
-                            <?= $form->field($userData, 'phone')->textInput(['maxlength' => true, 'class' => 'form-control border-input']) ?>
-                        </div>
-                        <div class="col-md-6">
-                            <?= $form->field($userData, 'skype')->textInput(['maxlength' => true, 'class' => 'form-control border-input']) ?>
-                        </div>
-
-                        <div class="col-md-12">
-                            <?= $form->field($userData, 'comment')->textarea(['rows' => 6, 'class' => 'form-control border-input']) ?>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <?= $form->field($userData, 'comment')->textarea(['rows' => 6, 'class' => 'form-control border-input']) ?>
+                            </div>
                         </div>
 
                         <div class="form-group text-center">

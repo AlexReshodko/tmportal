@@ -1,7 +1,7 @@
 <?php
 
 use yii\helpers\Html;
-
+use common\widgets\CreateUpdateWidget;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\Poll */
@@ -11,12 +11,14 @@ $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Polls'), 'url' => ['
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="poll-create">
-
-    <h1><?= Html::encode($this->title) ?></h1>
-
-    <?= $this->render('_form', [
-        'modelPoll' => $modelPoll,
-        'modelsPollValue' => (empty($modelsPollValue)) ? [new PollValue] : $modelsPollValue
-    ]) ?>
-
+    <?= CreateUpdateWidget::widget([
+        'params' => [
+            'title' => Html::encode($this->title),
+            'view' => 'poll',
+            'viewParams' => [
+                'modelPoll' => $modelPoll,
+                'modelsPollValue' => (empty($modelsPollValue)) ? [new PollValue] : $modelsPollValue
+            ]
+        ]
+    ])?>
 </div>

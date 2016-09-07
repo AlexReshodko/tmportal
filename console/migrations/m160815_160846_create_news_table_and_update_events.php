@@ -1,6 +1,7 @@
 <?php
 
 use yii\db\Migration;
+use common\helpers\UtilsHelper;
 
 class m160815_160846_create_news_table_and_update_events extends Migration
 {
@@ -14,21 +15,18 @@ class m160815_160846_create_news_table_and_update_events extends Migration
             'text' => $this->text(),
             'date' => $this->date(),
             'views' => $this->integer(),
-            'published' => $this->integer(2)->defaultValue(0),
-            'deleted' => $this->integer(2)->defaultValue(0)
+            'status' => $this->smallInteger()->defaultValue(UtilsHelper::STATUS_ACTIVE),
         ]);
         $this->createIndex('idx-news-author_id', 'news', '[[author_id]]');
         $this->addForeignKey('fk-news-author_id', 'news', '[[author_id]]', 'user', '[[id]]', 'CASCADE', 'CASCADE');
-        $this->addColumn('company_event', 'published', $this->integer(2)->defaultValue(0));
-        $this->addColumn('company_event', 'deleted', $this->integer(2)->defaultValue(0));
+        $this->addColumn('company_event', 'status', $this->smallInteger()->defaultValue(UtilsHelper::STATUS_ACTIVE));
     }
 
     public function down()
     {
         $this->dropForeignKey('fk-news-author_id', 'news');
         $this->dropIndex('idx-news-author_id', 'news');
-        $this->dropColumn('company_event', 'published');
-        $this->dropColumn('company_event', 'deleted');
+        $this->dropColumn('company_event', 'status');
         $this->dropTable('news');
     }
 

@@ -3,45 +3,13 @@ namespace backend\controllers;
 
 use common\models\LoginForm;
 use Yii;
-use yii\filters\AccessControl;
-use yii\filters\VerbFilter;
-use yii\web\Controller;
+use common\components\BackendController;
 
 /**
  * Site controller
  */
-class SiteController extends Controller
+class SiteController extends BackendController
 {
-    /**
-     * @inheritdoc
-     */
-    public function behaviors()
-    {
-        return [
-            'access' => [
-                'class' => AccessControl::className(),
-                'rules' => [
-                    [
-                        'actions' => ['login', 'error'],
-                        'allow' => true,
-                    ],
-                    [
-                        'allow' => true,
-                        'roles' => ['admin']
-                    ]
-                ],
-                'denyCallback' => function ($rule, $action) {
-                    return Yii::$app->response->redirect(Yii::$app->urlManagerFrontend->createUrl('/'));
-                },
-            ],
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'logout' => ['post'],
-                ],
-            ],
-        ];
-    }
 
     /**
      * @inheritdoc

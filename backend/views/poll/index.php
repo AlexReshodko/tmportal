@@ -1,7 +1,8 @@
 <?php
 
 use yii\helpers\Html;
-use yii\grid\GridView;
+use common\components\BackendGridView;
+use common\helpers\UtilsHelper;
 
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -16,14 +17,12 @@ $this->params['breadcrumbs'][] = $this->title;
     <p>
         <?= Html::a(Yii::t('app', 'Create Poll'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
-    <?= GridView::widget([
+    <?= BackendGridView::widget([
         'dataProvider' => $dataProvider,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-
             'id',
-            'title:ntext',
-            'active',
+            'title:raw',
+            UtilsHelper::getStatusGridLabel($dataProvider),
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

@@ -312,6 +312,7 @@ NotificationAsset::register($this);
                                             ['label' => Yii::t('backendMenu', 'Translations'), 'url' => ['/translations'], 'template' => '<a href="{url}"><i class="icon-sphere"></i><p>{label}</p></a>'],
                                             ['label' => Yii::t('backendMenu', 'Users'), 'url' => ['/user/index'], 'template' => '<a href="{url}"><i class="icon-user"></i><p>{label}</p></a>'],
                                             ['label' => Yii::t('backendMenu', 'News'), 'url' => ['/news/index'], 'template' => '<a href="{url}"><i class="icon-newspaper"></i><p>{label}</p></a>'],
+                                            ['label' => Yii::t('backendMenu', 'Poll'), 'url' => ['/poll/index'], 'template' => '<a href="{url}"><i class="icon-list2"></i><p>{label}</p></a>'],
                                             ['label' => Yii::t('backendMenu', 'Company events'), 'url' => ['/event/index'], 'template' => '<a href="{url}"><i class="icon-megaphone"></i><p>{label}</p></a>'],
                                         ],
                                         'options' => [

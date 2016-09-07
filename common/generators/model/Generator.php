@@ -349,7 +349,7 @@ class Generator extends \yii\gii\Generator
                 // Foreign key could point to non-existing table: https://github.com/yiisoft/yii2-gii/issues/34
                 continue;
             }
-            $refClassName = $this->generateClassName($refTable);
+            $refClassName = self::MODELS_NS . $this->generateClassName($refTable);
             unset($refs[0]);
             $attributes = implode("', '", array_keys($refs));
             $targetAttributes = [];

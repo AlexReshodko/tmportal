@@ -15,7 +15,7 @@ class m160906_115920_create_poll_table_and_poll_variant_table extends Migration
         $this->createTable('poll_value', [
             'id' => $this->primaryKey(),
             'poll_id' => $this->integer(),
-            'value' => $this->text()
+            'value' => $this->string()
         ]);
         
         $this->createIndex('idx-poll_value-poll_id', 'poll_value', '[[poll_id]]');

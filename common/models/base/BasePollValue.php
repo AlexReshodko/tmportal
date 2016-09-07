@@ -31,8 +31,8 @@ class BasePollValue extends \yii\db\ActiveRecord
     {
         return [
             [['poll_id'], 'integer'],
-            [['value'], 'string'],
-            [['poll_id'], 'exist', 'skipOnError' => true, 'targetClass' => Poll::className(), 'targetAttribute' => ['poll_id' => 'id']],
+            [['value'], 'string', 'max' => 255],
+            [['poll_id'], 'exist', 'skipOnError' => true, 'targetClass' => \common\models\Poll::className(), 'targetAttribute' => ['poll_id' => 'id']],
         ];
     }
 

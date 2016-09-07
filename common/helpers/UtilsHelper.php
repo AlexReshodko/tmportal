@@ -9,6 +9,9 @@ namespace common\helpers;
  */
 class UtilsHelper {
     
+    const STATUS_TRUE = 1;
+    const STATUS_FALSE = 0;
+    
     const STATUS_PUBLISHED = 1;
     const STATUS_NOT_PUBLISHED = 0;
     

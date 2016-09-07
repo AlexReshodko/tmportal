@@ -2,7 +2,7 @@
 
 namespace common\models;
 
-use Yii;
+use common\helpers\UtilsHelper;
 
 /**
  * This is the model class for table "poll".
@@ -15,42 +15,17 @@ use Yii;
  */
 class Poll extends base\BasePoll
 {
-    /**
-     * @inheritdoc
-     */
-    public static function tableName()
+    
+    public static function find()
     {
-        return 'poll';
+        return new PollQuery(get_called_class());
     }
+}
 
-    /**
-     * @inheritdoc
-     */
-    public function rules()
+class PollQuery extends \yii\db\ActiveQuery
+{
+    public function active()
     {
-        return [
-            [['title'], 'string'],
-            [['active'], 'integer'],
-        ];
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function attributeLabels()
-    {
-        return [
-            'id' => Yii::t('UserData', 'ID'),
-            'title' => Yii::t('UserData', 'Title'),
-            'active' => Yii::t('UserData', 'Active'),
-        ];
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getPollValues()
-    {
-        return $this->hasMany(PollValue::className(), ['poll_id' => 'id']);
+        return $this->andWhere(['active' => UtilsHelper::STATUS_TRUE]);
     }
 }

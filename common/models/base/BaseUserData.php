@@ -48,9 +48,9 @@ class BaseUserData extends \yii\db\ActiveRecord
             [['hire_date', 'birthday'], 'safe'],
             [['comment'], 'string'],
             [['first_name', 'last_name', 'address', 'phone', 'skype', 'photo'], 'string', 'max' => 255],
-            [['office_id'], 'exist', 'skipOnError' => true, 'targetClass' => Office::className(), 'targetAttribute' => ['office_id' => 'id']],
-            [['position_id'], 'exist', 'skipOnError' => true, 'targetClass' => JobPosition::className(), 'targetAttribute' => ['position_id' => 'id']],
-            [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_id' => 'id']],
+            [['office_id'], 'exist', 'skipOnError' => true, 'targetClass' => \common\models\Office::className(), 'targetAttribute' => ['office_id' => 'id']],
+            [['position_id'], 'exist', 'skipOnError' => true, 'targetClass' => \common\models\JobPosition::className(), 'targetAttribute' => ['position_id' => 'id']],
+            [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => \common\models\User::className(), 'targetAttribute' => ['user_id' => 'id']],
         ];
     }
 

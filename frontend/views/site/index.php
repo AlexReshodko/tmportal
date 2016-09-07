@@ -28,15 +28,26 @@ $bundle = \frontend\assets\AppAsset::register($this);
         <h3 class="title text-center"><?= Yii::t('app', 'Information');?></h3>
     </div>
     <div class="col-lg-3 col-sm-6">
-        <div class="card card-circle-chart" data-background="color"  data-color="blue">
+        <div class="card">
             <div class="header text-center">
                 <h5 class="title"><i class="ti-gift"></i> <?= Yii::t('app', 'Upcoming birthdays');?></h5>
-                <p class="description"></p>
+                <hr />
             </div>
             <div class="content">
                 <?php foreach ($birthdays as $birthday): ?>
                     <?= \yii\helpers\Html::a($birthday['name'], \yii\helpers\Url::to('/user/view/'.$birthday['id'])) ?>: <?= $birthday['birthday'] ?>
                 <?php endforeach; ?>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-sm-6">
+        <div class="card">
+            <div class="header text-center">
+                <h5 class="title"><i class="ti-list"></i> <?= Yii::t('app', 'Poll');?></h5>
+                <hr />
+            </div>
+            <div class="content">
+                <?= \common\widgets\PollWidget::widget()?>
             </div>
         </div>
     </div>

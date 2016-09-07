@@ -7,6 +7,7 @@ use yii\web\BadRequestHttpException;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
+use common\components\filters\AjaxAccess;
 use common\models\LoginForm;
 use common\models\News;
 use frontend\models\PasswordResetRequestForm;
@@ -46,6 +47,10 @@ class SiteController extends Controller
                         'roles' => ['@'],
                     ],
                 ],
+            ],
+            'ajax' => [
+                'class' => AjaxAccess::className(),
+                'only' => ['vote']
             ],
             'verbs' => [
                 'class' => VerbFilter::className(),
@@ -118,6 +123,17 @@ class SiteController extends Controller
     
     public function actionOfficeMap(){
         return $this->render('officeMap');
+    }
+    
+    public function actionVote(){
+//        \common\helpers\Logger::warn(Yii::$app->request->post());
+        $model = new \common\models\UserPollValue();
+        if($model->load(Yii::$app->request->post())){
+            $model->user_id = Yii::$app->user->id;
+            $model->save();
+            return \common\widgets\PollWidget::widget();
+        }
+        \common\helpers\Logger::warn('here');
     }
 
     /**

@@ -30,9 +30,10 @@ class BaseUserPollValue extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
+            [['user_id', 'poll_value_id'], 'required'],
             [['user_id', 'poll_value_id'], 'integer'],
-            [['poll_value_id'], 'exist', 'skipOnError' => true, 'targetClass' => PollValue::className(), 'targetAttribute' => ['poll_value_id' => 'id']],
-            [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_id' => 'id']],
+            [['poll_value_id'], 'exist', 'skipOnError' => true, 'targetClass' => \common\models\PollValue::className(), 'targetAttribute' => ['poll_value_id' => 'id']],
+            [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => \common\models\User::className(), 'targetAttribute' => ['user_id' => 'id']],
         ];
     }
 

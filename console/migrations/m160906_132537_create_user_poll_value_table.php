@@ -14,8 +14,8 @@ class m160906_132537_create_user_poll_value_table extends Migration
     {
         $this->createTable('user_poll_value', [
             'id' => $this->primaryKey(),
-            'user_id' => $this->integer(),
-            'poll_value_id' => $this->integer()
+            'user_id' => $this->integer()->notNull(),
+            'poll_value_id' => $this->integer()->notNull()
         ]);
         
         $this->createIndex('idx-user_poll_value-user_id', 'user_poll_value', 'user_id');

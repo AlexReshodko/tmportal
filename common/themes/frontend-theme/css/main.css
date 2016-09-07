@@ -141,3 +141,6 @@ a.gallery-item {
 .card.card-header .form-horizontal{
     margin-top: 20px;
 }
+.card .header hr{
+    margin-bottom: 10px;
+}

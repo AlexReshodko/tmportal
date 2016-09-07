@@ -35,7 +35,7 @@ class BasePhoto extends \yii\db\ActiveRecord
             [['event_id'], 'integer'],
             [['description'], 'string'],
             [['name', 'path', 'thumb_path'], 'string', 'max' => 255],
-            [['event_id'], 'exist', 'skipOnError' => true, 'targetClass' => CompanyEvent::className(), 'targetAttribute' => ['event_id' => 'id']],
+            [['event_id'], 'exist', 'skipOnError' => true, 'targetClass' => \common\models\CompanyEvent::className(), 'targetAttribute' => ['event_id' => 'id']],
         ];
     }
 

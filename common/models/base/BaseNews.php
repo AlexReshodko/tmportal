@@ -40,7 +40,7 @@ class BaseNews extends \yii\db\ActiveRecord
             [['text'], 'string'],
             [['date'], 'safe'],
             [['title', 'text_preview'], 'string', 'max' => 255],
-            [['author_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['author_id' => 'id']],
+            [['author_id'], 'exist', 'skipOnError' => true, 'targetClass' => \common\models\User::className(), 'targetAttribute' => ['author_id' => 'id']],
         ];
     }
 

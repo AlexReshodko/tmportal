@@ -26,7 +26,7 @@ class Poll extends base\BasePoll
         foreach ($this->pollValues as $pollValue) {
             array_push($values, $pollValue->value);
         }
-        return join("\n", $values);
+        return join("<br />", $values);
     }
 }
 

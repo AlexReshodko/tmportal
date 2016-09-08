@@ -16,6 +16,9 @@
     max-width: 100%;
     height: auto;
 }
+.dropdown-menu > li > a img {
+  margin-right: 15px;
+}
 
 /* News */
 .news {

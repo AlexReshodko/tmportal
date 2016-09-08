@@ -56,11 +56,21 @@ class LanguageWidget extends \yii\bootstrap\Widget
         if (self::$_labels===null) {
             self::$_labels = [
                 'en' => 'English',
-                'ru-RU' => 'Русский',
-                'uk' => 'Українська',
+                'ru' => 'Русский',
+                'ua' => 'Українська',
             ];
         }
 
         return isset(self::$_labels[$code]) ? self::$_labels[$code] : null;
+    }
+    
+    public static function getCurrentLanguage(){
+        $appLanguage = Yii::$app->language;
+        
+        foreach (Yii::$app->urlManager->languages as $language) {
+            if ($language===$appLanguage){
+                echo self::label($language);
+            }
+        }
     }
 }

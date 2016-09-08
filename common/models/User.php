@@ -216,6 +216,14 @@ class User extends base\BaseUser implements IdentityInterface
     }
     
     /**
+     * Returns current user with data
+     * @return type
+     */
+    public static function getCurrentUser(){
+        return static::find()->joinWith('userData')->where(['{{user}}.id' => \Yii::$app->user->id])->one();
+    }
+
+        /**
      * Return all users with their data and which have ROLE_USER
      * @return type
      */

@@ -2,7 +2,6 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-use dosamigos\ckeditor\CKEditor;
 use wbraganca\dynamicform\DynamicFormWidget;
 
 /* @var $this yii\web\View */
@@ -72,7 +71,7 @@ use wbraganca\dynamicform\DynamicFormWidget;
     <?php DynamicFormWidget::end(); ?>
     
     <div class="form-group text-center">
-        <?= Html::submitButton($modelPollValue->isNewRecord ? 'Create' : 'Update', ['class' => 'btn btn-primary']) ?>
+        <?= Html::submitButton($modelPollValue->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => 'btn btn-primary']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

@@ -14,7 +14,7 @@ return [
             'ignoreLanguageUrlPatterns' => [
                 '#^backend#' => '#^backend#',
             ],
-            'languages' => ['en', 'ru-RU', 'uk'],
+            'languages' => ['en', 'ru', 'ua'],
             'showScriptName' => false,
             'enablePrettyUrl' => true,
             'scriptUrl'=>'/backend/index.php',
@@ -26,7 +26,7 @@ return [
         'urlManagerFrontend' => [
             // here is your frontend URL manager config
             'class' => codemix\localeurls\UrlManager::className(),
-            'languages' => ['en', 'ru-RU', 'uk'],
+            'languages' => ['en', 'ru', 'ua'],
             'baseUrl' => '/',
             'showScriptName' => false,
             'enablePrettyUrl' => true,
@@ -38,7 +38,7 @@ return [
         ],
         'i18n' => [
             'class' => Zelenin\yii\modules\I18n\components\I18N::className(),
-            'languages' => ['en-US', 'ru-RU', 'uk']
+            'languages' => ['en', 'ru', 'ua']
         ],
         'authManager' => [
             'class' => 'yii\rbac\PhpManager',

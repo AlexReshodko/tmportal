@@ -30,7 +30,7 @@ $bundle = AppAsset::register($this);
                                 <!--<a href="#"><small>@chetfaker</small></a>-->
                             </h4>
                         </div>
-                        <h4 class="text-center">About me</h4>
+                        <h4 class="text-center"><?= Yii::t('user', 'About me')?></h4>
                         <blockquote class="description text-center">
                             <em><?= $userData->comment ? $userData->comment : '...' ?></em>
                         </blockquote>
@@ -56,7 +56,7 @@ $bundle = AppAsset::register($this);
                     <div class="header">
                         <div class="row">
                             <div class="col-md-12">
-                                <h4 class="title">Edit Profile</h4>
+                                <h4 class="title text-center"><?= Yii::t('user', 'Edit Profile')?></h4>
                             </div>
                         </div>
                     </div>
@@ -80,18 +80,21 @@ $bundle = AppAsset::register($this);
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                <?= $form->field($userData, 'comment')->textarea(['rows' => 6, 'class' => 'form-control border-input']) ?>
+                                <?= $form->field($userData, 'comment')->textarea(['rows' => 6, 'class' => 'form-control border-input'])->label(Yii::t('user', 'About me')) ?>
                             </div>
                         </div>
 
                         <div class="form-group text-center">
-                            <?= Html::submitButton($user->isNewRecord ? 'Create' : 'Update', ['class' => $user->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+                            <?= Html::submitButton(Yii::t('app', 'Update'), ['class' => 'btn btn-primary']) ?>
                         </div>
 
                         <?php ActiveForm::end(); ?>
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="row">
+            
         </div>
     </div>
 </div>
@@ -100,10 +103,8 @@ $bundle = AppAsset::register($this);
         $('#photo').click();
     })
     $('#photo').on('change', function () {
-        console.log('here');
         var data = new FormData();
         data.append('photo', this.files[0]);
-        console.log(this.files[0]);
         $.ajax({
             url: "upload-photo",
             type: "POST",
@@ -111,8 +112,6 @@ $bundle = AppAsset::register($this);
             processData: false, // tell jQuery not to process the data
             contentType: false,   // tell jQuery not to set contentType
             success : function (data) {
-                console.log('!!!');
-                console.log(data);
                 if(data){
                     window.location.reload();
                 }

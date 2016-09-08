@@ -42,7 +42,7 @@ class UserController extends Controller
      */
     public function actionProfile()
     {
-        $user = User::getUser(\Yii::$app->user->id);
+        $user = User::getCurrentUser();
         if(!$user->userData){
             $userDataModel = new UserData();
             $userDataModel->user_id = $user->id;
@@ -51,7 +51,7 @@ class UserController extends Controller
                 \yii\helpers\VarDumper::dump($userDataModel);
                 print_r($userDataModel->getErrors());exit;
             }
-            $user = User::getUser(\Yii::$app->user->id);
+            $user = User::getCurrentUser();
         }
         if($user->userData->load(Yii::$app->request->post())){
             if($user->userData->validate()){

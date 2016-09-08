@@ -3,6 +3,7 @@ namespace backend\controllers;
 
 use common\models\LoginForm;
 use Yii;
+use common\models\User;
 use common\components\BackendController;
 
 /**
@@ -25,7 +26,10 @@ class SiteController extends BackendController
 
     public function actionIndex()
     {
-        return $this->render('index');
+        $user = User::getCurrentUser();
+        return $this->render('index', [
+            'user' => $user
+        ]);
     }
 
     public function actionLogin()

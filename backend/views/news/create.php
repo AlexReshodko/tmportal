@@ -6,7 +6,7 @@ use common\widgets\CreateUpdateWidget;
 /* @var $this yii\web\View */
 /* @var $model common\models\News */
 
-$this->title = Yii::t('app', 'Create News');
+$this->title = Yii::t('app', 'Create article');
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'News'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

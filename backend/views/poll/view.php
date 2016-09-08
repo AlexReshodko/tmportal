@@ -33,6 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'status',
             [
                 'label' => 'Values',
+                'format' => 'raw',
                 'value' => $model->getValuesNames()
             ]
         ],

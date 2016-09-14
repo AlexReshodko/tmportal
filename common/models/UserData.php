@@ -64,6 +64,7 @@ class UserData extends base\BaseUserData
             'skype',
             'hire_date',
             'birthday',
+            'map_place'
         ];
         return $scenarios;
     }

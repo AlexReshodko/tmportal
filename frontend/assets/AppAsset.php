@@ -67,7 +67,7 @@ class AppAsset extends AssetBundle {
 //        'js/fullcalendar.min.js',
         
         // SNAP SVG for office map
-        'js/snap.svg-min.js',
+//        'js/snap.svg-min.js',
         
         // Paper Dashboard Core javascript and methods for Demo purpose
         'js/paper-dashboard.js',

@@ -5,13 +5,12 @@
 use yii\widgets\Menu;
 use yii\helpers\Url;
 use frontend\assets\AppAsset;
-use common\assets\NotificationAsset;
+use common\assets\SharedAsset;
 use yii\helpers\Html;
-use common\widgets\Alert;
 use common\widgets\LanguageWidget;
 
 $bundle = AppAsset::register($this);
-NotificationAsset::register($this);
+SharedAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -90,7 +89,7 @@ NotificationAsset::register($this);
                                     <a href="#" class="dropdown-toggle btn-rotate" data-toggle="dropdown">
                                         <i class="ti-world"></i>
                                         <p>
-                                            <?= Yii::t('app', 'Language') ?>
+                                            <?= LanguageWidget::getCurrentLanguage()?>
                                             <b class="caret"></b>
                                         </p>
                                     </a>

@@ -6,17 +6,13 @@
 use yii\helpers\Url;
 
 use yii\helpers\Html;
-use yii\bootstrap\Nav;
-use yii\bootstrap\NavBar;
-use yii\widgets\Breadcrumbs;
 use backend\assets\AppAsset;
-use common\widgets\Alert;
-use common\assets\NotificationAsset;
+use common\assets\SharedAsset;
 
 use common\models\User;
 
 $bundle = AppAsset::register($this);
-NotificationAsset::register($this);
+SharedAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>

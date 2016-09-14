@@ -63,6 +63,16 @@
          cy="-32.186462"
          r="13.993524" />
     </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath5783-onmap">
+      <circle
+         style="fill:#fffca9;fill-opacity:1;stroke:#808080;stroke-width:1.29999995;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.94117647"
+         id="circle5785-onmap"
+         cx="136.68474"
+         cy="-32.186462"
+         r="13.993524" />
+    </clipPath>
   </defs>
   <sodipodi:namedview
      pagecolor="#ffffff"
@@ -77,9 +87,9 @@
      inkscape:window-height="1017"
      id="namedview226"
      showgrid="true"
-     inkscape:zoom="1.7685727"
-     inkscape:cx="440.86462"
-     inkscape:cy="195.28068"
+     inkscape:zoom="14.148582"
+     inkscape:cx="60.317596"
+     inkscape:cy="538.59996"
      inkscape:window-x="-8"
      inkscape:window-y="-8"
      inkscape:window-maximized="1"
@@ -792,6 +802,16 @@ ellipse:hover{
          inkscape:connector-curvature="0"
          class="user-element bg" />
     </g>
+    <image
+       style="opacity:0"
+       y="-50.703148"
+       x="121.91667"
+       id="image4331-1"
+       height="38.789272"
+       width="29.091953"
+       clip-path="url(#clipPath5783-onmap)"
+       transform="matrix(1.9375289,0,0,1.9241385,-238.45178,88.257507)"
+       class="user-image" />
   </g>
   <g
      id="place_2"
@@ -813,6 +833,16 @@ ellipse:hover{
          inkscape:connector-curvature="0"
          class="user-element bg" />
     </g>
+    <image
+       style="opacity:0"
+       y="-50.703148"
+       x="121.91667"
+       id="image4331-2"
+       height="38.789272"
+       width="29.091953"
+       clip-path="url(#clipPath5783-onmap)"
+       transform="matrix(1.9265906,0,0,1.9132758,-236.94837,88.061853)"
+       class="user-image" />
   </g>
   <g
      id="place_3"
@@ -834,6 +864,16 @@ ellipse:hover{
          inkscape:connector-curvature="0"
          class="user-element bg" />
     </g>
+    <image
+       style="opacity:0"
+       y="-50.703148"
+       x="121.91667"
+       id="image4331-3"
+       height="38.789272"
+       width="29.091953"
+       clip-path="url(#clipPath5783-onmap)"
+       transform="matrix(1.9279836,0,0,1.9146593,-237.1071,88.039252)"
+       class="user-image" />
   </g>
   <g
      id="place_4"
@@ -855,6 +895,16 @@ ellipse:hover{
          inkscape:connector-curvature="0"
          class="user-element bg" />
     </g>
+    <image
+       style="opacity:0"
+       y="-50.703148"
+       x="121.91667"
+       id="image4331-4"
+       height="38.789272"
+       width="29.091953"
+       clip-path="url(#clipPath5783-onmap)"
+       transform="matrix(1.939409,0,0,1.9260056,-238.89273,88.229893)"
+       class="user-image" />
   </g>
   <g
      id="tooltip-template"
@@ -915,6 +965,16 @@ ellipse:hover{
          inkscape:connector-curvature="0"
          class="user-element bg" />
     </g>
+    <image
+       style="opacity:0"
+       y="-50.703148"
+       x="121.91667"
+       id="image4331-5"
+       height="38.789272"
+       width="29.091953"
+       clip-path="url(#clipPath5783-onmap)"
+       transform="matrix(1.9404901,0,0,1.9270793,-238.97332,88.466445)"
+       class="user-image" />
   </g>
   <g
      id="place_6"
@@ -936,6 +996,16 @@ ellipse:hover{
          inkscape:connector-curvature="0"
          class="user-element bg" />
     </g>
+    <image
+       style="opacity:0"
+       y="-50.703148"
+       x="121.91667"
+       id="image4331-6"
+       height="38.789272"
+       width="29.091953"
+       clip-path="url(#clipPath5783-onmap)"
+       transform="matrix(1.9352349,0,0,1.9218605,-238.23703,87.989314)"
+       class="user-image" />
   </g>
   <g
      id="place_7"
@@ -957,6 +1027,16 @@ ellipse:hover{
          inkscape:connector-curvature="0"
          class="user-element bg" />
     </g>
+    <image
+       style="opacity:0"
+       y="-50.703148"
+       x="121.91667"
+       id="image4331-7"
+       height="38.789272"
+       width="29.091953"
+       clip-path="url(#clipPath5783-onmap)"
+       transform="matrix(1.9307116,0,0,1.9173685,-237.4155,88.197158)"
+       class="user-image" />
   </g>
   <g
      id="place_8"
@@ -978,6 +1058,16 @@ ellipse:hover{
          inkscape:connector-curvature="0"
          class="user-element bg" />
     </g>
+    <image
+       style="opacity:0"
+       y="-50.703148"
+       x="121.91667"
+       id="image4331-8"
+       height="38.789272"
+       width="29.091953"
+       clip-path="url(#clipPath5783-onmap)"
+       transform="matrix(1.9356372,0,0,1.9222599,-238.15549,88.437979)"
+       class="user-image" />
   </g>
   <g
      id="place_9"
@@ -999,6 +1089,16 @@ ellipse:hover{
          inkscape:connector-curvature="0"
          class="user-element bg" />
     </g>
+    <image
+       style="opacity:0"
+       y="-50.703148"
+       x="121.91667"
+       id="image4331-9"
+       height="38.789272"
+       width="29.091953"
+       clip-path="url(#clipPath5783-onmap)"
+       transform="matrix(1.9491085,0,0,1.9356381,-239.76987,88.661097)"
+       class="user-image" />
   </g>
   <g
      id="place_10"
@@ -1020,6 +1120,16 @@ ellipse:hover{
          inkscape:connector-curvature="0"
          class="user-element bg" />
     </g>
+    <image
+       style="opacity:0"
+       y="-50.703148"
+       x="121.91667"
+       id="image4331-10"
+       height="38.789272"
+       width="29.091953"
+       clip-path="url(#clipPath5783-onmap)"
+       transform="matrix(1.9296919,0,0,1.9163557,-237.42305,87.952471)"
+       class="user-image" />
   </g>
   <g
      id="place_11"
@@ -1041,6 +1151,16 @@ ellipse:hover{
          inkscape:connector-curvature="0"
          class="user-element bg" />
     </g>
+    <image
+       style="opacity:0"
+       y="-50.703148"
+       x="121.91667"
+       id="image4331-11"
+       height="38.789272"
+       width="29.091953"
+       clip-path="url(#clipPath5783-onmap)"
+       transform="matrix(1.936665,0,0,1.9232807,-238.05109,88.258129)"
+       class="user-image" />
   </g>
   <g
      id="place_12"
@@ -1062,6 +1182,16 @@ ellipse:hover{
          inkscape:connector-curvature="0"
          class="user-element bg" />
     </g>
+    <image
+       style="opacity:0"
+       y="-50.703148"
+       x="121.91667"
+       id="image4331-12"
+       height="38.789272"
+       width="29.091953"
+       clip-path="url(#clipPath5783-onmap)"
+       transform="matrix(1.9309191,0,0,1.9175746,-237.35064,87.978785)"
+       class="user-image" />
   </g>
   <g
      id="place_13"
@@ -1083,6 +1213,16 @@ ellipse:hover{
          inkscape:connector-curvature="0"
          class="user-element bg" />
     </g>
+    <image
+       style="opacity:0"
+       y="-50.703148"
+       x="121.91667"
+       id="image4331-13"
+       height="38.789272"
+       width="29.091953"
+       clip-path="url(#clipPath5783-onmap)"
+       transform="matrix(1.9393333,0,0,1.9259306,-238.79275,88.363372)"
+       class="user-image" />
   </g>
   <g
      id="place_14"
@@ -1104,6 +1244,16 @@ ellipse:hover{
          inkscape:connector-curvature="0"
          class="user-element bg" />
     </g>
+    <image
+       style="opacity:0"
+       y="-50.703148"
+       x="121.91667"
+       id="image4331-14"
+       height="38.789272"
+       width="29.091953"
+       clip-path="url(#clipPath5783-onmap)"
+       transform="matrix(1.9337001,0,0,1.9203364,-237.91258,88.124052)"
+       class="user-image" />
   </g>
   <g
      id="place_15"
@@ -1125,6 +1275,16 @@ ellipse:hover{
          inkscape:connector-curvature="0"
          class="user-element bg" />
     </g>
+    <image
+       style="opacity:0"
+       y="-50.703148"
+       x="121.91667"
+       id="image4331-15"
+       height="38.789272"
+       width="29.091953"
+       clip-path="url(#clipPath5783-onmap)"
+       transform="matrix(1.9368062,0,0,1.9234209,-238.21698,88.372601)"
+       class="user-image" />
   </g>
   <g
      id="place_16"
@@ -1146,6 +1306,16 @@ ellipse:hover{
          inkscape:connector-curvature="0"
          class="user-element bg" />
     </g>
+    <image
+       style="opacity:0"
+       y="-50.703148"
+       x="121.91667"
+       id="image4331-16"
+       height="38.789272"
+       width="29.091953"
+       clip-path="url(#clipPath5783-onmap)"
+       transform="matrix(1.9424163,0,0,1.9289923,-239.06674,88.505589)"
+       class="user-image" />
   </g>
   <g
      id="place_17"
@@ -1167,6 +1337,16 @@ ellipse:hover{
          inkscape:connector-curvature="0"
          class="user-element bg" />
     </g>
+    <image
+       style="opacity:0"
+       y="-50.703148"
+       x="121.91667"
+       id="image4331-17"
+       height="38.789272"
+       width="29.091953"
+       clip-path="url(#clipPath5783-onmap)"
+       transform="matrix(1.9451809,0,0,1.9317377,-239.31791,88.663889)"
+       class="user-image" />
   </g>
   <g
      id="place_18"
@@ -1188,6 +1368,16 @@ ellipse:hover{
          inkscape:connector-curvature="0"
          class="user-element bg" />
     </g>
+    <image
+       style="opacity:0"
+       y="-50.703148"
+       x="121.91667"
+       id="image4331-18"
+       height="38.789272"
+       width="29.091953"
+       clip-path="url(#clipPath5783-onmap)"
+       transform="matrix(1.9415092,0,0,1.9280913,-239.07087,88.34336)"
+       class="user-image" />
   </g>
   <g
      id="place_19"
@@ -1209,6 +1399,16 @@ ellipse:hover{
          inkscape:connector-curvature="0"
          class="user-element bg" />
     </g>
+    <image
+       style="opacity:0"
+       y="-50.703148"
+       x="121.91667"
+       id="image4331-19"
+       height="38.789272"
+       width="29.091953"
+       clip-path="url(#clipPath5783-onmap)"
+       transform="matrix(1.9566279,0,0,1.9431057,-240.92953,88.846897)"
+       class="user-image" />
   </g>
   <g
      id="place_20"
@@ -1230,6 +1430,16 @@ ellipse:hover{
          inkscape:connector-curvature="0"
          class="user-element bg" />
     </g>
+    <image
+       style="opacity:0"
+       y="-50.703148"
+       x="121.91667"
+       id="image4331-20"
+       height="38.789272"
+       width="29.091953"
+       clip-path="url(#clipPath5783-onmap)"
+       transform="matrix(1.9395808,0,0,1.9261762,-238.60561,88.472342)"
+       class="user-image" />
   </g>
   <g
      id="place_21"
@@ -1251,6 +1461,16 @@ ellipse:hover{
          inkscape:connector-curvature="0"
          class="user-element bg" />
     </g>
+    <image
+       style="opacity:0"
+       y="-50.703148"
+       x="121.91667"
+       id="image4331-21"
+       height="38.789272"
+       width="29.091953"
+       clip-path="url(#clipPath5783-onmap)"
+       transform="matrix(1.9378303,0,0,1.9244377,-238.5271,88.307199)"
+       class="user-image" />
   </g>
   <g
      id="place_22"
@@ -1272,6 +1492,16 @@ ellipse:hover{
          inkscape:connector-curvature="0"
          class="user-element bg" />
     </g>
+    <image
+       style="opacity:0"
+       y="-50.703148"
+       x="121.91667"
+       id="image4331-22"
+       height="38.789272"
+       width="29.091953"
+       clip-path="url(#clipPath5783-onmap)"
+       transform="matrix(1.9308029,0,0,1.9174591,-237.4233,88.188645)"
+       class="user-image" />
   </g>
   <g
      id="place_23"
@@ -1293,6 +1523,16 @@ ellipse:hover{
          inkscape:connector-curvature="0"
          class="user-element bg" />
     </g>
+    <image
+       style="opacity:0"
+       y="-50.703148"
+       x="121.91667"
+       id="image4331-23"
+       height="38.789272"
+       width="29.091953"
+       clip-path="url(#clipPath5783-onmap)"
+       transform="matrix(1.9411005,0,0,1.9276856,-238.81807,88.291001)"
+       class="user-image" />
   </g>
   <g
      id="place_24"
@@ -1314,6 +1554,16 @@ ellipse:hover{
          inkscape:connector-curvature="0"
          class="user-element bg" />
     </g>
+    <image
+       style="opacity:0"
+       y="-50.703148"
+       x="121.91667"
+       id="image4331-24"
+       height="38.789272"
+       width="29.091953"
+       clip-path="url(#clipPath5783-onmap)"
+       transform="matrix(1.9532006,0,0,1.9397022,-240.5274,88.85442)"
+       class="user-image" />
   </g>
   <g
      id="place_25"
@@ -1335,6 +1585,16 @@ ellipse:hover{
          inkscape:connector-curvature="0"
          class="user-element bg" />
     </g>
+    <image
+       style="opacity:0"
+       y="-50.703148"
+       x="121.91667"
+       id="image4331-25"
+       height="38.789272"
+       width="29.091953"
+       clip-path="url(#clipPath5783-onmap)"
+       transform="matrix(1.9623435,0,0,1.9487818,-241.87326,89.066279)"
+       class="user-image" />
   </g>
   <g
      id="place_26"
@@ -1356,6 +1616,16 @@ ellipse:hover{
          inkscape:connector-curvature="0"
          class="user-element bg" />
     </g>
+    <image
+       style="opacity:0"
+       y="-50.703148"
+       x="121.91667"
+       id="image4331-26"
+       height="38.789272"
+       width="29.091953"
+       clip-path="url(#clipPath5783-onmap)"
+       transform="matrix(1.9461053,0,0,1.9326556,-239.32006,88.537241)"
+       class="user-image" />
   </g>
   <g
      id="place_27"
@@ -1377,6 +1647,16 @@ ellipse:hover{
          inkscape:connector-curvature="0"
          class="user-element bg" />
     </g>
+    <image
+       style="opacity:0"
+       y="-50.703148"
+       x="121.91667"
+       id="image4331-27"
+       height="38.789272"
+       width="29.091953"
+       clip-path="url(#clipPath5783-onmap)"
+       transform="matrix(1.9489876,0,0,1.9355182,-239.98715,88.636481)"
+       class="user-image" />
   </g>
   <g
      id="place_28"
@@ -1398,6 +1678,16 @@ ellipse:hover{
          inkscape:connector-curvature="0"
          class="user-element bg" />
     </g>
+    <image
+       style="opacity:0"
+       y="-50.703148"
+       x="121.91667"
+       id="image4331-28"
+       height="38.789272"
+       width="29.091953"
+       clip-path="url(#clipPath5783-onmap)"
+       transform="matrix(1.9603701,0,0,1.9468222,-241.51061,88.695303)"
+       class="user-image" />
   </g>
   <g
      id="place_29"
@@ -1419,6 +1709,16 @@ ellipse:hover{
          inkscape:connector-curvature="0"
          class="user-element bg" />
     </g>
+    <image
+       style="opacity:0"
+       y="-50.703148"
+       x="121.91667"
+       id="image4331-29"
+       height="38.789272"
+       width="29.091953"
+       clip-path="url(#clipPath5783-onmap)"
+       transform="matrix(1.9490286,0,0,1.9355592,-239.90747,88.789664)"
+       class="user-image" />
   </g>
   <g
      id="place_30"
@@ -1440,6 +1740,16 @@ ellipse:hover{
          inkscape:connector-curvature="0"
          class="user-element bg" />
     </g>
+    <image
+       style="opacity:0"
+       y="-50.703148"
+       x="121.91667"
+       id="image4331-30"
+       height="38.789272"
+       width="29.091953"
+       clip-path="url(#clipPath5783-onmap)"
+       transform="matrix(1.9530965,0,0,1.9395992,-240.41765,88.751455)"
+       class="user-image" />
   </g>
   <g
      id="place_31"
@@ -1461,6 +1771,16 @@ ellipse:hover{
          inkscape:connector-curvature="0"
          class="user-element bg" />
     </g>
+    <image
+       style="opacity:0"
+       y="-50.703148"
+       x="121.91667"
+       id="image4331-31"
+       height="38.789272"
+       width="29.091953"
+       clip-path="url(#clipPath5783-onmap)"
+       transform="matrix(1.9717514,0,0,1.9581251,-243.18048,89.853181)"
+       class="user-image" />
   </g>
   <g
      id="place_32"
@@ -1482,6 +1802,16 @@ ellipse:hover{
          inkscape:connector-curvature="0"
          class="user-element bg" />
     </g>
+    <image
+       style="opacity:0"
+       y="-50.703148"
+       x="121.91667"
+       id="image4331-32"
+       height="38.789272"
+       width="29.091953"
+       clip-path="url(#clipPath5783-onmap)"
+       transform="matrix(1.9330888,0,0,1.91973,-237.80468,88.057572)"
+       class="user-image" />
   </g>
   <g
      id="place_33"
@@ -1503,6 +1833,16 @@ ellipse:hover{
          inkscape:connector-curvature="0"
          class="user-element bg" />
     </g>
+    <image
+       style="opacity:0"
+       y="-50.703148"
+       x="121.91667"
+       id="image4331-33"
+       height="38.789272"
+       width="29.091953"
+       clip-path="url(#clipPath5783-onmap)"
+       transform="matrix(1.9495564,0,0,1.936084,-240.22227,88.699468)"
+       class="user-image" />
   </g>
   <g
      id="place_34"
@@ -1524,6 +1864,16 @@ ellipse:hover{
          inkscape:connector-curvature="0"
          class="user-element bg" />
     </g>
+    <image
+       style="opacity:0"
+       y="-50.703148"
+       x="121.91667"
+       id="image4331-34"
+       height="38.789272"
+       width="29.091953"
+       clip-path="url(#clipPath5783-onmap)"
+       transform="matrix(1.9286335,0,0,1.9153057,-237.15884,87.706673)"
+       class="user-image" />
   </g>
   <g
      id="place_35"
@@ -1545,6 +1895,16 @@ ellipse:hover{
          inkscape:connector-curvature="0"
          class="user-element bg" />
     </g>
+    <image
+       style="opacity:0"
+       y="-50.703148"
+       x="121.91667"
+       id="image4331-35"
+       height="38.789272"
+       width="29.091953"
+       clip-path="url(#clipPath5783-onmap)"
+       transform="matrix(1.9384938,0,0,1.9250979,-238.50466,88.4728)"
+       class="user-image" />
   </g>
   <g
      id="place_36"
@@ -1566,6 +1926,16 @@ ellipse:hover{
          inkscape:connector-curvature="0"
          class="user-element bg" />
     </g>
+    <image
+       style="opacity:0"
+       y="-50.703148"
+       x="121.91667"
+       id="image4331-36"
+       height="38.789272"
+       width="29.091953"
+       clip-path="url(#clipPath5783-onmap)"
+       transform="matrix(1.9458405,0,0,1.9323936,-239.55509,88.448481)"
+       class="user-image" />
   </g>
   <g
      id="place_37"
@@ -1587,6 +1957,16 @@ ellipse:hover{
          inkscape:connector-curvature="0"
          class="user-element bg" />
     </g>
+    <image
+       style="opacity:0"
+       y="-50.703148"
+       x="121.91667"
+       id="image4331-37"
+       height="38.789272"
+       width="29.091953"
+       clip-path="url(#clipPath5783-onmap)"
+       transform="matrix(1.9279818,0,0,1.9146583,-237.17339,88.041269)"
+       class="user-image" />
   </g>
   <g
      id="place_38"
@@ -1608,6 +1988,16 @@ ellipse:hover{
          inkscape:connector-curvature="0"
          class="user-element bg" />
     </g>
+    <image
+       style="opacity:0"
+       y="-50.703148"
+       x="121.91667"
+       id="image4331-38"
+       height="38.789272"
+       width="29.091953"
+       clip-path="url(#clipPath5783-onmap)"
+       transform="matrix(1.9306226,0,0,1.9172811,-237.37412,88.144321)"
+       class="user-image" />
   </g>
   <g
      id="place_39"
@@ -1629,6 +2019,16 @@ ellipse:hover{
          inkscape:connector-curvature="0"
          class="user-element bg" />
     </g>
+    <image
+       style="opacity:0"
+       y="-50.703148"
+       x="121.91667"
+       id="image4331-39"
+       height="38.789272"
+       width="29.091953"
+       clip-path="url(#clipPath5783-onmap)"
+       transform="matrix(1.9546706,0,0,1.941163,-240.79988,88.844622)"
+       class="user-image" />
   </g>
   <g
      id="place_40"
@@ -1650,6 +2050,16 @@ ellipse:hover{
          inkscape:connector-curvature="0"
          class="user-element bg" />
     </g>
+    <image
+       style="opacity:0"
+       y="-50.703148"
+       x="121.91667"
+       id="image4331-40"
+       height="38.789272"
+       width="29.091953"
+       clip-path="url(#clipPath5783-onmap)"
+       transform="matrix(2.0201144,0,0,2.0061545,-249.77558,90.856667)"
+       class="user-image" />
   </g>
   <g
      id="place_41"
@@ -1671,6 +2081,16 @@ ellipse:hover{
          inkscape:connector-curvature="0"
          class="user-element bg" />
     </g>
+    <image
+       style="opacity:0"
+       y="-50.703148"
+       x="121.91667"
+       id="image4331-41"
+       height="38.789272"
+       width="29.091953"
+       clip-path="url(#clipPath5783-onmap)"
+       transform="matrix(1.9477291,0,0,1.9342695,-239.70182,88.679675)"
+       class="user-image" />
   </g>
   <g
      id="place_42"
@@ -1692,6 +2112,16 @@ ellipse:hover{
          inkscape:connector-curvature="0"
          class="user-element bg" />
     </g>
+    <image
+       style="opacity:0"
+       y="-50.703148"
+       x="121.91667"
+       id="image4331-42"
+       height="38.789272"
+       width="29.091953"
+       clip-path="url(#clipPath5783-onmap)"
+       transform="matrix(1.9416478,0,0,1.9282302,-239.27748,88.704488)"
+       class="user-image" />
   </g>
   <g
      id="place_43"
@@ -1713,6 +2143,16 @@ ellipse:hover{
          inkscape:connector-curvature="0"
          class="user-element bg" />
     </g>
+    <image
+       style="opacity:0"
+       y="-50.703148"
+       x="121.91667"
+       id="image4331-43"
+       height="38.789272"
+       width="29.091953"
+       clip-path="url(#clipPath5783-onmap)"
+       transform="matrix(2.0025499,0,0,1.9887114,-248.02335,89.768378)"
+       class="user-image" />
   </g>
   <g
      id="place_44"
@@ -1734,6 +2174,16 @@ ellipse:hover{
          inkscape:connector-curvature="0"
          class="user-element bg" />
     </g>
+    <image
+       style="opacity:0"
+       y="-50.703148"
+       x="121.91667"
+       id="image4331-44"
+       height="38.789272"
+       width="29.091953"
+       clip-path="url(#clipPath5783-onmap)"
+       transform="matrix(1.9650178,0,0,1.9514385,-242.26108,89.281953)"
+       class="user-image" />
   </g>
   <g
      id="place_45"
@@ -1755,6 +2205,16 @@ ellipse:hover{
          inkscape:connector-curvature="0"
          class="user-element bg" />
     </g>
+    <image
+       style="opacity:0"
+       y="-50.703148"
+       x="121.91667"
+       id="image4331-45"
+       height="38.789272"
+       width="29.091953"
+       clip-path="url(#clipPath5783-onmap)"
+       transform="matrix(1.9695261,0,0,1.9192287,-242.53092,88.190781)"
+       class="user-image" />
   </g>
   <g
      id="place_46"
@@ -1776,6 +2236,16 @@ ellipse:hover{
          inkscape:connector-curvature="0"
          class="user-element bg" />
     </g>
+    <image
+       style="opacity:0"
+       y="-50.703148"
+       x="121.91667"
+       id="image4331-46"
+       height="38.789272"
+       width="29.091953"
+       clip-path="url(#clipPath5783-onmap)"
+       transform="matrix(2.0219835,0,0,1.9703464,-249.84903,89.923631)"
+       class="user-image" />
   </g>
   <g
      id="place_47"
@@ -1797,6 +2267,16 @@ ellipse:hover{
          inkscape:connector-curvature="0"
          class="user-element bg" />
     </g>
+    <image
+       style="opacity:0"
+       y="-50.703148"
+       x="121.91667"
+       id="image4331-47"
+       height="38.789272"
+       width="29.091953"
+       clip-path="url(#clipPath5783-onmap)"
+       transform="matrix(2.0021735,0,0,1.9510425,-247.42132,88.986)"
+       class="user-image" />
   </g>
   <g
      id="place_48"
@@ -1818,6 +2298,16 @@ ellipse:hover{
          inkscape:connector-curvature="0"
          class="user-element bg" />
     </g>
+    <image
+       style="opacity:0"
+       y="-50.703148"
+       x="121.91667"
+       id="image4331-48"
+       height="38.789272"
+       width="29.091953"
+       clip-path="url(#clipPath5783-onmap)"
+       transform="matrix(1.974778,0,0,1.9243462,-243.5022,88.119865)"
+       class="user-image" />
   </g>
   <g
      id="place_49"
@@ -1839,6 +2329,16 @@ ellipse:hover{
          inkscape:connector-curvature="0"
          class="user-element bg" />
     </g>
+    <image
+       style="opacity:0"
+       y="-50.703148"
+       x="121.91667"
+       id="image4331-49"
+       height="38.789272"
+       width="29.091953"
+       clip-path="url(#clipPath5783-onmap)"
+       transform="matrix(1.9891567,0,0,1.9383577,-245.41467,88.496893)"
+       class="user-image" />
   </g>
   <g
      id="place_50"
@@ -1860,5 +2360,15 @@ ellipse:hover{
          inkscape:connector-curvature="0"
          class="user-element bg" />
     </g>
+    <image
+       style="opacity:0"
+       y="-50.703148"
+       x="121.91667"
+       id="image4331-50"
+       height="38.789272"
+       width="29.091953"
+       clip-path="url(#clipPath5783-onmap)"
+       transform="matrix(2.0073134,0,0,1.9560508,-248.16374,89.084096)"
+       class="user-image" />
   </g>
 </svg>

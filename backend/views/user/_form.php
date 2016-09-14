@@ -57,6 +57,7 @@ use common\helpers\UtilsHelper;
             <?= $form->field($userData, 'position_id')->dropDownList(
                 ArrayHelper::map(common\models\JobPosition::find()->all(), 'id', 'name')
             ) ?>
+            <?= $form->field($userData, 'map_place')->textInput() ?>
         </div>
     </div>
     
@@ -68,6 +69,9 @@ use common\helpers\UtilsHelper;
     <?php ActiveForm::end(); ?>
 
 </div>
+<?= common\widgets\map\MapWidget::widget(['params' => [
+    'showList' => false
+]]); ?>
 <script>
 function initAutocomplete(){
     console.log($('#userdata-address').val());

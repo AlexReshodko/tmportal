@@ -5,10 +5,10 @@
 use yii\helpers\Html;
 use common\widgets\Alert;
 use common\assets\LoginAsset;
-use common\assets\NotificationAsset;
+use common\assets\SharedAsset;
 
 LoginAsset::register($this);
-NotificationAsset::register($this);
+SharedAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>

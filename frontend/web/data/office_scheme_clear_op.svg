@@ -87,9 +87,9 @@
      inkscape:window-height="1017"
      id="namedview226"
      showgrid="true"
-     inkscape:zoom="14.148582"
-     inkscape:cx="60.317596"
-     inkscape:cy="538.59996"
+     inkscape:zoom="0.88428638"
+     inkscape:cx="458.31513"
+     inkscape:cy="280.13278"
      inkscape:window-x="-8"
      inkscape:window-y="-8"
      inkscape:window-maximized="1"
@@ -116,10 +116,7 @@
   </metadata>
   <style
      id="style4321">.selected{
-	fill: red;
-}
-ellipse:hover{
-	fill: blue;
+	fill: green !important;
 }</style>
   <g
      id="layer1"

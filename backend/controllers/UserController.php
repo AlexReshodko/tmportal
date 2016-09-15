@@ -110,14 +110,10 @@ class UserController extends BackendController
                 $userData->save(false);
 //                return $this->redirect(['view', 'id' => $user->id]);
             }
-            return $this->render('update', [
-                'user' => $user,
-            ]);
-        } else {
-            return $this->render('update', [
-                'user' => $user,
-            ]);
         }
+        return $this->render('update', [
+            'user' => $user,
+        ]);
     }
 
     /**

@@ -54,19 +54,24 @@ OMap = {
         });
     },
     setPlace: function(placeID){
+        var selected = OMap.svg.select('.selected');
+        if(selected){
+            selected.removeClass('selected');
+        }
+        OMap.svg.select('#place_'+placeID).select('.user-element.bg').addClass('selected');
         $('#userdata-map_place').val(placeID);
+        NotificationManager.showMessage('success','Place #'+placeID+' selected');
     },
     getUserInfo: function(userElement){
         var placeID = Utils.getID(userElement.attr('id'));
         return $("#office-workers .user-cb[data-place="+placeID+"]").data();
     },
     setMapAvatar: function(userElement){
-        var userInfo = OMap.getUserInfo(userElement);
-        if(userInfo && userElement.select('.user-image')){
-            console.log(userElement.select('.user-element'));
-//            OMap.svg.select('#map').image(userInfo.photo, 10, 10, 80, 80);
-                userElement.select('.user-image').attr({'xlink:href':userInfo.photo});
-                userElement.select('.user-image').animate({opacity:1}, 200);
+        var userInfo = OMap.getUserInfo(userElement),
+            userElImage = userElement.select('.user-image');
+        if(userInfo && userElImage){
+            userElImage.attr({'xlink:href':userInfo.photo});
+            userElImage.animate({opacity:1}, 200);
         }
     },
     showTooltip: function(e){
